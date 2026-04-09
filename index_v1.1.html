@@ -164,24 +164,6 @@
     white-space: nowrap;
     flex-shrink: 0;
   }
-  .nav-user {
-    display: flex; align-items: center; gap: 8px;
-    padding: 5px 12px 5px 6px;
-    border-radius: 24px; border: 1.5px solid var(--border);
-    cursor: pointer; transition: all .2s; text-decoration: none;
-  }
-  .nav-user:hover { border-color: var(--primary); background: #f0f5ff; }
-  .nav-avatar {
-    width: 32px; height: 32px; border-radius: 50%;
-    background: linear-gradient(135deg,#0a4fa8,#00c6ff);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px; flex-shrink: 0;
-  }
-  .nav-user-name { font-size: 14px; font-weight: 600; color: var(--text-main); }
-  .nav-user-badge {
-    font-size: 10px; background: linear-gradient(90deg,#0a4fa8,#1a6fe8);
-    color: #fff; border-radius: 8px; padding: 1px 6px; font-weight: 600;
-  }
   .btn-reg:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(10,79,168,0.35); }
 
   /* ===== Hero Banner ===== */
@@ -279,134 +261,9 @@
     color: rgba(255,255,255,0.70);
     line-height: 1.8;
     max-width: 540px;
-    margin-bottom: 28px;
-  }
-  /* AI 大搜索条 */
-  .hero-search-wrap {
-    margin-bottom: 28px;
-    position: relative;
-  }
-  .hero-search-bar {
-    display: flex;
-    align-items: center;
-    background: rgba(255,255,255,0.10);
-    border: 1.5px solid rgba(255,255,255,0.22);
-    border-radius: 50px;
-    padding: 6px 6px 6px 20px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    transition: border-color .25s, box-shadow .25s;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-  }
-  .hero-search-bar:focus-within {
-    border-color: rgba(0,198,255,0.7);
-    box-shadow: 0 0 0 3px rgba(0,198,255,0.15), 0 4px 24px rgba(0,0,0,0.18);
-  }
-  .hero-search-ai-tag {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    background: linear-gradient(90deg, rgba(0,198,255,0.25), rgba(123,47,254,0.25));
-    border: 1px solid rgba(0,198,255,0.35);
-    border-radius: 20px;
-    padding: 3px 10px 3px 8px;
-    font-size: 11.5px;
-    font-weight: 700;
-    color: #7de2ff;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-    flex-shrink: 0;
-    margin-right: 10px;
-  }
-  .hero-search-ai-tag .ai-dot {
-    width: 6px; height: 6px;
-    background: #00c6ff;
-    border-radius: 50%;
-    animation: aiPulse 1.6s ease-in-out infinite;
-    flex-shrink: 0;
-  }
-  @keyframes aiPulse {
-    0%,100% { opacity:1; transform:scale(1); }
-    50% { opacity:.4; transform:scale(1.5); }
-  }
-  .hero-search-input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 15px;
-    color: #fff;
-    caret-color: #00c6ff;
-    min-width: 0;
-  }
-  .hero-search-input::placeholder { color: rgba(255,255,255,0.38); font-size: 14px; }
-  .hero-search-btn {
-    flex-shrink: 0;
-    background: linear-gradient(90deg, #00c6ff, #0a6fe8);
-    border: none;
-    border-radius: 40px;
-    padding: 10px 22px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all .22s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    white-space: nowrap;
-  }
-  .hero-search-btn:hover { transform: scale(1.04); box-shadow: 0 4px 18px rgba(0,198,255,0.45); }
-  .hero-search-hot {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 10px;
-    flex-wrap: wrap;
-  }
-  .hero-search-hot-label {
-    font-size: 11.5px;
-    color: rgba(255,255,255,0.38);
-    white-space: nowrap;
-  }
-  .hero-search-hot-tag {
-    font-size: 11.5px;
-    color: rgba(255,255,255,0.55);
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 20px;
-    padding: 3px 10px;
-    cursor: pointer;
-    transition: all .18s;
-    white-space: nowrap;
-  }
-  .hero-search-hot-tag:hover { color: #7de2ff; border-color: rgba(0,198,255,0.4); background: rgba(0,198,255,0.08); }
-
-  /* 五大功能入口 */
-  .hero-features {
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    gap: 10px;
     margin-bottom: 36px;
   }
-  .hero-feat-card {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.13);
-    border-radius: 14px;
-    padding: 14px 12px;
-    cursor: pointer;
-    transition: all .25s;
-    text-align: center;
-    text-decoration: none;
-  }
-  .hero-feat-card:hover {
-    background: rgba(255,255,255,0.14);
-    border-color: rgba(0,198,255,0.5);
-    transform: translateY(-2px);
-  }
-  .hero-feat-icon { font-size: 22px; margin-bottom: 6px; }
-  .hero-feat-label { font-size: 13.5px; font-weight: 700; color: #fff; display: block; margin-bottom: 2px; }
-  .hero-feat-sub { font-size: 11px; color: rgba(255,255,255,0.45); }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
   .hero-btn-primary {
     padding: 13px 32px;
     background: linear-gradient(90deg, #00c6ff, #0a6fe8);
@@ -449,149 +306,47 @@
   .hero-stat .num span { font-size: 16px; color: #7de2ff; margin-left: 2px; }
   .hero-stat .label { font-size: 12.5px; color: rgba(255,255,255,0.50); letter-spacing: 0.5px; }
 
-  /* 右侧面板 */
+  /* 右侧浮动卡片 */
   .hero-visual {
     flex-shrink: 0;
-    width: 360px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 8px 0;
+    width: 380px;
+    position: relative;
+    padding: 32px 20px;
   }
+  .hero-card-main {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 28px;
+    color: #fff;
+  }
+  .hero-card-main .card-title { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 16px; letter-spacing: 1px; }
+  .hero-card-main .card-headline { font-size: 18px; font-weight: 700; margin-bottom: 18px; line-height: 1.4; }
+  .progress-item { margin-bottom: 14px; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 12.5px; color: rgba(255,255,255,0.7); margin-bottom: 6px; }
+  .progress-bar { height: 6px; background: rgba(255,255,255,0.12); border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .p1 { background: linear-gradient(90deg,#00c6ff,#0a6fe8); width: 82%; }
+  .p2 { background: linear-gradient(90deg,#7b2ffe,#c66bff); width: 67%; }
+  .p3 { background: linear-gradient(90deg,#ff6b35,#ff9f43); width: 74%; }
 
-  /* 实时活跃条 */
-  .hv-live-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 40px;
-    padding: 8px 18px;
+  .hero-card-float {
+    position: absolute;
+    background: rgba(255,255,255,0.10);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 14px;
+    padding: 14px 18px;
+    color: #fff;
     font-size: 13px;
-    color: rgba(255,255,255,0.75);
+    z-index: 2;
   }
-  .hv-live-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: #00e5be;
-    box-shadow: 0 0 6px #00e5be;
-    animation: aiPulse 1.4s ease-in-out infinite;
-    flex-shrink: 0;
-  }
-  .hv-live-text { color: rgba(255,255,255,0.5); font-size: 12px; }
-  .hv-live-num { font-size: 15px; font-weight: 800; color: #00e5be; margin-left: auto; }
-  .hv-live-unit { font-size: 12px; color: rgba(255,255,255,0.45); }
-
-  /* 实时动态流 */
-  .hv-feed {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 18px;
-    overflow: hidden;
-  }
-  .hv-feed-header {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 12px 16px 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    font-size: 12px;
-    color: rgba(255,255,255,0.4);
-    letter-spacing: 0.5px;
-  }
-  .hv-feed-header-dot {
-    width: 5px; height: 5px; border-radius: 50%;
-    background: #00e5be;
-    box-shadow: 0 0 5px #00e5be;
-    animation: aiPulse 1.4s ease-in-out infinite;
-  }
-  .hv-feed-list {
-    padding: 4px 0;
-    max-height: 248px;
-    overflow: hidden;
-  }
-  .hv-feed-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 9px 16px;
-    transition: background .18s;
-    animation: feedSlideIn .4s ease;
-  }
-  .hv-feed-item:hover { background: rgba(255,255,255,0.04); }
-  @keyframes feedSlideIn {
-    from { opacity: 0; transform: translateY(-6px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .hv-feed-avatar {
-    width: 28px; height: 28px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px; flex-shrink: 0; margin-top: 1px;
-  }
-  .hv-feed-body { flex: 1; min-width: 0; }
-  .hv-feed-text {
-    font-size: 12.5px; color: rgba(255,255,255,0.75);
-    line-height: 1.5; white-space: nowrap;
-    overflow: hidden; text-overflow: ellipsis;
-  }
-  .hv-feed-text strong { color: #fff; font-weight: 600; }
-  .hv-feed-text .hv-action { color: #7de2ff; }
-  .hv-feed-time {
-    font-size: 11px; color: rgba(255,255,255,0.28);
-    margin-top: 2px;
-  }
-  .hv-feed-tag {
-    font-size: 10.5px; padding: 1px 7px; border-radius: 20px;
-    white-space: nowrap; flex-shrink: 0; margin-top: 4px;
-    border: 1px solid transparent;
-  }
-  .hv-tag-res  { background: rgba(0,198,255,0.12); color: #7de2ff; border-color: rgba(0,198,255,0.2); }
-  .hv-tag-map  { background: rgba(123,47,254,0.12); color: #c66bff; border-color: rgba(123,47,254,0.2); }
-  .hv-tag-act  { background: rgba(255,193,7,0.12); color: #ffd166; border-color: rgba(255,193,7,0.2); }
-  .hv-tag-ask  { background: rgba(0,229,190,0.10); color: #00e5be; border-color: rgba(0,229,190,0.2); }
-
-  /* AI 今日精选 */
-  .hv-pick-card {
-    background: linear-gradient(135deg, rgba(0,198,255,0.10) 0%, rgba(123,47,254,0.12) 100%);
-    border: 1px solid rgba(0,198,255,0.22);
-    border-radius: 18px;
-    padding: 18px 20px;
-  }
-  .hv-pick-header { display: flex; align-items: center; margin-bottom: 10px; }
-  .hv-pick-ai-badge {
-    display: flex; align-items: center; gap: 5px;
-    font-size: 11.5px; font-weight: 700; color: #7de2ff;
-    background: rgba(0,198,255,0.12);
-    border: 1px solid rgba(0,198,255,0.25);
-    border-radius: 20px; padding: 3px 10px;
-  }
-  .hv-pick-refresh {
-    margin-left: auto; cursor: pointer; font-size: 16px;
-    color: rgba(255,255,255,0.35); transition: transform .5s;
-    display: inline-block; line-height: 1;
-  }
-  .hv-pick-refresh:hover { color: #7de2ff; }
-  .hv-pick-title {
-    font-size: 14px; font-weight: 600; color: #fff;
-    line-height: 1.55; margin-bottom: 10px;
-  }
-  .hv-pick-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
-  .hv-pick-tag {
-    font-size: 11px; color: rgba(255,255,255,0.6);
-    background: rgba(255,255,255,0.08); border-radius: 20px;
-    padding: 2px 9px; border: 1px solid rgba(255,255,255,0.12);
-  }
-  .hv-pick-reading { font-size: 11px; color: rgba(255,255,255,0.4); margin-left: auto; }
-  .hv-pick-btn {
-    display: block; text-align: center;
-    background: linear-gradient(90deg, rgba(0,198,255,0.25), rgba(123,47,254,0.25));
-    border: 1px solid rgba(0,198,255,0.3);
-    border-radius: 40px; padding: 8px 0;
-    color: #7de2ff; font-size: 13px; font-weight: 600;
-    cursor: pointer; transition: all .2s; text-decoration: none;
-  }
-  .hv-pick-btn:hover { background: linear-gradient(90deg, rgba(0,198,255,0.4), rgba(123,47,254,0.4)); color: #fff; }
+  /* 右上角卡片：用transform向右上偏移，溢出由hero的overflow:visible展示，body已clip横向 */
+  .hero-card-float.f1 { top: 0; right: -10px; transform: translateY(-30%); }
+  .hero-card-float.f2 { bottom: 0; left: -10px; transform: translateY(30%); }
+  .float-num { font-size: 22px; font-weight: 800; color: #00c6ff; }
+  .float-label { font-size: 11.5px; color: rgba(255,255,255,0.60); margin-top: 2px; }
 
   /* ===== Section 公共 ===== */
   .section { padding: 72px 0; }
@@ -612,30 +367,26 @@
   .section-title .em { color: var(--primary); }
   .section-desc { font-size: 15px; color: var(--text-sub); line-height: 1.7; max-width: 580px; margin: 0 auto; }
 
-  /* ===== 三大品牌项目（数据浮于右上角）===== */
+  /* ===== 三大品牌项目 ===== */
   .projects-section { background: #fff; }
-  .projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
   .project-card {
-    border-radius: 16px;
+    border-radius: 20px;
     overflow: hidden;
     border: 1.5px solid var(--border);
     background: #fff;
     transition: all .3s;
     position: relative;
     cursor: pointer;
-    display: flex;
-    flex-direction: column;
   }
-  .project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: transparent; }
-
-  /* 顶部色带（高度压缩到120px） */
+  .project-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: transparent; }
   .project-card-top {
-    height: 120px;
+    height: 180px;
     display: flex;
     align-items: flex-end;
-    padding: 16px 20px;
+    padding: 24px;
     position: relative;
-    overflow: visible; /* 允许数据浮块溢出 */
+    overflow: hidden;
   }
   .pc-yc .project-card-top { background: linear-gradient(135deg,#0a3a8a 0%,#1a6fe8 60%,#00c6ff 100%); }
   .pc-ky .project-card-top { background: linear-gradient(135deg,#0d6b45 0%,#1aaa6b 60%,#7fffd4 100%); }
@@ -643,67 +394,52 @@
 
   .project-card-top .bg-shape {
     position: absolute;
-    right: -30px; top: -30px;
-    width: 180px; height: 180px;
+    right: -30px;
+    top: -30px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     background: rgba(255,255,255,0.08);
   }
   .project-card-top .bg-shape2 {
     position: absolute;
-    left: -20px; bottom: -40px;
-    width: 140px; height: 140px;
+    left: -20px;
+    bottom: -40px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     background: rgba(255,255,255,0.05);
   }
-
-  /* 左下：图标 + 标题 */
   .project-badge-icon {
-    width: 40px; height: 40px;
+    width: 56px;
+    height: 56px;
     background: rgba(255,255,255,0.18);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    margin-bottom: 7px;
-    position: relative; z-index: 1;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index:1;
   }
   .project-card-top-content { position: relative; z-index: 1; }
-  .project-card-top-title { font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 3px; }
-  .project-card-top-sub { font-size: 11px; color: rgba(255,255,255,0.65); }
+  .project-card-top-title { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+  .project-card-top-sub { font-size: 12.5px; color: rgba(255,255,255,0.70); }
 
-  /* 右上角数据浮块 */
-  .project-stats {
-    position: absolute;
-    top: 12px; right: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    z-index: 2;
-  }
-  .project-stat-item {
-    background: rgba(255,255,255,0.18);
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 8px;
-    padding: 4px 10px;
-    text-align: center;
-    min-width: 72px;
-  }
-  .project-stat-item .sn {
-    font-size: 15px; font-weight: 800; color: #fff;
-    line-height: 1.1;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.18);
-  }
-  .project-stat-item .sl {
-    font-size: 10px; color: rgba(255,255,255,0.80);
-    margin-top: 1px;
-  }
-
-  .project-card-body { padding: 14px 18px; }
-  .project-card-desc { font-size: 12px; color: #9aa; line-height: 1.6; margin-bottom: 10px; }
-  .project-card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+  .project-card-body { padding: 22px 24px; }
+  .project-card-desc { font-size: 13.5px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px; }
+  .project-meta { display: flex; gap: 20px; margin-bottom: 18px; }
+  .project-meta-item { text-align: center; }
+  .project-meta-item .mn { font-size: 20px; font-weight: 800; color: var(--primary); line-height: 1; }
+  .pc-ky .project-meta-item .mn { color: #1aaa6b; }
+  .pc-xh .project-meta-item .mn { color: #9b3de8; }
+  .project-meta-item .ml { font-size: 11px; color: var(--text-sub); margin-top: 3px; }
+  .project-meta-divider { width: 1px; background: var(--border); }
+  .project-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
   .project-tag {
-    font-size: 11.5px;
-    padding: 2px 9px;
+    font-size: 12px;
+    padding: 3px 10px;
     border-radius: 10px;
     background: #eaf2ff;
     color: var(--primary);
@@ -711,25 +447,15 @@
   }
   .pc-ky .project-tag { background: #e8f7f0; color: #1aaa6b; }
   .pc-xh .project-tag { background: #f3eaff; color: #9b3de8; }
-
-  .project-news {
-    background: #f4f8ff;
-    border-left: 3px solid var(--primary);
-    border-radius: 0 8px 8px 0;
-    padding: 7px 10px;
-    margin-bottom: 12px;
-    font-size: 11.5px;
-    color: var(--text-sub);
-    line-height: 1.7;
-  }
-  .pc-ky .project-news { border-color: #1aaa6b; background: #f0faf6; }
-  .pc-xh .project-news { border-color: #9b3de8; background: #f6f0ff; }
-
   .project-card-btn {
-    display: block; text-align: center;
-    padding: 9px; border-radius: 10px;
-    font-size: 13px; font-weight: 600;
-    transition: all .2s; cursor: pointer;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 600;
+    transition: all .2s;
+    cursor: pointer;
   }
   .pc-yc .project-card-btn { background: #eaf2ff; color: var(--primary); }
   .pc-yc .project-card-btn:hover { background: var(--primary); color: #fff; }
@@ -827,71 +553,7 @@
   }
   .btn-more:hover { background: var(--primary); color: #fff; }
 
-  /* AI推荐横幅条 */
-  .ai-reco-banner {
-    background: linear-gradient(90deg, #060e24 0%, #0a2260 50%, #0a4fa8 100%);
-    border-radius: 16px;
-    padding: 20px 28px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 24px;
-    position: relative;
-    overflow: hidden;
-  }
-  .ai-reco-banner::before {
-    content: '';
-    position: absolute;
-    right: -60px; top: -60px;
-    width: 200px; height: 200px;
-    background: radial-gradient(circle, rgba(0,198,255,0.18) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-  .ai-reco-left { flex: 1; position: relative; z-index: 1; }
-  .ai-reco-badge {
-    display: inline-flex; align-items: center; gap: 5px;
-    background: rgba(0,198,255,0.2); border: 1px solid rgba(0,198,255,0.4);
-    color: #7de2ff; font-size: 11.5px; font-weight: 600;
-    padding: 3px 10px; border-radius: 10px; margin-bottom: 8px;
-  }
-  .ai-reco-title { font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 4px; }
-  .ai-reco-sub { font-size: 13px; color: rgba(255,255,255,0.60); }
-  .ai-reco-tags { display: flex; gap: 8px; flex-wrap: wrap; position: relative; z-index: 1; }
-  .ai-reco-tag {
-    background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.18);
-    color: rgba(255,255,255,0.85); font-size: 12.5px; padding: 5px 14px;
-    border-radius: 20px; cursor: pointer; transition: all .2s;
-  }
-  .ai-reco-tag:hover, .ai-reco-tag.active { background: #00c6ff; color: #060e24; border-color: #00c6ff; font-weight: 600; }
-  .ai-reco-btn {
-    flex-shrink: 0;
-    padding: 10px 22px;
-    background: linear-gradient(90deg, #00c6ff, #0a6fe8);
-    border-radius: 22px; color: #fff; font-size: 13.5px; font-weight: 700;
-    cursor: pointer; transition: all .2s; white-space: nowrap;
-    text-decoration: none; position: relative; z-index: 1;
-  }
-  .ai-reco-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,198,255,0.4); }
-
-  /* 资源双Tab */
-  .res-tabs {
-    display: flex; gap: 0; margin-bottom: 20px;
-    border-bottom: 2px solid var(--border);
-  }
-  .res-tab {
-    padding: 10px 22px; font-size: 14.5px; font-weight: 600;
-    color: var(--text-sub); cursor: pointer; border-bottom: 2px solid transparent;
-    margin-bottom: -2px; transition: all .2s;
-  }
-  .res-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
-  .res-tab-panel { display: none; }
-  .res-tab-panel.active { display: block; }
-
-  /* 资源头部行 */
-  .res-header-row {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 16px; flex-wrap: wrap; gap: 10px;
-  }
+  /* ===== 活动广场 ===== */
   .events-section { background: #fff; }
   .events-layout { display: grid; grid-template-columns: 1fr 380px; gap: 32px; }
   .events-list { display: flex; flex-direction: column; gap: 16px; }
@@ -1083,72 +745,11 @@
   .map-stat-chip .cn { font-size: 18px; font-weight: 800; color: #00c6ff; }
   .map-stat-chip .cl { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 2px; }
 
-  /* ===== 高校科学营分营列表 ===== */
-  .camps-section { background: #f5f7fb; padding: 60px 0; }
-  .camps-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; }
-  .camps-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 36px; }
-  .camps-header-left { }
-  .camps-header-right { font-size: 13px; color: var(--primary); font-weight: 500; cursor: pointer; white-space: nowrap; }
-  .camps-header-right:hover { text-decoration: underline; }
-  .camps-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-  }
-  .camp-card {
-    background: #fff;
-    border-radius: 14px;
-    padding: 18px 14px 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    border: 1.5px solid var(--border);
-    transition: all .22s;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  .camp-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #0a4fa8, #1a6fe8);
-    opacity: 0;
-    transition: opacity .22s;
-  }
-  .camp-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: transparent; }
-  .camp-card:hover::before { opacity: 1; }
-  /* 真实logo图片容器 */
-  .camp-logo-img {
-    width: 100%; height: 52px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .camp-logo-img img {
-    max-width: 100%; max-height: 52px;
-    object-fit: contain; display: block;
-  }
-  .camp-name { font-size: 13px; font-weight: 700; color: var(--text-main); text-align: center; line-height: 1.4; }
-  .camp-meta { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 100%; }
-  .camp-location { font-size: 11.5px; color: var(--text-sub); }
-  .camp-tags { display: flex; gap: 4px; flex-wrap: wrap; justify-content: center; }
-  .camp-tag {
-    font-size: 10.5px; padding: 2px 8px; border-radius: 20px;
-    background: #eaf2ff; color: var(--primary); font-weight: 500;
-  }
-  .camps-more-row { display: flex; justify-content: center; margin-top: 24px; }
-  .camps-more-btn {
-    padding: 10px 32px; border-radius: 24px;
-    border: 1.5px solid var(--primary); color: var(--primary);
-    font-size: 14px; font-weight: 600; cursor: pointer;
-    background: #fff; transition: all .2s;
-  }
-  .camps-more-btn:hover { background: var(--primary); color: #fff; }
-  /* 响应式 */
-  @media(max-width:1024px){ .camps-grid { grid-template-columns: repeat(4,1fr); } }
-  @media(max-width:768px){ .camps-grid { grid-template-columns: repeat(3,1fr); } .camps-inner { padding: 0 16px; } }
-  @media(max-width:480px){ .camps-grid { grid-template-columns: repeat(2,1fr); } }
+  /* ===== 数据大屏 ===== */
+  .impact-section { background: #fff; padding: 60px 0; }
+  .impact-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; }
+  .impact-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 24px; margin-top: 40px; }
+  .impact-card {
     text-align: center;
     padding: 28px 20px;
     border-radius: var(--radius);
@@ -1173,52 +774,29 @@
   .impact-trend { font-size: 12px; color: #52c41a; margin-top: 5px; font-weight: 500; }
 
   /* ===== 合作伙伴 ===== */
-  .partners-section {
-    background: #fff;
-    padding: 52px 0 48px;
-    box-shadow: inset 0 6px 18px -8px rgba(0,0,0,0.07);
-  }
+  .partners-section { background: #f5f7fb; padding: 48px 0; }
   .partners-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; }
-  /* 标题两侧细线装饰 */
-  .partners-title {
-    text-align: center;
-    font-size: 12.5px;
-    color: #bbb;
-    margin-bottom: 28px;
-    letter-spacing: 2px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-  }
-  .partners-title::before, .partners-title::after {
-    content: '';
-    flex: 1;
-    max-width: 140px;
-    height: 1px;
-    background: var(--border);
-  }
+  .partners-title { text-align: center; font-size: 14px; color: var(--text-sub); margin-bottom: 24px; letter-spacing: 1px; }
   .partners-logos {
     display: flex;
-    gap: 14px;
+    gap: 20px;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
   }
   .partner-logo {
-    background: #f5f8ff;
+    background: #fff;
     border: 1.5px solid var(--border);
     border-radius: 10px;
-    padding: 10px 22px;
-    font-size: 13px;
+    padding: 12px 24px;
+    font-size: 13.5px;
     font-weight: 600;
     color: var(--text-sub);
     transition: all .2s;
     cursor: pointer;
     white-space: nowrap;
   }
-  .partner-logo:hover { border-color: var(--primary); color: var(--primary); background: #eaf2ff; box-shadow: var(--shadow); }
+  .partner-logo:hover { border-color: var(--primary); color: var(--primary); box-shadow: var(--shadow); }
 
   /* ===== Footer ===== */
   footer {
@@ -1433,22 +1011,14 @@
       gap: 28px;
     }
     .hero-visual { width: 100%; }
-    .hv-programs { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; }
-    .hero-title { font-size: 26px; letter-spacing: 1px; }
-    .hero-desc { font-size: 14px; margin-bottom: 20px; }
+    .hero-card-float.f1 { top: 0; right: 0; transform: none; }
+    .hero-card-float.f2 { bottom: 0; left: 0; transform: none; }
+    .hero-title { font-size: 28px; letter-spacing: 1px; }
+    .hero-desc { font-size: 14px; margin-bottom: 24px; }
     .hero-stats { gap: 20px; flex-wrap: wrap; margin-top: 28px; padding-top: 20px; }
     .hero-stat .num { font-size: 22px; }
-    .hero-search-bar { padding: 5px 5px 5px 14px; }
-    .hero-search-input { font-size: 13px; }
-    .hero-search-btn { padding: 9px 16px; font-size: 13px; }
-    .hero-search-hot { gap: 6px; margin-top: 8px; }
-    .hero-features { grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 28px; }
-    .hero-feat-label { font-size: 13px; }
-
-    /* AI推荐横幅 */
-    .ai-reco-banner { flex-direction: column; align-items: flex-start; gap: 14px; padding: 16px 18px; }
-    .ai-reco-tags { gap: 6px; }
-    .ai-reco-btn { width: 100%; text-align: center; }
+    .hero-btns { flex-direction: column; gap: 10px; }
+    .hero-btn-primary, .hero-btn-outline { width: 100%; text-align: center; padding: 12px; }
 
     /* 三大品牌 */
     .projects-grid { grid-template-columns: 1fr; }
@@ -1564,10 +1134,10 @@
 
 <!-- 顶部通知栏 -->
 <div class="topbar">
-  📢 2026年内蒙古自治区青少年科技创新后备人才培养活动开放报名，欢迎中学生踊跃参与
-  <a href="#">查看详情 →</a>
-  &nbsp;|&nbsp; 高校星火馆全国科普月：中南大学"科普City Walk"活动开放报名
-  <a href="#">了解更多</a>
+  📢 2026年"中学生英才计划"申报通道已开启！
+  <a href="#">立即申报 →</a>
+  &nbsp;|&nbsp; 第十二届"高校科学营"正在报名，截止日期：2026.04.30
+  <a href="#">查看详情</a>
 </div>
 
 <!-- 主导航 -->
@@ -1584,7 +1154,8 @@
       <a href="#" class="active">首页</a>
       <a href="#">英才计划</a>
       <a href="#">高校科学营</a>
-      <a href="xinghuo.html">星火馆</a>
+      <a href="#">星火馆</a>
+      <a href="#">资源中心</a>
       <a href="#">活动广场 <span class="tag-new">NEW</span></a>
       <a href="#">关于平台</a>
     </div>
@@ -1593,7 +1164,7 @@
         <span class="icon">🔍</span>
         <input type="text" placeholder="搜索资源、活动、场馆...">
       </div>
-      <a href="profile.html" class="btn-reg">登录 / 注册</a>
+      <a href="#" class="btn-reg">登录 / 注册</a>
     </div>
     <!-- 汉堡菜单按钮（移动端显示） -->
     <div class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()">
@@ -1622,13 +1193,13 @@
     <a href="#" class="active"><span class="nav-icon">🏠</span>首页</a>
     <a href="#"><span class="nav-icon">🌟</span>英才计划</a>
     <a href="#"><span class="nav-icon">🎓</span>高校科学营</a>
-    <a href="xinghuo.html"><span class="nav-icon">🏛️</span>星火馆</a>
-    <a href="resource-center.html"><span class="nav-icon">📚</span>资源中心</a>
+    <a href="#"><span class="nav-icon">🏛️</span>星火馆</a>
+    <a href="#"><span class="nav-icon">📚</span>资源中心</a>
     <a href="#"><span class="nav-icon">🎪</span>活动广场 <span class="tag-new">NEW</span></a>
     <a href="#"><span class="nav-icon">ℹ️</span>关于平台</a>
   </nav>
   <div class="mobile-drawer-footer">
-    <a href="profile.html" class="mobile-drawer-login">登录 / 注册</a>
+    <a href="#" class="mobile-drawer-login">登录 / 注册</a>
   </div>
 </div>
 
@@ -1640,15 +1211,15 @@
   </div>
   <div class="notice-item">
     <div class="ni-dot" style="background:#0a4fa8"></div>
-    <div class="ni-text"><strong>英才计划</strong>：2026年内蒙古面试收官，30名优秀学子脱颖而出（2026-03-17）</div>
+    <div class="ni-text"><strong>英才计划</strong>：2026年度入选名单公示，请相关学员查看</div>
   </div>
   <div class="notice-item">
     <div class="ni-dot" style="background:#1aaa6b"></div>
-    <div class="ni-text"><strong>科学营</strong>：华东师范大学分营「探索科学奥秘，点亮青春梦想」活动回顾上线</div>
+    <div class="ni-text"><strong>科学营</strong>：北京大学营区报名截止时间调整至4月28日</div>
   </div>
   <div class="notice-item">
     <div class="ni-dot" style="background:#9b3de8"></div>
-    <div class="ni-text"><strong>星火馆</strong>：甘肃省高校星火馆积极探索科普育人新机制，让科学实验走进百姓生活</div>
+    <div class="ni-text"><strong>星火馆</strong>：上海交大星火馆新增"AI与未来"主题展</div>
   </div>
 </div>
 
@@ -1659,66 +1230,20 @@
   <div class="hero-glow2"></div>
   <div class="hero-inner">
     <div class="hero-content">
+      <div class="hero-badge">
+        <span></span>
+        中国科学技术协会官方平台
+      </div>
       <h1 class="hero-title">
         发现科学之美<br>
-        <span class="highlight">点燃未来之路</span>
+        点燃<span class="highlight">未来</span>之路
       </h1>
       <p class="hero-desc">
-        中国科协青少年科技中心官方平台 · 融汇全国顶尖科教资源，精准服务每一位有科学梦想的中学生，打破地域壁垒，让优质科普无处不在。
+        整合英才计划、高校科学营、星火馆三大核心品牌，融汇全国顶尖科教资源，精准服务每一位有科学梦想的中学生，打破地域壁垒，让优质科普无处不在。
       </p>
-      <!-- AI 大搜索条 -->
-      <div class="hero-search-wrap">
-        <div class="hero-search-bar">
-          <div class="hero-search-ai-tag">
-            <span class="ai-dot"></span>
-            AI 检索
-          </div>
-          <input class="hero-search-input" type="text"
-            placeholder="搜课程、找导师、查活动… AI 帮你精准匹配"
-            id="heroSearchInput"
-            onkeydown="if(event.key==='Enter') heroSearch(this.value)" />
-          <button class="hero-search-btn" onclick="heroSearch(document.getElementById('heroSearchInput').value)">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            智能搜索
-          </button>
+        <div class="hero-btns">
+          <a href="#" class="hero-btn-primary">立即探索资源</a>
         </div>
-        <div class="hero-search-hot">
-          <span class="hero-search-hot-label">热门：</span>
-          <span class="hero-search-hot-tag" onclick="fillSearch(this)">英才计划报名</span>
-          <span class="hero-search-hot-tag" onclick="fillSearch(this)">量子力学入门</span>
-          <span class="hero-search-hot-tag" onclick="fillSearch(this)">附近星火馆</span>
-          <span class="hero-search-hot-tag" onclick="fillSearch(this)">高校科学营</span>
-          <span class="hero-search-hot-tag" onclick="fillSearch(this)">物理竞赛资料</span>
-        </div>
-      </div>
-      <!-- 四大功能入口 -->
-      <div class="hero-features">
-        <a href="#" class="hero-feat-card">
-          <div class="hero-feat-icon">📚</div>
-          <span class="hero-feat-label">找资源</span>
-          <span class="hero-feat-sub">4.6万+ 精品内容</span>
-        </a>
-        <a href="#" class="hero-feat-card">
-          <div class="hero-feat-icon">🏛️</div>
-          <span class="hero-feat-label">找场馆</span>
-          <span class="hero-feat-sub">180+ 星火馆导览</span>
-        </a>
-        <a href="#" class="hero-feat-card">
-          <div class="hero-feat-icon">🧑‍🔬</div>
-          <span class="hero-feat-label">找导师</span>
-          <span class="hero-feat-sub">2800+ 科研导师</span>
-        </a>
-        <a href="#" class="hero-feat-card">
-          <div class="hero-feat-icon">🗓️</div>
-          <span class="hero-feat-label">找活动</span>
-          <span class="hero-feat-sub">科学营 / 英才计划</span>
-        </a>
-        <a href="#" class="hero-feat-card">
-          <div class="hero-feat-icon">📖</div>
-          <span class="hero-feat-label">找图书</span>
-          <span class="hero-feat-sub">科普书目 / 精选书单</span>
-        </a>
-      </div>
       <div class="hero-stats">
         <div class="hero-stat">
           <div class="num">312<span>所</span></div>
@@ -1740,52 +1265,41 @@
     </div>
 
     <div class="hero-visual">
-      <!-- 实时活跃条 -->
-      <div class="hv-live-bar">
-        <span class="hv-live-dot"></span>
-        <span class="hv-live-text">平台实时活跃</span>
-        <span class="hv-live-num">3,218</span>
-        <span class="hv-live-unit">人在线</span>
+      <div class="hero-card-float f1">
+        <div class="float-num">98</div>
+        <div class="float-label">所985高校参与</div>
       </div>
-
-      <!-- 实时用户动态流 -->
-      <div class="hv-feed">
-        <div class="hv-feed-header">
-          <span class="hv-feed-header-dot"></span>
-          同学们正在做什么
+      <div class="hero-card-main">
+        <div class="card-title">本月资源热度分布</div>
+        <div class="card-headline">📊 三大领域学习热度持续攀升</div>
+        <div class="progress-item">
+          <div class="progress-label"><span>🧬 生命科学</span><span>82%</span></div>
+          <div class="progress-bar"><div class="progress-fill p1"></div></div>
         </div>
-        <div class="hv-feed-list" id="hvFeedList">
-          <!-- 由 JS 动态渲染 -->
+        <div class="progress-item">
+          <div class="progress-label"><span>🤖 人工智能</span><span>67%</span></div>
+          <div class="progress-bar"><div class="progress-fill p2"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label"><span>🚀 航空航天</span><span>74%</span></div>
+          <div class="progress-bar"><div class="progress-fill p3"></div></div>
         </div>
       </div>
-
-      <!-- 今日 AI 精选推荐卡 -->
-      <div class="hv-pick-card">
-        <div class="hv-pick-header">
-          <span class="hv-pick-ai-badge">
-            <span class="ai-dot"></span>AI 今日精选
-          </span>
-          <span class="hv-pick-refresh" onclick="this.style.transform='rotate(360deg)'">↻</span>
-        </div>
-        <div class="hv-pick-title">量子纠缠与量子通信：从实验室到现实应用</div>
-        <div class="hv-pick-meta">
-          <span class="hv-pick-tag">前沿科技</span>
-          <span class="hv-pick-tag">高二 · 推荐</span>
-          <span class="hv-pick-reading">📖 8 分钟阅读</span>
-        </div>
-        <a href="#" class="hv-pick-btn">立即查看 →</a>
+      <div class="hero-card-float f2">
+        <div class="float-num" style="color:#7b2ffe">236</div>
+        <div class="float-label">今日新增学员</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- 三大品牌项目 -->
-<section class="section projects-section" style="padding:48px 0;">
+<section class="section projects-section">
   <div class="section-inner">
-    <div class="section-header" style="margin-bottom:28px">
-      <div class="section-tag">培育生态</div>
-      <h2 class="section-title" style="font-size:26px">选拔 · 培育 · <span class="em">实践</span></h2>
-      <p class="section-desc" style="font-size:14px">中国科协青少年科技中心三大旗舰项目，年均服务 20 万+ 青少年</p>
+    <div class="section-header">
+      <div class="section-tag">核心品牌项目</div>
+      <h2 class="section-title">三大旗舰，<span class="em">精准培育</span>科技后备人才</h2>
+      <p class="section-desc">依托中国科协系统核心品牌，构建选拔、培育、实践的完整成长闭环</p>
     </div>
     <div class="projects-grid">
       <!-- 英才计划 -->
@@ -1798,22 +1312,21 @@
             <div class="project-card-top-title">中学生英才计划</div>
             <div class="project-card-top-sub">Top-tier Science Talent Program</div>
           </div>
-          <div class="project-stats">
-            <div class="project-stat-item"><div class="sn">8700+</div><div class="sl">累计学员</div></div>
-            <div class="project-stat-item"><div class="sn">96</div><div class="sl">合作院士</div></div>
-          </div>
         </div>
         <div class="project-card-body">
           <p class="project-card-desc">遴选品学兼优的中学生，走进高校实验室，由中科院院士等顶尖科学家直接指导，系统培养科学思维与研究能力。</p>
+          <div class="project-meta">
+            <div class="project-meta-item"><div class="mn">8700</div><div class="ml">累计培养学员</div></div>
+            <div class="project-meta-divider"></div>
+            <div class="project-meta-item"><div class="mn">312</div><div class="ml">联合高校</div></div>
+            <div class="project-meta-divider"></div>
+            <div class="project-meta-item"><div class="mn">96</div><div class="ml">合作院士</div></div>
+          </div>
           <div class="project-card-tags">
             <span class="project-tag">高校实验室</span>
             <span class="project-tag">院士导师</span>
             <span class="project-tag">精准选拔</span>
             <span class="project-tag">科研实践</span>
-          </div>
-          <div class="project-news">
-            🎉 2026届新学员开营仪式 · 全国各合作高校同步启动<br>
-            🧑‍🔬 导师代表：张晓明（华师大·物理）、朱敏（CAS·数学）
           </div>
           <a href="#" class="project-card-btn">了解英才计划 →</a>
         </div>
@@ -1829,22 +1342,21 @@
             <div class="project-card-top-title">高校科学营</div>
             <div class="project-card-top-sub">University Science Camp</div>
           </div>
-          <div class="project-stats">
-            <div class="project-stat-item"><div class="sn">12.6万</div><div class="sl">历届营员</div></div>
-            <div class="project-stat-item"><div class="sn">120+</div><div class="sl">参与高校</div></div>
-          </div>
         </div>
         <div class="project-card-body">
           <p class="project-card-desc">组织优秀中学生赴知名高校开展科学探究体验活动，感受顶级科研氛围，开拓视野，激发科学兴趣与创新潜能。</p>
-          <div class="project-card-tags">
-            <span class="project-tag">名家大师报告</span>
-            <span class="project-tag">科研动手实践</span>
-            <span class="project-tag">朋辈交流</span>
-            <span class="project-tag">大科学装置</span>
+          <div class="project-meta">
+            <div class="project-meta-item"><div class="mn">12.6万</div><div class="ml">历届营员</div></div>
+            <div class="project-meta-divider"></div>
+            <div class="project-meta-item"><div class="mn">120+</div><div class="ml">参与高校</div></div>
+            <div class="project-meta-divider"></div>
+            <div class="project-meta-item"><div class="mn">31</div><div class="ml">省市覆盖</div></div>
           </div>
-          <div class="project-news">
-            🔥 热文：华东师大分营「探索科学奥秘，点亮青春梦想」<br>
-            🏫 营区：北京大学 / 中国科学院大学 / 华中科技大学
+          <div class="project-card-tags">
+            <span class="project-tag">沉浸体验</span>
+            <span class="project-tag">高校参观</span>
+            <span class="project-tag">实验探究</span>
+            <span class="project-tag">全国报名</span>
           </div>
           <a href="#" class="project-card-btn">了解高校科学营 →</a>
         </div>
@@ -1860,22 +1372,21 @@
             <div class="project-card-top-title">高校星火馆</div>
             <div class="project-card-top-sub">Campus Science Museum</div>
           </div>
-          <div class="project-stats">
-            <div class="project-stat-item"><div class="sn">529</div><div class="sl">全国场馆</div></div>
-            <div class="project-stat-item"><div class="sn">50万+</div><div class="sl">年参观人次</div></div>
-          </div>
         </div>
         <div class="project-card-body">
           <p class="project-card-desc">建设依托高校的科普场馆体系，将前沿科研成果转化为面向中学生的科普展示，让"身边的科学"触手可及。</p>
+          <div class="project-meta">
+            <div class="project-meta-item"><div class="mn">180+</div><div class="ml">线下场馆</div></div>
+            <div class="project-meta-divider"></div>
+            <div class="project-meta-item"><div class="mn">2800</div><div class="ml">展项资源</div></div>
+            <div class="project-meta-divider"></div>
+            <div class="project-meta-item"><div class="mn">年50万</div><div class="ml">参观人次</div></div>
+          </div>
           <div class="project-card-tags">
             <span class="project-tag">线下场馆</span>
             <span class="project-tag">前沿展示</span>
             <span class="project-tag">地图导览</span>
             <span class="project-tag">预约参观</span>
-          </div>
-          <div class="project-news">
-            🚶 中南大学"科普City Walk"开放参观（9月15-30日）<br>
-            🏛️ 代表馆：华中农业大学博物馆 · 浙江海洋大学海洋生物博物馆
           </div>
           <a href="#" class="project-card-btn">探索星火馆 →</a>
         </div>
@@ -1888,224 +1399,130 @@
 <section class="section resources-section">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-tag">资源中心</div>
-      <h2 class="section-title">一站发现<span class="em">优质资源</span></h2>
-      <p class="section-desc">智能匹配兴趣推荐 + 运营精选内容，找到最适合你的科普内容</p>
+      <div class="section-tag">智能推荐</div>
+      <h2 class="section-title">精选<span class="em">科普资源</span>，智能匹配你的兴趣</h2>
+      <p class="section-desc">整合图文、视频、课程与互动实验包，AI智能标签化管理，精准推送最适合你的内容</p>
     </div>
-
-    <!-- AI 智能推荐横幅 -->
-    <div class="ai-reco-banner">
-      <div class="ai-reco-left">
-        <div class="ai-reco-badge">✨ AI 个性化推荐</div>
-        <div class="ai-reco-title">根据你的兴趣，为你推荐</div>
-        <div class="ai-reco-sub">已完成偏好设置？选择方向，立即获取专属推荐</div>
-      </div>
-      <div class="ai-reco-tags">
-        <span class="ai-reco-tag active">🧬 生命科学</span>
-        <span class="ai-reco-tag">🤖 人工智能</span>
-        <span class="ai-reco-tag">🚀 航空航天</span>
-        <span class="ai-reco-tag">⚛️ 物理与宇宙</span>
-        <span class="ai-reco-tag">🧪 化学</span>
-      </div>
-      <a href="#" class="ai-reco-btn">为我推荐 →</a>
+    <div class="res-filter">
+      <button class="res-filter-btn active">全部</button>
+      <button class="res-filter-btn">🚀 前沿科技</button>
+      <button class="res-filter-btn">📖 知识拓展</button>
+      <button class="res-filter-btn">🔬 科学方法</button>
+      <button class="res-filter-btn">🧪 综合实践</button>
+      <button class="res-filter-btn">🌟 科学家精神</button>
     </div>
-
-    <!-- 双 Tab -->
-    <div class="res-tabs">
-      <div class="res-tab active" onclick="switchResTab(this,'tab-smart')">🤖 智能推荐</div>
-      <div class="res-tab" onclick="switchResTab(this,'tab-editor')">⭐ 运营精选</div>
-    </div>
-
-    <!-- Tab: 智能推荐 -->
-    <div class="res-tab-panel active" id="tab-smart">
-      <div class="res-header-row">
-        <div class="res-filter">
-          <button class="res-filter-btn active">全部</button>
-          <button class="res-filter-btn">🚀 前沿科技</button>
-          <button class="res-filter-btn">📖 知识拓展</button>
-          <button class="res-filter-btn">🔬 科学方法</button>
-          <button class="res-filter-btn">🧪 综合实践</button>
-          <button class="res-filter-btn">🌟 科学家精神</button>
+    <div class="res-grid">
+      <div class="res-card">
+        <div class="res-thumb t-video">
+          🎬
+          <div class="res-type-badge tb-video">视频</div>
+          <div class="res-rec-badge">⭐ 推荐</div>
         </div>
-      </div>
-      <div class="res-grid">
-        <div class="res-card">
-          <div class="res-thumb t-video">🎬
-            <div class="res-type-badge tb-video">视频</div>
-            <div class="res-rec-badge">⭐ 推荐</div>
-          </div>
-          <div class="res-card-body">
-            <div class="res-card-title">CRISPR基因编辑技术：从理论到应用的革命性突破</div>
-            <div class="res-card-meta"><span class="views">👁 12.3万</span><span class="source">北京大学</span></div>
-          </div>
-        </div>
-        <div class="res-card">
-          <div class="res-thumb t-course">📚
-            <div class="res-type-badge tb-course">课程</div>
-            <div class="res-rec-badge">🔥 热门</div>
-          </div>
-          <div class="res-card-body">
-            <div class="res-card-title">从零开始学AI：中学生机器学习入门系列课程（共12讲）</div>
-            <div class="res-card-meta"><span class="views">👁 8.7万</span><span class="source">清华大学</span></div>
-          </div>
-        </div>
-        <div class="res-card">
-          <div class="res-thumb t-experiment">🧪
-            <div class="res-type-badge tb-exp">实验包</div>
-            <div class="res-rec-badge">⭐ 推荐</div>
-          </div>
-          <div class="res-card-body">
-            <div class="res-card-title">居家科学实验：探索液体表面张力的奥秘</div>
-            <div class="res-card-meta"><span class="views">👁 6.2万</span><span class="source">中国科学院</span></div>
-          </div>
-        </div>
-        <div class="res-card">
-          <div class="res-thumb t-article">📄
-            <div class="res-type-badge tb-article">图文</div>
-          </div>
-          <div class="res-card-body">
-            <div class="res-card-title">火星探测器"天问"背后的轨道力学与导航技术详解</div>
-            <div class="res-card-meta"><span class="views">👁 9.1万</span><span class="source">国家航天局</span></div>
-          </div>
-        </div>
-        <div class="res-card">
-          <div class="res-thumb t-video">🎬
-            <div class="res-type-badge tb-video">视频</div>
-            <div class="res-rec-badge">🔥 热门</div>
-          </div>
-          <div class="res-card-body">
-            <div class="res-card-title">量子计算入门：超越经典计算的全新计算范式</div>
-            <div class="res-card-meta"><span class="views">👁 7.4万</span><span class="source">中国科大</span></div>
-          </div>
-        </div>
-        <div class="res-card">
-          <div class="res-thumb t-course">📚
-            <div class="res-type-badge tb-course">课程</div>
-          </div>
-          <div class="res-card-body">
-            <div class="res-card-title">竞赛专题：全国中学生数学联赛题型精讲与解题策略</div>
-            <div class="res-card-meta"><span class="views">👁 15.6万</span><span class="source">北师大</span></div>
-          </div>
-        </div>
-        <div class="res-card">
-          <div class="res-thumb t-article">📄
-            <div class="res-type-badge tb-article">图文</div>
-            <div class="res-rec-badge">⭐ 推荐</div>
-          </div>
-          <div class="res-card-body">
-            <div class="res-card-title">气候变化与生物多样性：中学生如何理解地球正在发生的危机</div>
-            <div class="res-card-meta"><span class="views">👁 5.8万</span><span class="source">科普中国</span></div>
-          </div>
-        </div>
-        <div class="res-card">
-          <div class="res-thumb t-experiment">🧪
-            <div class="res-type-badge tb-exp">实验包</div>
-            <div class="res-rec-badge">🔥 热门</div>
-          </div>
-          <div class="res-card-body">
-            <div class="res-card-title">光学实验套装：用手边器材探索光的折射与衍射现象</div>
-            <div class="res-card-meta"><span class="views">👁 4.3万</span><span class="source">南京大学</span></div>
+        <div class="res-card-body">
+          <div class="res-card-title">CRISPR基因编辑技术：从理论到应用的革命性突破</div>
+          <div class="res-card-meta">
+            <span class="views">👁 12.3万</span>
+            <span class="source">北京大学</span>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Tab: 运营精选 -->
-    <div class="res-tab-panel" id="tab-editor">
-      <div class="res-header-row">
-        <div class="res-filter">
-          <button class="res-filter-btn active">全部</button>
-          <button class="res-filter-btn">🚀 前沿科技</button>
-          <button class="res-filter-btn">📖 知识拓展</button>
-          <button class="res-filter-btn">🔬 科学方法</button>
-          <button class="res-filter-btn">🧪 综合实践</button>
-          <button class="res-filter-btn">🌟 科学家精神</button>
+      <div class="res-card">
+        <div class="res-thumb t-course">
+          📚
+          <div class="res-type-badge tb-course">课程</div>
+          <div class="res-rec-badge">🔥 热门</div>
+        </div>
+        <div class="res-card-body">
+          <div class="res-card-title">从零开始学AI：中学生机器学习入门系列课程（共12讲）</div>
+          <div class="res-card-meta">
+            <span class="views">👁 8.7万</span>
+            <span class="source">清华大学</span>
+          </div>
         </div>
       </div>
-      <div class="res-grid">
-        <div class="res-card">
-          <div class="res-thumb t-video">🎬
-            <div class="res-type-badge tb-video">视频</div>
-            <div class="res-rec-badge" style="background:rgba(100,200,100,0.9);color:#0a3a0a">🌟 精选</div>
-          </div>
-          <div class="res-card-body">
-            <div class="res-card-title">导师说｜朱敏：星星之火，值得期待——英才计划的科研成长之路</div>
-            <div class="res-card-meta"><span class="views">👁 22.4万</span><span class="source">中国科协·英才计划</span></div>
+      <div class="res-card">
+        <div class="res-thumb t-experiment">
+          🧪
+          <div class="res-type-badge tb-exp">实验包</div>
+          <div class="res-rec-badge">⭐ 推荐</div>
+        </div>
+        <div class="res-card-body">
+          <div class="res-card-title">居家科学实验：探索液体表面张力的奥秘</div>
+          <div class="res-card-meta">
+            <span class="views">👁 6.2万</span>
+            <span class="source">中国科学院</span>
           </div>
         </div>
-        <div class="res-card">
-          <div class="res-thumb t-video">🎬
-            <div class="res-type-badge tb-video">视频</div>
-            <div class="res-rec-badge" style="background:rgba(100,200,100,0.9);color:#0a3a0a">🌟 精选</div>
-          </div>
-          <div class="res-card-body">
-            <div class="res-card-title">导师说｜朱邦芬：渗透式学习受用终身——顶尖物理学家谈学习之道</div>
-            <div class="res-card-meta"><span class="views">👁 18.6万</span><span class="source">英才计划·导师风采</span></div>
+      </div>
+      <div class="res-card">
+        <div class="res-thumb t-article">
+          📄
+          <div class="res-type-badge tb-article">图文</div>
+        </div>
+        <div class="res-card-body">
+          <div class="res-card-title">火星探测器"天问"背后的轨道力学与导航技术详解</div>
+          <div class="res-card-meta">
+            <span class="views">👁 9.1万</span>
+            <span class="source">国家航天局</span>
           </div>
         </div>
-        <div class="res-card">
-          <div class="res-thumb t-video">🎬
-            <div class="res-type-badge tb-video">视频</div>
-            <div class="res-rec-badge" style="background:rgba(100,200,100,0.9);color:#0a3a0a">🌟 精选</div>
-          </div>
-          <div class="res-card-body">
-            <div class="res-card-title">导师说｜钟晓岚：呵护每颗"好奇心"种子——中学科学探究的第一步</div>
-            <div class="res-card-meta"><span class="views">👁 34.1万</span><span class="source">英才计划·导师风采</span></div>
+      </div>
+      <div class="res-card">
+        <div class="res-thumb t-video">
+          🎬
+          <div class="res-type-badge tb-video">视频</div>
+          <div class="res-rec-badge">🔥 热门</div>
+        </div>
+        <div class="res-card-body">
+          <div class="res-card-title">量子计算入门：超越经典计算的全新计算范式</div>
+          <div class="res-card-meta">
+            <span class="views">👁 7.4万</span>
+            <span class="source">中国科大</span>
           </div>
         </div>
-        <div class="res-card">
-          <div class="res-thumb t-experiment">🧪
-            <div class="res-type-badge tb-exp">实验包</div>
-            <div class="res-rec-badge" style="background:rgba(100,200,100,0.9);color:#0a3a0a">🌟 精选</div>
-          </div>
-          <div class="res-card-body">
-            <div class="res-card-title">星火馆科普实验：纳米薄膜制备技术——福建师范大学物理科普基地</div>
-            <div class="res-card-meta"><span class="views">👁 11.8万</span><span class="source">福建师范大学·星火馆</span></div>
+      </div>
+      <div class="res-card">
+        <div class="res-thumb t-course">
+          📚
+          <div class="res-type-badge tb-course">课程</div>
+        </div>
+        <div class="res-card-body">
+          <div class="res-card-title">竞赛专题：全国中学生数学联赛题型精讲与解题策略</div>
+          <div class="res-card-meta">
+            <span class="views">👁 15.6万</span>
+            <span class="source">北师大</span>
           </div>
         </div>
-        <div class="res-card">
-          <div class="res-thumb t-video">🎬
-            <div class="res-type-badge tb-video">视频</div>
-            <div class="res-rec-badge" style="background:rgba(100,200,100,0.9);color:#0a3a0a">🌟 精选</div>
-          </div>
-          <div class="res-card-body">
-            <div class="res-card-title">海洋生物图鉴第07期·翻车鱼——浙江海洋大学海洋生物博物馆</div>
-            <div class="res-card-meta"><span class="views">👁 29.3万</span><span class="source">浙江海洋大学·星火馆</span></div>
+      </div>
+      <div class="res-card">
+        <div class="res-thumb t-article">
+          📄
+          <div class="res-type-badge tb-article">图文</div>
+          <div class="res-rec-badge">⭐ 推荐</div>
+        </div>
+        <div class="res-card-body">
+          <div class="res-card-title">气候变化与生物多样性：中学生如何理解地球正在发生的危机</div>
+          <div class="res-card-meta">
+            <span class="views">👁 5.8万</span>
+            <span class="source">科普中国</span>
           </div>
         </div>
-        <div class="res-card">
-          <div class="res-thumb t-course">📚
-            <div class="res-type-badge tb-course">课程</div>
-            <div class="res-rec-badge" style="background:rgba(100,200,100,0.9);color:#0a3a0a">🌟 精选</div>
-          </div>
-          <div class="res-card-body">
-            <div class="res-card-title">CLS结构生物学·化学生物学·药物化学暑期培训班——英才计划专项课程</div>
-            <div class="res-card-meta"><span class="views">👁 16.7万</span><span class="source">英才计划办公室</span></div>
-          </div>
+      </div>
+      <div class="res-card">
+        <div class="res-thumb t-experiment">
+          🧪
+          <div class="res-type-badge tb-exp">实验包</div>
+          <div class="res-rec-badge">🔥 热门</div>
         </div>
-        <div class="res-card">
-          <div class="res-thumb t-article">📄
-            <div class="res-type-badge tb-article">图文</div>
-            <div class="res-rec-badge" style="background:rgba(100,200,100,0.9);color:#0a3a0a">🌟 精选</div>
-          </div>
-          <div class="res-card-body">
-            <div class="res-card-title">寻梦科学殿堂 点燃创新火种——英才计划内蒙古优秀学员研学纪实</div>
-            <div class="res-card-meta"><span class="views">👁 8.9万</span><span class="source">内蒙古科技馆</span></div>
-          </div>
-        </div>
-        <div class="res-card">
-          <div class="res-thumb t-experiment">🧪
-            <div class="res-type-badge tb-exp">实验包</div>
-            <div class="res-rec-badge" style="background:rgba(100,200,100,0.9);color:#0a3a0a">🌟 精选</div>
-          </div>
-          <div class="res-card-body">
-            <div class="res-card-title">纸电池探究实验：数智解码储能新可能——安徽师范大学数字化实验室</div>
-            <div class="res-card-meta"><span class="views">👁 7.2万</span><span class="source">安徽师范大学·星火馆</span></div>
+        <div class="res-card-body">
+          <div class="res-card-title">光学实验套装：用手边器材探索光的折射与衍射现象</div>
+          <div class="res-card-meta">
+            <span class="views">👁 4.3万</span>
+            <span class="source">南京大学</span>
           </div>
         </div>
       </div>
     </div>
-
     <div class="res-more">
       <a href="#" class="btn-more">查看全部 4.6万+ 精品资源 →</a>
     </div>
@@ -2123,56 +1540,55 @@
     <div class="events-layout">
       <div class="events-list">
         <div class="event-card">
-          <div class="event-date"><div class="d">18</div><div class="m">04月</div></div>
+          <div class="event-date"><div class="d">28</div><div class="m">04月</div></div>
           <div class="event-content">
-            <div class="event-title">2026年内蒙古自治区青少年科技创新后备人才培养活动</div>
-            <div class="event-desc">依托英才计划内蒙古培养基地，面向全区中学生开展为期三天的科学实践体验，涵盖实验室参观、导师讲座与科创项目辅导，名额有限，欢迎报名。</div>
+            <div class="event-title">2026年中学生英才计划（数学方向）第一阶段笔试</div>
+            <div class="event-desc">面向全国高中在读学生，考察数学思维与解题能力，是进入英才计划的重要选拔环节。</div>
             <div class="event-tags">
               <span class="event-tag et-yc">英才计划</span>
-              <span class="event-tag et-hot">🔥 报名中</span>
-              <span style="font-size:12px;color:#8899bb">📍 内蒙古大学</span>
+              <span class="event-tag et-hot">🔥 热门</span>
+              <span style="font-size:12px;color:#8899bb">📍 全国各城市考点</span>
             </div>
           </div>
           <div class="event-status es-open">报名中</div>
         </div>
         <div class="event-card">
-          <div class="event-date" style="background:linear-gradient(135deg,#0d6b45,#1aaa6b)"><div class="d">14</div><div class="m">03月</div></div>
+          <div class="event-date" style="background:linear-gradient(135deg,#0d6b45,#1aaa6b)"><div class="d">15</div><div class="m">05月</div></div>
           <div class="event-content">
-            <div class="event-title">高校科学营 · 华东师范大学分营：探索科学奥秘，点亮青春梦想</div>
-            <div class="event-desc">2024高校科学营华东师大分营活动回顾上线，涵盖生物多样性理论讲座、名家讲座、科研动手实践等精彩内容，感受顶级科研氛围。</div>
+            <div class="event-title">第十二届高校科学营（北京大学营区）开营仪式</div>
+            <div class="event-desc">与全国各地优秀中学生共聚燕园，感受顶尖学府浓厚学术氛围，参与前沿科研探究活动。</div>
             <div class="event-tags">
               <span class="event-tag et-ky">高校科学营</span>
-              <span style="font-size:12px;color:#8899bb">📍 华东师范大学</span>
-              <span style="font-size:12px;color:#8899bb">🎬 回顾视频已上线</span>
-            </div>
-          </div>
-          <div class="event-status" style="background:#fff3e0;color:#e65100;border:1px solid #ffcc80;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;white-space:nowrap;align-self:flex-start">回顾</div>
-        </div>
-        <div class="event-card">
-          <div class="event-date" style="background:linear-gradient(135deg,#6a0dad,#9b3de8)"><div class="d">30</div><div class="m">09月</div></div>
-          <div class="event-content">
-            <div class="event-title">中南大学星火馆"科普City Walk"：点石成金的科学之旅</div>
-            <div class="event-desc">踏上中南大学国家重金属污染防治工程中心星火馆"科普City Walk"，开启一场沉浸式科学探秘之旅，活动至9月30日。</div>
-            <div class="event-tags">
-              <span class="event-tag et-xh">高校星火馆</span>
-              <span style="font-size:12px;color:#8899bb">📍 中南大学</span>
-              <span style="font-size:12px;color:#8899bb">🗓 09.15—09.30</span>
+              <span style="font-size:12px;color:#8899bb">📍 北京大学</span>
+              <span style="font-size:12px;color:#8899bb">👥 限额200人</span>
             </div>
           </div>
           <div class="event-status es-open">报名中</div>
         </div>
         <div class="event-card">
-          <div class="event-date" style="background:linear-gradient(135deg,#0a4fa8,#00c6ff)"><div class="d">30</div><div class="m">09月</div></div>
+          <div class="event-date" style="background:linear-gradient(135deg,#6a0dad,#9b3de8)"><div class="d">20</div><div class="m">04月</div></div>
           <div class="event-content">
-            <div class="event-title">云南大学百年育人实践展："课堂·操场·田野"校史馆展览</div>
-            <div class="event-desc">云南大学校史馆开展百年育人实践主题展，汇聚历史影像、科研档案与互动装置，免费对外开放，欢迎中学生团体预约参观。</div>
+            <div class="event-title">上海交通大学星火馆「AI与未来」主题展览正式开放</div>
+            <div class="event-desc">聚焦人工智能前沿发展，通过互动展项、沉浸式体验，让中学生直观理解AI技术的原理与应用。</div>
             <div class="event-tags">
               <span class="event-tag et-xh">高校星火馆</span>
-              <span style="font-size:12px;color:#8899bb">📍 云南大学校史馆</span>
-              <span style="font-size:12px;color:#8899bb">🗓 09.10—09.30</span>
+              <span style="font-size:12px;color:#8899bb">📍 上海交通大学</span>
             </div>
           </div>
-          <div class="event-status es-open">报名中</div>
+          <div class="event-status es-soon">即将开始</div>
+        </div>
+        <div class="event-card">
+          <div class="event-date"><div class="d">10</div><div class="m">06月</div></div>
+          <div class="event-content">
+            <div class="event-title">2026年全国青少年科创大赛暨科普作品征集活动</div>
+            <div class="event-desc">面向全国中学生征集科创作品及科普内容，优秀作品将在平台展示并获推荐参与全国性赛事。</div>
+            <div class="event-tags">
+              <span class="event-tag et-yc">英才计划</span>
+              <span class="event-tag et-ky">高校科学营</span>
+              <span class="event-tag et-hot">🔥 热门</span>
+            </div>
+          </div>
+          <div class="event-status es-soon">即将开始</div>
         </div>
       </div>
 
@@ -2229,31 +1645,31 @@
           <div class="sidebar-card-title"><div class="dot" style="background:#ff6b35"></div>即将截止</div>
           <div class="upcoming-list">
             <div class="upcoming-item">
-              <div class="upcoming-dot" style="background:#9b3de8"></div>
-              <div>
-                <div class="ui-title">中南大学科普City Walk参观</div>
-                <div class="ui-date">截止：2025.09.30 &nbsp; 星火馆</div>
-              </div>
-            </div>
-            <div class="upcoming-item">
-              <div class="upcoming-dot" style="background:#9b3de8"></div>
-              <div>
-                <div class="ui-title">云南大学百年育人实践展</div>
-                <div class="ui-date">截止：2025.09.30 &nbsp; 星火馆</div>
-              </div>
-            </div>
-            <div class="upcoming-item">
               <div class="upcoming-dot" style="background:#0a4fa8"></div>
               <div>
-                <div class="ui-title">内蒙古青少年科技创新后备人才培养</div>
-                <div class="ui-date">截止：2026.04.10 &nbsp; 英才计划</div>
+                <div class="ui-title">英才计划数学方向报名</div>
+                <div class="ui-date">截止：2026.04.28 &nbsp; 剩余4天</div>
               </div>
             </div>
             <div class="upcoming-item">
               <div class="upcoming-dot" style="background:#1aaa6b"></div>
               <div>
-                <div class="ui-title">科学营·华东师大分营回顾</div>
-                <div class="ui-date">精彩内容 · 视频已上线</div>
+                <div class="ui-title">科学营北大营区报名</div>
+                <div class="ui-date">截止：2026.04.30 &nbsp; 剩余6天</div>
+              </div>
+            </div>
+            <div class="upcoming-item">
+              <div class="upcoming-dot" style="background:#9b3de8"></div>
+              <div>
+                <div class="ui-title">交大星火馆参观预约</div>
+                <div class="ui-date">本周末场次已开放</div>
+              </div>
+            </div>
+            <div class="upcoming-item">
+              <div class="upcoming-dot" style="background:#ff6b35"></div>
+              <div>
+                <div class="ui-title">科创大赛作品提交</div>
+                <div class="ui-date">截止：2026.05.31</div>
               </div>
             </div>
           </div>
@@ -2316,101 +1732,44 @@
   </div>
 </section>
 
-<!-- 高校科学营 · 分营列表 -->
-<section class="camps-section">
-  <div class="camps-inner">
-    <div class="camps-header">
-      <div class="camps-header-left">
-        <div class="section-tag">高校科学营</div>
-        <h2 class="section-title">走进<span class="em">顶尖高校</span>，开启科学之旅</h2>
-        <p class="section-desc" style="margin-top:8px;">全国知名高校联合举办，遴选优秀中学生深入科研一线，感受大学科研氛围</p>
-      </div>
-      <a class="camps-header-right" href="#">查看全部分营 →</a>
+<!-- 平台影响力数据 -->
+<section class="impact-section">
+  <div class="impact-inner">
+    <div class="section-header">
+      <div class="section-tag">平台数据</div>
+      <h2 class="section-title">以数据见证<span class="em">科普力量</span></h2>
     </div>
-    <div class="camps-grid">
-      <div class="camp-card">
-        <div class="camp-logo-img"><img src="https://zhkxscimall.oss.cn-north-4.inspurcloudoss.com/2023/07/21/20/1689854029110.png" alt="北京大学"></div>
-        <div class="camp-name">北京大学</div>
-        <div class="camp-meta">
-          <div class="camp-location">📍 北京</div>
-          <div class="camp-tags"><span class="camp-tag">生命科学</span><span class="camp-tag">物理</span></div>
-        </div>
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="impact-icon">👨‍🔬</div>
+        <div class="impact-num">2,800<span>+</span></div>
+        <div class="impact-label">合作科研导师</div>
+        <div class="impact-trend">↑ 覆盖全国顶尖高校</div>
       </div>
-      <div class="camp-card">
-        <div class="camp-logo-img"><img src="https://img-cmpt.scimall.org.cn/image/kxy/camp/2.jpg" alt="清华大学"></div>
-        <div class="camp-name">清华大学</div>
-        <div class="camp-meta">
-          <div class="camp-location">📍 北京</div>
-          <div class="camp-tags"><span class="camp-tag">信息科学</span><span class="camp-tag">数学</span></div>
-        </div>
+      <div class="impact-card">
+        <div class="impact-icon">🏅</div>
+        <div class="impact-num">68<span>%</span></div>
+        <div class="impact-label">竞赛活动获奖率</div>
+        <div class="impact-trend">↑ 高于全国平均水平</div>
       </div>
-      <div class="camp-card">
-        <div class="camp-logo-img"><img src="https://img-cmpt.scimall.org.cn/image/kxy/camp/3.jpg" alt="中国农业大学"></div>
-        <div class="camp-name">中国农业大学</div>
-        <div class="camp-meta">
-          <div class="camp-location">📍 北京</div>
-          <div class="camp-tags"><span class="camp-tag">生物农业</span></div>
-        </div>
+      <div class="impact-card">
+        <div class="impact-icon">⏱️</div>
+        <div class="impact-num">4.2<span>h</span></div>
+        <div class="impact-label">人均周学习时长</div>
+        <div class="impact-trend">↑ 较去年提升 0.8h</div>
       </div>
-      <div class="camp-card">
-        <div class="camp-logo-img"><img src="https://img-cmpt.scimall.org.cn/image/kxy/camp/4.jpg" alt="北京师范大学"></div>
-        <div class="camp-name">北京师范大学</div>
-        <div class="camp-meta">
-          <div class="camp-location">📍 北京</div>
-          <div class="camp-tags"><span class="camp-tag">化学</span><span class="camp-tag">地球科学</span></div>
-        </div>
+      <div class="impact-card">
+        <div class="impact-icon">🎪</div>
+        <div class="impact-num">1,200<span>+</span></div>
+        <div class="impact-label">年度活动举办场次</div>
+        <div class="impact-trend">↑ 线上线下双轨覆盖</div>
       </div>
-      <div class="camp-card">
-        <div class="camp-logo-img"><img src="https://img-cmpt.scimall.org.cn//2023/06/30/news/484468.png" alt="北京航空航天大学"></div>
-        <div class="camp-name">北京航空航天大学</div>
-        <div class="camp-meta">
-          <div class="camp-location">📍 北京</div>
-          <div class="camp-tags"><span class="camp-tag">航空航天</span></div>
-        </div>
+      <div class="impact-card">
+        <div class="impact-icon">🔭</div>
+        <div class="impact-num">12<span>门</span></div>
+        <div class="impact-label">覆盖核心学科</div>
+        <div class="impact-trend">理工农医文全学科贯通</div>
       </div>
-      <div class="camp-card">
-        <div class="camp-logo-img"><img src="https://img-cmpt.scimall.org.cn/image/kxy/camp/6.jpg" alt="北京理工大学"></div>
-        <div class="camp-name">北京理工大学</div>
-        <div class="camp-meta">
-          <div class="camp-location">📍 北京</div>
-          <div class="camp-tags"><span class="camp-tag">材料科学</span><span class="camp-tag">物理</span></div>
-        </div>
-      </div>
-      <div class="camp-card">
-        <div class="camp-logo-img"><img src="https://inspur-scimall.cast.org.cn/2023/09/09/17/1694161084005.png" alt="南开大学"></div>
-        <div class="camp-name">南开大学</div>
-        <div class="camp-meta">
-          <div class="camp-location">📍 天津</div>
-          <div class="camp-tags"><span class="camp-tag">化学</span><span class="camp-tag">生命科学</span></div>
-        </div>
-      </div>
-      <div class="camp-card">
-        <div class="camp-logo-img"><img src="https://zhkxscimall.oss.cn-north-4.inspurcloudoss.com/2023/07/21/24/1689865785618.png" alt="天津大学"></div>
-        <div class="camp-name">天津大学</div>
-        <div class="camp-meta">
-          <div class="camp-location">📍 天津</div>
-          <div class="camp-tags"><span class="camp-tag">工程技术</span><span class="camp-tag">化工</span></div>
-        </div>
-      </div>
-      <div class="camp-card">
-        <div class="camp-logo-img"><img src="https://img-cmpt.scimall.org.cn//2023/07/05/news/993750.png" alt="上海交通大学"></div>
-        <div class="camp-name">上海交通大学</div>
-        <div class="camp-meta">
-          <div class="camp-location">📍 上海</div>
-          <div class="camp-tags"><span class="camp-tag">医学</span><span class="camp-tag">人工智能</span></div>
-        </div>
-      </div>
-      <div class="camp-card">
-        <div class="camp-logo-img"><img src="https://img-cmpt.scimall.org.cn/image/kxy/camp/32.jpg" alt="浙江大学"></div>
-        <div class="camp-name">浙江大学</div>
-        <div class="camp-meta">
-          <div class="camp-location">📍 杭州</div>
-          <div class="camp-tags"><span class="camp-tag">计算机</span><span class="camp-tag">信息</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="camps-more-row">
-      <div class="camps-more-btn">查看全部 100+ 所分营高校 →</div>
     </div>
   </div>
 </section>
@@ -2492,10 +1851,11 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div>© 2026 青少年科普教育平台 · 中国科协青少年科技中心</div>
+      <div>© 2026 青少年科普教育平台 · 中国科学技术协会</div>
       <div class="credits">
         <a href="#">京ICP备XXXXXXXX号</a>
         <a href="#">网络安全等级保护备案</a>
+        <a href="#">青少年模式</a>
       </div>
     </div>
   </div>
@@ -3157,24 +2517,9 @@
             <div class="rc-sub">科学爱好者等</div>
           </div>
         </div>
-
-        <!-- 是否参加过科协活动 -->
-        <div style="margin-top:20px;display:none" id="sciAssocSection">
-          <div class="ob-question" style="font-size:14px">是否参加过 <span>中国科协青少年科技中心</span> 的活动？</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px" id="sciAssocBtns">
-            <div class="ob-option-btn" data-sciassoc="是" onclick="selectSciAssoc(this)" style="padding:12px;text-align:center">
-              <div style="font-size:18px;margin-bottom:4px">✅</div>
-              <div style="font-weight:600;font-size:13.5px">是，参加过</div>
-              <div style="font-size:11.5px;color:#8899bb;margin-top:2px">英才计划、科学营等</div>
-            </div>
-            <div class="ob-option-btn" data-sciassoc="否" onclick="selectSciAssoc(this)" style="padding:12px;text-align:center">
-              <div style="font-size:18px;margin-bottom:4px">🆕</div>
-              <div style="font-weight:600;font-size:13.5px">否，是第一次</div>
-              <div style="font-size:11.5px;color:#8899bb;margin-top:2px">带你从这里出发</div>
-            </div>
-          </div>
-        </div>
       </div>
+
+      <!-- Step 2A: 学生 - 年级 + 文理 -->
       <div class="ob-panel" id="panel-2-student">
         <div class="ob-question">你目前在上 <span>哪个年级</span>？</div>
         <div class="ob-grade-grid" style="grid-template-columns:repeat(3,1fr)">
@@ -3197,6 +2542,23 @@
             </div>
           </div>
           <div class="ob-track-note">还没有分科？选理科/文科均可，后续随时调整</div>
+        </div>
+
+        <!-- 是否参加过科协活动 -->
+        <div style="margin-top:20px">
+          <div class="ob-question">是否参加过 <span>中国科协青少年科技中心</span> 的活动？</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px" id="sciAssocBtns">
+            <div class="ob-option-btn" data-sciassoc="是" onclick="selectSciAssoc(this)" style="padding:12px;text-align:center">
+              <div style="font-size:18px;margin-bottom:4px">✅</div>
+              <div style="font-weight:600;font-size:13.5px">是，参加过</div>
+              <div style="font-size:11.5px;color:#8899bb;margin-top:2px">英才计划、科学营等</div>
+            </div>
+            <div class="ob-option-btn" data-sciassoc="否" onclick="selectSciAssoc(this)" style="padding:12px;text-align:center">
+              <div style="font-size:18px;margin-bottom:4px">🆕</div>
+              <div style="font-weight:600;font-size:13.5px">否，是第一次</div>
+              <div style="font-size:11.5px;color:#8899bb;margin-top:2px">带你从这里出发</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -3312,28 +2674,10 @@
 </div>
 
 <script>
-  // 资源 Tab 切换
-  function switchResTab(el, tabId) {
-    document.querySelectorAll('.res-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.res-tab-panel').forEach(p => p.classList.remove('active'));
-    el.classList.add('active');
-    document.getElementById(tabId).classList.add('active');
-  }
-
-  // 筛选按钮交互（Tab 内独立）
-  document.querySelectorAll('.res-tab-panel').forEach(panel => {
-    panel.querySelectorAll('.res-filter-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        this.closest('.res-filter').querySelectorAll('.res-filter-btn').forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-      });
-    });
-  });
-
-  // AI 推荐标签切换
-  document.querySelectorAll('.ai-reco-tag').forEach(tag => {
-    tag.addEventListener('click', function() {
-      document.querySelectorAll('.ai-reco-tag').forEach(t => t.classList.remove('active'));
+  // 筛选按钮交互
+  document.querySelectorAll('.res-filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.res-filter-btn').forEach(b => b.classList.remove('active'));
       this.classList.add('active');
     });
   });
@@ -3569,79 +2913,14 @@
   }
   initOnboard();
 
-  // ===== Hero 实时动态流 =====
-  (function() {
-    const FEED_DATA = [
-      { avatar: '👩‍🎓', avatarBg: 'rgba(0,198,255,0.15)', name: '内蒙古 · 李同学', action: '正在查看', content: '2026年英才计划内蒙古面试结果公告', tag: '找活动', tagClass: 'hv-tag-act', time: '刚刚' },
-      { avatar: '🧑‍🔬', avatarBg: 'rgba(123,47,254,0.15)', name: '湖南 · 张同学', action: '找到了附近的', content: '中南大学国家重金属污染防治工程中心星火馆', tag: '找场馆', tagClass: 'hv-tag-map', time: '1 分钟前' },
-      { avatar: '👦',    avatarBg: 'rgba(255,193,7,0.15)',  name: '上海 · 王同学', action: '正在阅读', content: '华东师大分营：探索科学奥秘，点亮青春梦想', tag: '找资源', tagClass: 'hv-tag-res', time: '2 分钟前' },
-      { avatar: '👩',    avatarBg: 'rgba(0,229,190,0.12)',  name: '云南 · 陈同学', action: '报名参加了', content: '云南大学"课堂·操场·田野"百年育人实践展', tag: '找活动', tagClass: 'hv-tag-act', time: '3 分钟前' },
-      { avatar: '🧒',    avatarBg: 'rgba(0,198,255,0.15)',  name: '福建 · 刘同学', action: '收藏了实验', content: '福建师范大学·纳米薄膜制备技术实验包', tag: '找资源', tagClass: 'hv-tag-res', time: '4 分钟前' },
-      { avatar: '👩‍🏫', avatarBg: 'rgba(123,47,254,0.15)', name: '武汉 · 周同学', action: '向 AI 助手提问：', content: '英才计划物理方向导师张晓明是哪个高校的？', tag: 'AI问答', tagClass: 'hv-tag-ask', time: '5 分钟前' },
-      { avatar: '🧑',    avatarBg: 'rgba(255,193,7,0.15)',  name: '浙江 · 赵同学', action: '正在观看', content: '浙江海洋大学·海洋生物图鉴第07期·翻车鱼', tag: '找资源', tagClass: 'hv-tag-res', time: '6 分钟前' },
-      { avatar: '👧',    avatarBg: 'rgba(0,229,190,0.12)',  name: '安徽 · 吴同学', action: '找到了附近的', content: '安徽师范大学数字化实验室·纸电池探究实验', tag: '找场馆', tagClass: 'hv-tag-map', time: '7 分钟前' },
-    ];
-
-    const list = document.getElementById('hvFeedList');
-    if (!list) return;
-
-    let offset = 0;
-    const VISIBLE = 4;
-
-    function renderFeed() {
-      list.innerHTML = '';
-      for (let i = 0; i < VISIBLE; i++) {
-        const d = FEED_DATA[(offset + i) % FEED_DATA.length];
-        const item = document.createElement('div');
-        item.className = 'hv-feed-item';
-        item.innerHTML = `
-          <div class="hv-feed-avatar" style="background:${d.avatarBg}">${d.avatar}</div>
-          <div class="hv-feed-body">
-            <div class="hv-feed-text">
-              <strong>${d.name}</strong>
-              <span class="hv-action"> ${d.action} </span>${d.content}
-            </div>
-            <div class="hv-feed-time">${d.time}</div>
-          </div>
-          <span class="hv-feed-tag ${d.tagClass}">${d.tag}</span>`;
-        list.appendChild(item);
-      }
-    }
-
-    renderFeed();
-    // 每 3 秒滚入一条新动态
-    setInterval(function() {
-      offset = (offset + 1) % FEED_DATA.length;
-      renderFeed();
-      // 更新时间文案
-      const items = list.querySelectorAll('.hv-feed-item');
-      const times = ['刚刚','1 分钟前','2 分钟前','3 分钟前'];
-      items.forEach((el, idx) => {
-        const t = el.querySelector('.hv-feed-time');
-        if (t) t.textContent = times[idx] || (idx + 1) + ' 分钟前';
-      });
-    }, 3000);
-  })();
-
-  // AI 搜索条交互
-  function heroSearch(query) {
-    const q = (query || '').trim();
-    // 若未登录/未完成引导，先打开引导弹窗（保留原有引导逻辑）
-    const hasOnboarded = sessionStorage.getItem('onboarded');
-    if (!hasOnboarded) {
+  // "立即探索资源"按钮触发引导
+  document.querySelectorAll('.hero-btn-primary').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
       document.getElementById('onboardMask').style.display = 'flex';
       resetOnboard();
-      return;
-    }
-    // 已引导：可跳转搜索结果页（原型阶段仅提示）
-    if (q) {
-      alert('正在为你 AI 智能检索：' + q);
-    }
-  }
-  function fillSearch(el) {
-    document.getElementById('heroSearchInput').value = el.textContent;
-    document.getElementById('heroSearchInput').focus();
-  }
+    });
+  });
 
   function resetOnboard() {
     currentStep = 1;
@@ -3657,7 +2936,6 @@
     // 清除选中状态
     document.querySelectorAll('.ob-role-card, .ob-option-btn, .ob-track-card, .ob-tag').forEach(el => el.classList.remove('selected'));
     document.getElementById('trackSection').style.display = 'block';
-    document.getElementById('sciAssocSection').style.display = 'none';
   }
 
   function showPanel(id) {
@@ -3690,17 +2968,7 @@
     document.querySelectorAll('.ob-role-card').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
     state.role = el.dataset.role;
-    // 学生：显示科协问题，需全部回答才能继续
-    const sciSection = document.getElementById('sciAssocSection');
-    if (state.role === 'student') {
-      sciSection.style.display = 'block';
-      // 若还没选过科协，锁住下一步
-      document.getElementById('obNext').disabled = !state.sciAssoc;
-    } else {
-      sciSection.style.display = 'none';
-      state.sciAssoc = null;
-      document.getElementById('obNext').disabled = false;
-    }
+    document.getElementById('obNext').disabled = false;
   }
 
   // 年级选择（全部为高中）
@@ -3721,7 +2989,7 @@
   }
 
   function checkStep2StudentValid() {
-    const ok = state.grade && state.track;
+    const ok = state.grade && state.track && state.sciAssoc;
     document.getElementById('obNext').disabled = !ok;
   }
 
@@ -3762,8 +3030,7 @@
     document.querySelectorAll('#sciAssocBtns .ob-option-btn').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
     state.sciAssoc = el.dataset.sciassoc;
-    // 在 step1：role 和 sciAssoc 都选了才能继续
-    document.getElementById('obNext').disabled = !(state.role && state.sciAssoc);
+    checkStep2StudentValid();
   }
 
   function checkStep3StudentValid() {
