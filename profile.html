@@ -1647,6 +1647,14 @@
 <div class="fab-back" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="返回顶部">↑</div>
 
 <script>
+  // 浮动按钮显隐
+  window.addEventListener('scroll', () => {
+    const fab = document.querySelector('.fab-back');
+    if (fab) fab.style.opacity = window.scrollY > 300 ? '1' : '0';
+  });
+  document.querySelector('.fab-back').style.opacity = '0';
+  document.querySelector('.fab-back').style.transition = 'opacity .3s';
+
   // 移动端汉堡菜单
   function toggleMobileMenu() {
     const drawer = document.getElementById('mobileNavDrawer');

@@ -3331,7 +3331,11 @@
   window.addEventListener('scroll', () => {
     const nf = document.getElementById('noticeFloat');
     if (nf && window.scrollY > 200) nf.style.display = 'none';
+    const fab = document.querySelector('.fab-back');
+    if (fab) fab.style.opacity = window.scrollY > 300 ? '1' : '0';
   });
+  document.querySelector('.fab-back').style.opacity = '0';
+  document.querySelector('.fab-back').style.transition = 'opacity .3s';
 
   // ===== 移动端汉堡菜单 =====
   function toggleMobileMenu() {
