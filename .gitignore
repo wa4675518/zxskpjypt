@@ -1,2 +1,8 @@
 .DS_Store
 .workbuddy/
+
+# 历史版本存档（仅本地保留）
+*_v*.html
+# 抓取脚本和数据
+scrape*.js
+*.json
