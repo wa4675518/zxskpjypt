@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>个人中心 — 青少年科普教育平台</title>
+<title>个人中心 — 青少年科学英才平台</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; overflow-x: hidden; }
@@ -70,8 +70,8 @@
   }
   .logo-text { line-height: 1.25; }
   .logo-text .main { font-size: 17px; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
-  .logo-text .sub { font-size: 11px; color: var(--text-sub); letter-spacing: 2px; }
-  .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; }
+  .logo-text .sub { font-size: 10.5px; color: var(--text-sub); letter-spacing: 0.5px; font-family: "Helvetica Neue", Arial, sans-serif; }
+  .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: flex-end; }
   .nav-links a {
     padding: 8px 14px; border-radius: 8px;
     font-size: 14.5px; font-weight: 500; color: var(--text-sub);
@@ -495,41 +495,6 @@
   .vbs-upcoming { background: #fff7e0; color: #d46b08; }
   .vbs-cancel   { background: #f5f5f5; color: #999; }
 
-  /* ===== AI 推荐模块 ===== */
-  .ai-reco-banner {
-    background: linear-gradient(135deg,#060e24 0%,#0a2260 60%,#0a4fa8 100%);
-    border-radius: 16px; padding: 20px 24px; margin-bottom: 20px;
-    display: flex; align-items: center; gap: 20px;
-    box-shadow: 0 8px 32px rgba(10,79,168,0.25);
-    position: relative; overflow: hidden;
-  }
-  .ai-reco-banner::before {
-    content: '';
-    position: absolute; top: -40px; right: -40px;
-    width: 160px; height: 160px;
-    background: radial-gradient(circle,rgba(0,198,255,0.2),transparent 70%);
-    pointer-events: none;
-  }
-  .arb-icon { font-size: 36px; flex-shrink: 0; position: relative; z-index: 1; }
-  .arb-text { flex: 1; position: relative; z-index: 1; }
-  .arb-title { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 4px; }
-  .arb-desc { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.5; }
-  .arb-btn {
-    flex-shrink: 0; background: rgba(255,255,255,0.15);
-    border: 1.5px solid rgba(255,255,255,0.3);
-    color: #fff; padding: 8px 18px; border-radius: 20px;
-    font-size: 13px; font-weight: 600; cursor: pointer;
-    transition: all .2s; white-space: nowrap; position: relative; z-index: 1;
-  }
-  .arb-btn:hover { background: rgba(255,255,255,0.25); }
-  .ai-dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: #00e5b8; display: inline-block;
-    margin-right: 5px; vertical-align: middle;
-    animation: aiPulse 2s infinite;
-  }
-  @keyframes aiPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
-
   /* ===== 通知消息 ===== */
   .msg-list { display: flex; flex-direction: column; gap: 10px; }
   .msg-item {
@@ -637,8 +602,6 @@
     .fav-grid { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr 1fr; gap: 24px; }
     .footer-brand { grid-column: 1 / -1; }
-    .ai-reco-banner { flex-direction: column; gap: 12px; text-align: center; padding: 16px; }
-    .arb-btn { width: 100%; padding: 10px; }
     .section-card { overflow: hidden; }
     .learn-item, .act-item, .vb-item { overflow: hidden; }
   }
@@ -666,17 +629,15 @@
     <a href="index.html" class="logo">
       <div class="logo-icon">🔭</div>
       <div class="logo-text">
-        <div class="main">青少年科普教育平台</div>
-        <div class="sub">YOUTH SCIENCE EDUCATION PLATFORM</div>
+        <div class="main">青少年科学英才平台</div>
+        <div class="sub">Youth Science Talent Platform</div>
       </div>
     </a>
     <div class="nav-links">
       <a href="index.html">首页</a>
-      <a href="#">英才计划</a>
-      <a href="#">高校科学营</a>
-      <a href="xinghuo.html">星火馆</a>
       <a href="resource-center.html">资源中心</a>
-      <a href="#">活动广场 <span class="tag-new">NEW</span></a>
+      <a href="xinghuo.html">星火馆地图</a>
+      <a href="#">活动广场</a>
       <a href="#">关于平台</a>
     </div>
     <div class="nav-actions">
@@ -702,7 +663,7 @@
   <div class="mobile-drawer-header">
     <div class="mobile-drawer-logo">
       <span class="icon">🔭</span>
-      <span class="name">青少年科普教育平台</span>
+      <span class="name">青少年科学英才平台</span>
     </div>
     <div class="mobile-drawer-close" onclick="closeMobileMenu()">✕</div>
   </div>
@@ -719,11 +680,9 @@
   </div>
   <nav class="mobile-drawer-nav">
     <a href="index.html"><span class="nav-icon">🏠</span>首页</a>
-    <a href="#"><span class="nav-icon">🌟</span>英才计划</a>
-    <a href="#"><span class="nav-icon">🎓</span>高校科学营</a>
-    <a href="xinghuo.html"><span class="nav-icon">✨</span>星火馆</a>
     <a href="resource-center.html"><span class="nav-icon">📚</span>资源中心</a>
-    <a href="#"><span class="nav-icon">🎪</span>活动广场 <span class="tag-new">NEW</span></a>
+    <a href="xinghuo.html"><span class="nav-icon">🏛️</span>星火馆地图</a>
+    <a href="#"><span class="nav-icon">🎪</span>活动广场</a>
     <a href="profile.html" class="active"><span class="nav-icon">👤</span>个人中心</a>
   </nav>
   <div class="mobile-drawer-footer">
@@ -858,16 +817,6 @@
         <div class="sc-label">活动参与中</div>
         <div class="sc-trend new">🗓 1 个待审核</div>
       </div>
-    </div>
-
-    <!-- AI 个性化推荐入口 -->
-    <div class="ai-reco-banner">
-      <div class="arb-icon">🤖</div>
-      <div class="arb-text">
-        <div class="arb-title"><span class="ai-dot"></span>AI 专属学习方案已更新</div>
-        <div class="arb-desc">根据你的学习轨迹和「备赛竞赛」目标，AI 为你生成了本周物理竞赛重点攻克路线，包含 6 个资源节点、2 场即将开始的活动。</div>
-      </div>
-      <div class="arb-btn" onclick="alert('AI 方案详情（原型演示）')">查看方案 →</div>
     </div>
 
     <!-- 学习记录 -->
@@ -1237,15 +1186,6 @@
           </div>
           <div class="msg-item unread">
             <div class="msg-dot"></div>
-            <div class="msg-icon">🤖</div>
-            <div class="msg-body">
-              <div class="msg-title">AI 学习方案已更新</div>
-              <div class="msg-desc">根据你本周学习数据，AI 助手更新了物理竞赛备考路线，新增 2 个推荐资源节点，立即查看。</div>
-              <div class="msg-time">今天 09:30</div>
-            </div>
-          </div>
-          <div class="msg-item unread">
-            <div class="msg-dot"></div>
             <div class="msg-icon">🏛️</div>
             <div class="msg-body">
               <div class="msg-title">场馆预约提醒</div>
@@ -1277,7 +1217,7 @@
       <div class="footer-brand">
         <div class="fb-logo">
           <div class="fi">🔭</div>
-          <div class="fb-name">青少年科普教育平台</div>
+          <div class="fb-name">青少年科学英才平台</div>
         </div>
         <div class="fb-desc">依托中国科协，整合英才计划、高校科学营、高校星火馆三大核心品牌，打造广覆盖、精选拔、持续培养的青少年科技后备人才培育主阵地。</div>
         <div class="footer-social">
@@ -1327,7 +1267,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div>© 2026 青少年科普教育平台 · 中国科协青少年科技中心</div>
+      <div>© 2026 青少年科学英才平台 · 中国科协青少年科技中心</div>
       <div class="credits">
         <a href="#">京ICP备XXXXXXXX号</a>
         <a href="#">网络安全等级保护备案</a>
@@ -1487,7 +1427,7 @@
 }
 .ai-skills-grid {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(4,1fr);
   gap: 8px;
   margin-bottom: 4px;
 }
@@ -1604,11 +1544,6 @@
         <div class="ask-name">活动查询</div>
         <div class="ask-desc">查看报名中的科学营和活动</div>
       </div>
-      <div class="ai-skill-card" onclick="useSkill('plan')">
-        <div class="ask-icon">🗺️</div>
-        <div class="ask-name">学习规划</div>
-        <div class="ask-desc">生成专属科学学习路径</div>
-      </div>
       <div class="ai-skill-card" onclick="useSkill('yingcai')">
         <div class="ask-icon">🏆</div>
         <div class="ask-name">英才计划</div>
@@ -1618,11 +1553,6 @@
         <div class="ask-icon">🗺️</div>
         <div class="ask-name">星火馆导览</div>
         <div class="ask-desc">查找附近场馆、预约参观</div>
-      </div>
-      <div class="ai-skill-card" onclick="useSkill('qa')">
-        <div class="ask-icon">🔬</div>
-        <div class="ask-name">科学问答</div>
-        <div class="ask-desc">解答科普疑问，深度讲解</div>
       </div>
     </div>
     <div class="ai-prompts-label">💡 试试这样问</div>
@@ -1767,10 +1697,8 @@
   const skillPrompts = {
     resource: '请根据我的年级和兴趣，为我推荐平台上的精品科普资源',
     activity: '平台上目前有哪些正在报名的科学活动？',
-    plan: '请为我制定一个个性化的科学学习规划',
     yingcai: '中学生英才计划的报名条件、流程和备考建议是什么？',
-    museum: '请帮我查找附近的高校星火馆，并推荐值得参观的场馆',
-    qa: '我有一个科学问题想请教你'
+    museum: '请帮我查找附近的高校星火馆，并推荐值得参观的场馆'
   };
   function useSkill(type) {
     const prompt = skillPrompts[type] || '';
@@ -1801,7 +1729,6 @@
   const botReplies = {
     '请根据我的年级和兴趣，为我推荐平台上的精品科普资源': '好的！根据你的学习画像，为你精选了以下资源 👇<div class="ai-res-card"><div class="arc-icon">🎬</div><div><div class="arc-title">CRISPR基因编辑：从理论到应用</div><div class="arc-meta">视频 · 北京大学 · 12.3万次观看</div></div></div><div class="ai-res-card"><div class="arc-icon">📚</div><div><div class="arc-title">从零开始学AI：机器学习入门系列</div><div class="arc-meta">课程 · 清华大学 · 共12讲</div></div></div><div class="ai-res-card"><div class="arc-icon">🧪</div><div><div class="arc-title">居家科学实验：探索液体表面张力</div><div class="arc-meta">实验包 · 中国科学院</div></div></div>还想看更多？告诉我你最感兴趣的方向～',
     '平台上目前有哪些正在报名的科学活动？': '目前有 <strong>3个活动</strong> 正在报名中 🗓️<div class="ai-res-card"><div class="arc-icon">🏆</div><div><div class="arc-title">英才计划（数学方向）第一阶段笔试</div><div class="arc-meta">截止：2026.04.28 · 全国考点</div></div></div><div class="ai-res-card"><div class="arc-icon">⛺</div><div><div class="arc-title">第十二届高校科学营（北大营区）</div><div class="arc-meta">截止：2026.04.30 · 限额200人</div></div></div><div class="ai-res-card"><div class="arc-icon">✨</div><div><div class="arc-title">交大星火馆「AI与未来」参观预约</div><div class="arc-meta">本周末场次开放 · 上海交通大学</div></div></div>',
-    '请为我制定一个个性化的科学学习规划': '好的！以下是为你定制的 <strong>3个月科学学习路径</strong> 🗺️<br><br>📌 <strong>第1个月：基础夯实</strong><br>完成平台推荐的入门课程，建立学科知识框架<br><br>📌 <strong>第2个月：深度探索</strong><br>选定1-2个感兴趣方向，结合视频+实验包深入学习<br><br>📌 <strong>第3个月：实践参与</strong><br>报名参加线下活动或科学营，将知识转化为实践能力<br><br>需要我为某个具体方向制定更详细的计划吗？',
     '中学生英才计划的报名条件、流程和备考建议是什么？': '<strong>英才计划</strong> 是中国科协与教育部联合开展的重点项目 🏆<br><br><strong>报名条件：</strong>高中在读，成绩优秀，有强烈科学兴趣<br><br><strong>报名流程：</strong><br>① 学校推荐 → ② 网上申报 → ③ 笔试 → ④ 面试 → ⑤ 入选<br><br><strong>备考建议：</strong><br>• 夯实数理化基础，关注前沿科学动态<br>• 通过平台学习相关领域的进阶课程<br>• 积累科研实践经历（竞赛、实验等）',
     '请帮我查找附近的高校星火馆，并推荐值得参观的场馆': '为你推荐 <strong>3所</strong> 热门高校星火馆 🗺️<div class="ai-res-card"><div class="arc-icon">✨</div><div><div class="arc-title">上海交通大学星火馆</div><div class="arc-meta">主题：AI与未来 · 本周开放 · 可预约</div></div></div><div class="ai-res-card"><div class="arc-icon">✨</div><div><div class="arc-title">清华大学科技博物馆</div><div class="arc-meta">主题：前沿科技展 · 周末开放</div></div></div><div class="ai-res-card"><div class="arc-icon">✨</div><div><div class="arc-title">北京大学自然科学馆</div><div class="arc-meta">主题：生命科学 · 需提前预约</div></div></div>想查看全国所有星火馆？<span style="color:#0a4fa8;cursor:pointer">→ 打开星火馆地图</span>'
   };
@@ -1809,7 +1736,6 @@
     '帮我推荐适合高中生的科学资源',
     '中学生英才计划怎么报名？',
     '最近有哪些科学活动可以参加？',
-    '给我制定一份科学学习计划',
     '附近有哪些高校星火馆可以参观？',
     '高中物理有哪些好的学习视频？',
     '如何准备英才计划的面试？',

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>青少年科普教育平台 — 中国科协</title>
+<title>青少年科学英才平台 — 中国科协青少年科技中心</title>
 <style>
   /* ===== 基础重置 ===== */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -79,11 +79,12 @@
   }
   .logo-text { line-height: 1.25; }
   .logo-text .main { font-size: 17px; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
-  .logo-text .sub { font-size: 11px; color: var(--text-sub); letter-spacing: 2px; }
+  .logo-text .sub { font-size: 10.5px; color: var(--text-sub); letter-spacing: 0.5px; font-family: "Helvetica Neue", Arial, sans-serif; }
 
   .nav-links {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 4px;
     flex: 1;
   }
@@ -385,7 +386,7 @@
   /* 五大功能入口 */
   .hero-features {
     display: grid;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(4,1fr);
     gap: 10px;
     margin-bottom: 36px;
   }
@@ -434,13 +435,13 @@
 
   .hero-stats {
     display: flex;
-    gap: 40px;
+    gap: 32px;
     margin-top: 44px;
     padding-top: 32px;
     border-top: 1px solid rgba(255,255,255,0.10);
   }
   .hero-stat .num {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 800;
     color: #fff;
     line-height: 1;
@@ -612,131 +613,172 @@
   .section-title .em { color: var(--primary); }
   .section-desc { font-size: 15px; color: var(--text-sub); line-height: 1.7; max-width: 580px; margin: 0 auto; }
 
-  /* ===== 三大品牌项目（数据浮于右上角）===== */
-  .projects-section { background: #fff; }
-  .projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-  .project-card {
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1.5px solid var(--border);
-    background: #fff;
-    transition: all .3s;
-    position: relative;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
+  /* ===== 培育生态 · 合并Tab + 日历版 ===== */
+  .projects-section { background: #fff; border-bottom: 1px solid var(--border); }
+  .eco-tabs-wrap {
+    background: #fff; border-radius: 14px; border: 1.5px solid var(--border);
+    margin-bottom: 16px; overflow: hidden;
   }
-  .project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: transparent; }
+  .eco-tabs {
+    display: flex; gap: 2px; padding: 4px;
+  }
+  .eco-tab {
+    flex: 1; padding: 10px 10px; border-radius: 10px; text-align: center;
+    font-size: 12.5px; font-weight: 600; color: var(--text-sub);
+    cursor: pointer; transition: all .25s; border: none; background: transparent;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+    white-space: nowrap;
+  }
+  .eco-tab:hover { color: var(--text-main); background: #f5f7fb; }
+  .eco-tab.active { background: var(--primary); color: #fff; box-shadow: 0 2px 8px rgba(10,79,168,0.18); }
+  .eco-tab .tab-emoji { font-size: 14px; }
+  .eco-tab .tab-label { font-size: 12.5px; font-weight: 600; }
+  .eco-tab .tab-data { font-size: 10px; opacity: 0.7; font-weight: 400; }
+  .eco-tab.active .tab-data { opacity: 0.85; }
 
-  /* 顶部色带（高度压缩到120px） */
-  .project-card-top {
-    height: 120px;
-    display: flex;
-    align-items: flex-end;
-    padding: 16px 20px;
-    position: relative;
-    overflow: visible; /* 允许数据浮块溢出 */
-  }
-  .pc-yc .project-card-top { background: linear-gradient(135deg,#0a3a8a 0%,#1a6fe8 60%,#00c6ff 100%); }
-  .pc-ky .project-card-top { background: linear-gradient(135deg,#0d6b45 0%,#1aaa6b 60%,#7fffd4 100%); }
-  .pc-xh .project-card-top { background: linear-gradient(135deg,#6a0dad 0%,#9b3de8 60%,#c66bff 100%); }
+  .eco-panel { display: none; animation: ecoFadeIn .3s ease; }
+  .eco-panel.active { display: block; }
+  @keyframes ecoFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-  .project-card-top .bg-shape {
-    position: absolute;
-    right: -30px; top: -30px;
-    width: 180px; height: 180px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-  }
-  .project-card-top .bg-shape2 {
-    position: absolute;
-    left: -20px; bottom: -40px;
-    width: 140px; height: 140px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.05);
-  }
+  /* Tab 内容布局 */
+  .eco-content { display: grid; grid-template-columns: 1fr 280px; gap: 16px; align-items: start; }
+  .eco-main { background: #fff; border-radius: 14px; overflow: hidden; border: 1.5px solid var(--border); transition: all .3s; }
+  .eco-main:hover { box-shadow: 0 6px 20px rgba(10,79,168,0.06); }
 
-  /* 左下：图标 + 标题 */
-  .project-badge-icon {
-    width: 40px; height: 40px;
-    background: rgba(255,255,255,0.18);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    margin-bottom: 7px;
-    position: relative; z-index: 1;
+  /* Hero 色带（压缩） */
+  .eco-hero {
+    padding: 18px 22px 14px; color: #fff; position: relative; overflow: hidden;
   }
-  .project-card-top-content { position: relative; z-index: 1; }
-  .project-card-top-title { font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 3px; }
-  .project-card-top-sub { font-size: 11px; color: rgba(255,255,255,0.65); }
+  .eco-hero::before {
+    content: ''; position: absolute; right: -20px; top: -20px; width: 140px; height: 140px;
+    border-radius: 50%; background: rgba(255,255,255,0.07);
+  }
+  .eco-hero > * { position: relative; z-index: 1; }
+  .eco-hero-yc { background: linear-gradient(135deg,#0a3a8a 0%,#1a6fe8 60%,#00c6ff 100%); }
+  .eco-hero-ky { background: linear-gradient(135deg,#0d6b45 0%,#1aaa6b 60%,#7fffd4 100%); }
+  .eco-hero-dc { background: linear-gradient(135deg,#6a0dad 0%,#9b3de8 60%,#c66bff 100%); }
+  .eco-hero-icon { font-size: 24px; margin-bottom: 6px; }
+  .eco-hero h3 { font-size: 18px; font-weight: 800; margin-bottom: 1px; }
+  .eco-hero .eco-hero-sub { font-size: 10px; color: rgba(255,255,255,0.50); margin-bottom: 0; font-family: "Helvetica Neue", Arial, sans-serif; letter-spacing: 0.3px; }
 
-  /* 右上角数据浮块 */
-  .project-stats {
-    position: absolute;
-    top: 12px; right: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    z-index: 2;
+  /* 主体内容区（压缩） */
+  .eco-body { padding: 14px 22px 18px; }
+  .eco-stats-row { display: flex; gap: 10px; margin-bottom: 10px; }
+  .eco-stat-chip {
+    flex: 1; background: #f8faff; border-radius: 10px; padding: 8px 12px;
+    border: 1px solid #eef2f8;
   }
-  .project-stat-item {
-    background: rgba(255,255,255,0.18);
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 8px;
-    padding: 4px 10px;
-    text-align: center;
-    min-width: 72px;
+  .eco-stat-chip .esn { font-size: 16px; font-weight: 800; color: var(--primary); }
+  .eco-ky-active .eco-stat-chip .esn { color: #1aaa6b; }
+  .eco-dc-active .eco-stat-chip .esn { color: #9b3de8; }
+  .eco-stat-chip .esl { font-size: 10px; color: var(--text-sub); margin-top: 1px; }
+  .eco-desc { font-size: 12.5px; color: #7a8aaa; line-height: 1.65; margin-bottom: 10px; }
+  .eco-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+  .eco-tag {
+    font-size: 11px; padding: 3px 10px; border-radius: 8px; font-weight: 600;
+    background: #f0f4fa; color: var(--primary);
   }
-  .project-stat-item .sn {
-    font-size: 15px; font-weight: 800; color: #fff;
-    line-height: 1.1;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.18);
+  .eco-ky-active .eco-tag { background: #e8f7f0; color: #1aaa6b; }
+  .eco-dc-active .eco-tag { background: #f3eaff; color: #9b3de8; }
+  .eco-features { list-style: none; margin-bottom: 14px; }
+  .eco-features li {
+    font-size: 12px; color: #5a6a8a; padding: 3px 0;
+    display: flex; align-items: center; gap: 8px; line-height: 1.45;
   }
-  .project-stat-item .sl {
-    font-size: 10px; color: rgba(255,255,255,0.80);
-    margin-top: 1px;
+  .eco-features li::before {
+    content: '\2713'; width: 18px; height: 18px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 800; flex-shrink: 0;
+    background: #eaf2ff; color: var(--primary);
   }
+  .eco-ky-active .eco-features li::before { background: #e8f7f0; color: #1aaa6b; }
+  .eco-dc-active .eco-features li::before { background: #f3eaff; color: #9b3de8; }
+  .eco-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 22px; border-radius: 10px; font-size: 13px; font-weight: 700;
+    background: var(--primary); color: #fff; border: none; cursor: pointer;
+    transition: all .2s; box-shadow: 0 2px 10px rgba(10,79,168,0.15);
+  }
+  .eco-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(10,79,168,0.22); }
+  .eco-ky-active .eco-btn { background: #1aaa6b; box-shadow: 0 2px 10px rgba(26,170,107,0.15); }
+  .eco-ky-active .eco-btn:hover { box-shadow: 0 4px 16px rgba(26,170,107,0.22); }
+  .eco-dc-active .eco-btn { background: #9b3de8; box-shadow: 0 2px 10px rgba(155,61,232,0.15); }
+  .eco-dc-active .eco-btn:hover { box-shadow: 0 4px 16px rgba(155,61,232,0.22); }
 
-  .project-card-body { padding: 14px 18px; }
-  .project-card-desc { font-size: 12px; color: #9aa; line-height: 1.6; margin-bottom: 10px; }
-  .project-card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
-  .project-tag {
-    font-size: 11.5px;
-    padding: 2px 9px;
-    border-radius: 10px;
-    background: #eaf2ff;
-    color: var(--primary);
-    font-weight: 500;
+  /* 右侧活动栏 */
+  .eco-sidebar { }
+  .eco-sidebar-title {
+    font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 6px;
   }
-  .pc-ky .project-tag { background: #e8f7f0; color: #1aaa6b; }
-  .pc-xh .project-tag { background: #f3eaff; color: #9b3de8; }
+  .eco-sidebar-title .eco-sidebar-count {
+    font-size: 9px; padding: 1px 7px; border-radius: 5px;
+    background: #e8f7f0; color: #1aaa6b; font-weight: 700;
+  }
+  .eco-event-card {
+    background: #fff; border-radius: 10px; padding: 12px 14px;
+    border: 1.5px solid var(--border); margin-bottom: 8px; transition: all .2s; cursor: pointer;
+  }
+  .eco-event-card:hover { box-shadow: 0 4px 14px rgba(10,79,168,0.06); border-color: var(--primary); }
+  .eco-event-card .evc-date { font-size: 10px; color: var(--text-sub); margin-bottom: 3px; }
+  .eco-event-card .evc-title { font-size: 12.5px; font-weight: 600; color: var(--text-main); line-height: 1.4; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .eco-event-card .evc-brief { font-size: 11px; color: #99aabb; line-height: 1.5; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .eco-event-card .evc-footer { display: flex; justify-content: space-between; align-items: center; }
+  .evc-tag { font-size: 9.5px; padding: 2px 7px; border-radius: 5px; font-weight: 600; }
+  .evc-tag.t-yc { background: #eaf2ff; color: var(--primary); }
+  .evc-tag.t-ky { background: #e8f7f0; color: #1aaa6b; }
+  .evc-tag.t-dc { background: #f3eaff; color: #9b3de8; }
+  .evc-status { font-size: 10px; font-weight: 600; }
+  .evc-status.open { color: #1aaa6b; }
+  .evc-status.review { color: #aab; }
 
-  .project-news {
-    background: #f4f8ff;
-    border-left: 3px solid var(--primary);
-    border-radius: 0 8px 8px 0;
-    padding: 7px 10px;
-    margin-bottom: 12px;
-    font-size: 11.5px;
-    color: var(--text-sub);
-    line-height: 1.7;
+  /* 底部活动日历 */
+  .eco-calendar-bar {
+    display: grid; grid-template-columns: 3fr 7fr; gap: 20px; align-items: start;
+    margin-top: 16px; background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%);
+    border-radius: 14px; padding: 18px; border: 1.5px solid var(--border);
   }
-  .pc-ky .project-news { border-color: #1aaa6b; background: #f0faf6; }
-  .pc-xh .project-news { border-color: #9b3de8; background: #f6f0ff; }
+  .eco-cal-compact { }
+  .eco-cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; font-size: 12px; font-weight: 700; color: #1a2340; }
+  .eco-cal-header .ec-arrow { width: 20px; height: 20px; border-radius: 5px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 10px; color: var(--text-sub); transition: all .2s; background: #fff; }
+  .eco-cal-header .ec-arrow:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+  .eco-cal-weekdays { display: grid; grid-template-columns: repeat(7,1fr); text-align: center; font-size: 9px; color: #8899bb; margin-bottom: 4px; font-weight: 500; }
+  .eco-cal-days { display: grid; grid-template-columns: repeat(7,1fr); text-align: center; gap: 2px; }
+  .ec-day { font-size: 12px; padding: 7px 0; border-radius: 5px; color: #5a6a8a; cursor: pointer; transition: all .15s; line-height: 1.2; }
+  .ec-day:hover { background: #e8eef8; }
+  .ec-day.ec-today { background: var(--primary); color: #fff; font-weight: 700; }
+  .ec-day.ec-event { position: relative; font-weight: 600; color: var(--primary); }
+  .ec-day.ec-today.ec-event { color: #fff; }
+  .ec-day.ec-event::after { content:''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 3px; height: 3px; border-radius: 50%; background: var(--primary); }
+  .ec-day.ec-today.ec-event::after { background: #fff; }
+  .ec-day.ec-empty { visibility: hidden; }
 
-  .project-card-btn {
-    display: block; text-align: center;
-    padding: 9px; border-radius: 10px;
-    font-size: 13px; font-weight: 600;
-    transition: all .2s; cursor: pointer;
+  .eco-cal-events-section { }
+  .eco-cal-events-header {
+    display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;
   }
-  .pc-yc .project-card-btn { background: #eaf2ff; color: var(--primary); }
-  .pc-yc .project-card-btn:hover { background: var(--primary); color: #fff; }
-  .pc-ky .project-card-btn { background: #e8f7f0; color: #1aaa6b; }
-  .pc-ky .project-card-btn:hover { background: #1aaa6b; color: #fff; }
-  .pc-xh .project-card-btn { background: #f3eaff; color: #9b3de8; }
-  .pc-xh .project-card-btn:hover { background: #9b3de8; color: #fff; }
+  .eco-cal-events-title { font-size: 14px; font-weight: 700; color: #1a2340; }
+  .eco-cal-events-more {
+    font-size: 12px; font-weight: 600; color: var(--primary); cursor: pointer;
+    transition: all .2s; text-decoration: none;
+  }
+  .eco-cal-events-more:hover { text-decoration: underline; }
+
+  .eco-cal-events { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+  .eco-cal-event {
+    display: flex; gap: 10px; align-items: flex-start;
+    background: #fff; border-radius: 10px; padding: 12px 14px;
+    border: 1px solid #eaecf2; transition: all .2s; cursor: pointer;
+  }
+  .eco-cal-event:hover { box-shadow: 0 3px 12px rgba(10,79,168,0.08); border-color: var(--primary); }
+  .eco-cal-event .ece-date { flex-shrink: 0; width: 40px; text-align: center; border-radius: 8px; padding: 5px 4px; color: #fff; }
+  .eco-cal-event .ece-d { font-size: 16px; font-weight: 800; line-height: 1; }
+  .eco-cal-event .ece-m { font-size: 8.5px; opacity: .85; margin-top: 1px; }
+  .eco-cal-event .ece-info { flex: 1; min-width: 0; }
+  .eco-cal-event .ece-title { font-size: 12px; font-weight: 600; color: #1a2340; line-height: 1.35; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .eco-cal-event .ece-meta { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+  .eco-cal-event .ece-tag { font-size: 9px; padding: 1px 6px; border-radius: 5px; font-weight: 600; }
+  .eco-cal-event .ece-status { font-size: 9.5px; font-weight: 600; }
 
   /* ===== 资源推荐 ===== */
   .resources-section { background: #f5f7fb; }
@@ -1388,7 +1430,10 @@
     .hero-inner { padding: 48px 20px; gap: 36px; }
     .hero-visual { width: 320px; }
     .hero-title { font-size: 36px; }
-    .projects-grid { grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .eco-content { grid-template-columns: 1fr; }
+    .eco-calendar-bar { grid-template-columns: 1fr; }
+    .eco-cal-events { grid-template-columns: 1fr; }
+    .eco-tab .tab-data { display: none; }
     .res-grid { grid-template-columns: repeat(3,1fr); }
     .impact-grid { grid-template-columns: repeat(3,1fr); }
     .footer-top { grid-template-columns: 2fr 1fr 1fr; gap: 28px; }
@@ -1431,7 +1476,7 @@
     .hero-search-input { font-size: 13px; }
     .hero-search-btn { padding: 9px 16px; font-size: 13px; }
     .hero-search-hot { gap: 6px; margin-top: 8px; }
-    .hero-features { grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 28px; }
+    .hero-features { grid-template-columns: repeat(2,1fr); gap: 8px; margin-bottom: 28px; }
     .hero-feat-label { font-size: 13px; }
 
     /* AI推荐横幅 */
@@ -1440,7 +1485,10 @@
     .ai-reco-btn { width: 100%; text-align: center; }
 
     /* 三大品牌 */
-    .projects-grid { grid-template-columns: 1fr; }
+    .eco-content { grid-template-columns: 1fr; }
+    .eco-calendar-bar { grid-template-columns: 1fr; }
+    .eco-cal-events { grid-template-columns: 1fr; }
+    .eco-tab .tab-data { display: none; }
 
     /* 资源推荐 */
     .res-grid { grid-template-columns: repeat(2,1fr); gap: 14px; }
@@ -1454,7 +1502,7 @@
     .section-desc { font-size: 13.5px; }
     .section-header { margin-bottom: 28px; }
 
-    /* 活动广场 */
+    /* 活动布局（保留备用） */
     .events-layout { grid-template-columns: 1fr; }
     .event-sidebar { display: none; }
     .event-card { flex-direction: column; gap: 12px; }
@@ -1496,7 +1544,10 @@
     .res-grid { grid-template-columns: 1fr; }
     .impact-grid { grid-template-columns: repeat(2,1fr); }
     .ob-role-grid { grid-template-columns: repeat(2,1fr); }
-    .projects-grid { grid-template-columns: 1fr; }
+    .eco-content { grid-template-columns: 1fr; }
+    .eco-calendar-bar { grid-template-columns: 1fr; }
+    .eco-cal-events { grid-template-columns: 1fr; }
+    .eco-tab .tab-data { display: none; }
     .map-features { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr; }
     .footer-brand { grid-column: 1; }
@@ -1565,17 +1616,15 @@
     <div class="logo">
       <div class="logo-icon">🔭</div>
       <div class="logo-text">
-        <div class="main">青少年科普教育平台</div>
-        <div class="sub">YOUTH SCIENCE EDUCATION PLATFORM</div>
+        <div class="main">青少年科学英才平台</div>
+        <div class="sub">Youth Science Talent Platform</div>
       </div>
     </div>
     <div class="nav-links">
       <a href="#" class="active">首页</a>
-      <a href="#">英才计划</a>
-      <a href="#">高校科学营</a>
-      <a href="xinghuo.html">星火馆</a>
       <a href="resource-center.html">资源中心</a>
-      <a href="#">活动广场 <span class="tag-new">NEW</span></a>
+      <a href="xinghuo.html">星火馆地图</a>
+      <a href="#">活动广场</a>
       <a href="#">关于平台</a>
     </div>
     <div class="nav-actions">
@@ -1600,7 +1649,7 @@
   <div class="mobile-drawer-header">
     <div class="mobile-drawer-logo">
       <span class="icon">🔭</span>
-      <span class="name">青少年科普教育平台</span>
+      <span class="name">青少年科学英才平台</span>
     </div>
     <div class="mobile-drawer-close" onclick="closeMobileMenu()">✕</div>
   </div>
@@ -1610,11 +1659,9 @@
   </div>
   <nav class="mobile-drawer-nav">
     <a href="#" class="active"><span class="nav-icon">🏠</span>首页</a>
-    <a href="#"><span class="nav-icon">🌟</span>英才计划</a>
-    <a href="#"><span class="nav-icon">🎓</span>高校科学营</a>
-    <a href="xinghuo.html"><span class="nav-icon">🏛️</span>星火馆</a>
     <a href="resource-center.html"><span class="nav-icon">📚</span>资源中心</a>
-    <a href="#"><span class="nav-icon">🎪</span>活动广场 <span class="tag-new">NEW</span></a>
+    <a href="xinghuo.html"><span class="nav-icon">🏛️</span>星火馆地图</a>
+    <a href="#"><span class="nav-icon">🎪</span>活动广场</a>
     <a href="#"><span class="nav-icon">ℹ️</span>关于平台</a>
   </nav>
   <div class="mobile-drawer-footer">
@@ -1650,8 +1697,8 @@
   <div class="hero-inner">
     <div class="hero-content">
       <h1 class="hero-title">
-        发现科学之美<br>
-        <span class="highlight">点燃未来之路</span>
+        探索科创之美<br>
+        <span class="highlight">点亮强国之路</span>
       </h1>
       <p class="hero-desc">
         中国科协青少年科技中心官方平台 · 融汇全国顶尖科教资源，精准服务每一位有科学梦想的中学生，打破地域壁垒，让优质科普无处不在。
@@ -1664,7 +1711,7 @@
             AI 检索
           </div>
           <input class="hero-search-input" type="text"
-            placeholder="搜课程、找导师、查活动… AI 帮你精准匹配"
+            placeholder="搜课程、找场馆、查活动… AI 帮你精准匹配"
             id="heroSearchInput"
             onkeydown="if(event.key==='Enter') heroSearch(this.value)" />
           <button class="hero-search-btn" onclick="heroSearch(document.getElementById('heroSearchInput').value)">
@@ -1694,11 +1741,6 @@
           <span class="hero-feat-sub">180+ 星火馆导览</span>
         </a>
         <a href="#" class="hero-feat-card">
-          <div class="hero-feat-icon">🧑‍🔬</div>
-          <span class="hero-feat-label">找导师</span>
-          <span class="hero-feat-sub">2800+ 科研导师</span>
-        </a>
-        <a href="#" class="hero-feat-card">
           <div class="hero-feat-icon">🗓️</div>
           <span class="hero-feat-label">找活动</span>
           <span class="hero-feat-sub">科学营 / 英才计划</span>
@@ -1711,20 +1753,24 @@
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
-          <div class="num">312<span>所</span></div>
-          <div class="label">高校联合参与</div>
-        </div>
-        <div class="hero-stat">
-          <div class="num">18<span>万+</span></div>
-          <div class="label">在册学员</div>
-        </div>
-        <div class="hero-stat">
           <div class="num">4.6<span>万</span></div>
           <div class="label">精品科普资源</div>
         </div>
         <div class="hero-stat">
+          <div class="num">18<span>万+</span></div>
+          <div class="label">青少年</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">312<span>所</span></div>
+          <div class="label">联合参与高校</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">180<span>所</span></div>
+          <div class="label">在用中学</div>
+        </div>
+        <div class="hero-stat">
           <div class="num">31<span>个</span></div>
-          <div class="label">省市全覆盖</div>
+          <div class="label">覆盖省市</div>
         </div>
       </div>
     </div>
@@ -1774,100 +1820,303 @@
   <div class="section-inner">
     <div class="section-header" style="margin-bottom:28px">
       <div class="section-tag">培育生态</div>
-      <h2 class="section-title" style="font-size:26px">选拔 · 培育 · <span class="em">实践</span></h2>
+      <h2 class="section-title" style="font-size:26px">培育 · 实践 · <span class="em">探索</span></h2>
       <p class="section-desc" style="font-size:14px">中国科协青少年科技中心三大旗舰项目，年均服务 20 万+ 青少年</p>
     </div>
-    <div class="projects-grid">
-      <!-- 英才计划 -->
-      <div class="project-card pc-yc">
-        <div class="project-card-top">
-          <div class="bg-shape"></div>
-          <div class="bg-shape2"></div>
-          <div class="project-card-top-content">
-            <div class="project-badge-icon">🏆</div>
-            <div class="project-card-top-title">中学生英才计划</div>
-            <div class="project-card-top-sub">Top-tier Science Talent Program</div>
+
+    <!-- Tab 导航 -->
+    <div class="eco-tabs-wrap">
+      <div class="eco-tabs">
+        <button class="eco-tab active" onclick="switchEcoTab(this,'eco-panel-yc')"><span class="tab-emoji">🏆</span><span class="tab-label">中学生英才计划</span></button>
+        <button class="eco-tab" onclick="switchEcoTab(this,'eco-panel-ky')"><span class="tab-emoji">⛺</span><span class="tab-label">青少年高校科学营</span></button>
+        <button class="eco-tab" onclick="switchEcoTab(this,'eco-panel-dc')"><span class="tab-emoji">🔭</span><span class="tab-label">青少年科学调查体验活动</span></button>
+      </div>
+    </div>
+
+    <!-- ===== 英才计划 ===== -->
+    <div class="eco-panel active" id="eco-panel-yc">
+      <div class="eco-content">
+        <div class="eco-main">
+          <div class="eco-hero eco-hero-yc">
+            <div class="eco-hero-icon">🏆</div>
+            <h3>中学生英才计划</h3>
+            <div class="eco-hero-sub">High School Talent Program</div>
           </div>
-          <div class="project-stats">
-            <div class="project-stat-item"><div class="sn">8700+</div><div class="sl">累计学员</div></div>
-            <div class="project-stat-item"><div class="sn">96</div><div class="sl">合作院士</div></div>
+          <div class="eco-body">
+            <div class="eco-stats-row">
+              <div class="eco-stat-chip"><div class="esn">5大学科</div><div class="esl">数学 / 物理 / 化学 / 生物 / 计算机</div></div>
+              <div class="eco-stat-chip"><div class="esn">12届</div><div class="esl">连续举办</div></div>
+              <div class="eco-stat-chip"><div class="esn">92%</div><div class="esl">学员培养完成率</div></div>
+            </div>
+            <p class="eco-desc">遴选品学兼优的中学生，走进高校实验室，由中科院院士等顶尖科学家直接指导，系统培养科学思维与研究能力。学员在一年的培养周期内，完整经历从选题、实验到论文撰写的科研全流程。</p>
+            <div class="eco-tags">
+              <span class="eco-tag">高校实验室</span>
+              <span class="eco-tag">院士导师</span>
+              <span class="eco-tag">科研实践</span>
+              <span class="eco-tag">论文撰写</span>
+            </div>
+            <ul class="eco-features">
+              <li>全国38所重点高校联合培养，覆盖5大学科方向</li>
+              <li>为期一年科研实践，完整经历选题→实验→论文全流程</li>
+              <li>中科院院士、国家级教学名师等一对一指导</li>
+              <li>优秀学员可获推荐参加国际科技竞赛与学术交流</li>
+            </ul>
+            <a href="#" class="eco-btn">了解中学生英才计划 →</a>
           </div>
         </div>
-        <div class="project-card-body">
-          <p class="project-card-desc">遴选品学兼优的中学生，走进高校实验室，由中科院院士等顶尖科学家直接指导，系统培养科学思维与研究能力。</p>
-          <div class="project-card-tags">
-            <span class="project-tag">高校实验室</span>
-            <span class="project-tag">院士导师</span>
-            <span class="project-tag">精准选拔</span>
-            <span class="project-tag">科研实践</span>
+        <div class="eco-sidebar">
+          <div class="eco-sidebar-title">🔥 热门活动 <span class="eco-sidebar-count">3场</span></div>
+          <div class="eco-event-card">
+            <div class="evc-date">📅 2026年4月18日</div>
+            <div class="evc-title">内蒙古青少年科技创新后备人才培养活动</div>
+            <div class="evc-brief">面向内蒙古自治区中学生，开展为期一年的科技创新培养，涵盖课题研究、实验指导与成果答辩。</div>
+            <div class="evc-footer">
+              <span class="evc-tag t-yc">英才计划</span>
+              <span class="evc-status open">🔥 报名中</span>
+            </div>
           </div>
-          <div class="project-news">
-            🎉 2026届新学员开营仪式 · 全国各合作高校同步启动<br>
-            🧑‍🔬 导师代表：张晓明（华师大·物理）、朱敏（CAS·数学）
+          <div class="eco-event-card">
+            <div class="evc-date">📅 2026年5月10日</div>
+            <div class="evc-title">2026届中学生英才计划（数学方向）笔试选拔</div>
+            <div class="evc-brief">全国统一笔试，选拔2026届数学方向培养学员，通过者将进入高校导师指导阶段。</div>
+            <div class="evc-footer">
+              <span class="evc-tag t-yc">英才计划</span>
+              <span class="evc-status open">🔥 报名中</span>
+            </div>
           </div>
-          <a href="#" class="project-card-btn">了解英才计划 →</a>
+          <div class="eco-event-card">
+            <div class="evc-date">📅 2026年3月25日</div>
+            <div class="evc-title">中学生英才计划2025年度培养成果展示</div>
+            <div class="evc-brief">展示2025届学员年度科研成果与优秀论文，涵盖数学、物理、化学、生物、计算机五大方向。</div>
+            <div class="evc-footer">
+              <span class="evc-tag t-yc">英才计划</span>
+              <span class="evc-status review">🎬 回顾上线</span>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <!-- 高校科学营 -->
-      <div class="project-card pc-ky">
-        <div class="project-card-top">
-          <div class="bg-shape"></div>
-          <div class="bg-shape2"></div>
-          <div class="project-card-top-content">
-            <div class="project-badge-icon">⛺</div>
-            <div class="project-card-top-title">高校科学营</div>
-            <div class="project-card-top-sub">University Science Camp</div>
+    <!-- ===== 青少年高校科学营 ===== -->
+    <div class="eco-panel" id="eco-panel-ky">
+      <div class="eco-content eco-ky-active">
+        <div class="eco-main">
+          <div class="eco-hero eco-hero-ky">
+            <div class="eco-hero-icon">⛺</div>
+            <h3>青少年高校科学营</h3>
+            <div class="eco-hero-sub">Youth Science Camp</div>
           </div>
-          <div class="project-stats">
-            <div class="project-stat-item"><div class="sn">12.6万</div><div class="sl">历届营员</div></div>
-            <div class="project-stat-item"><div class="sn">120+</div><div class="sl">参与高校</div></div>
+          <div class="eco-body">
+            <div class="eco-stats-row">
+              <div class="eco-stat-chip"><div class="esn">7天</div><div class="esl">营地周期</div></div>
+              <div class="eco-stat-chip"><div class="esn">500+场</div><div class="esl">年度活动</div></div>
+              <div class="eco-stat-chip"><div class="esn">31省</div><div class="esl">覆盖省份</div></div>
+            </div>
+            <p class="eco-desc">组织优秀中学生赴知名高校开展科学探究体验活动，感受顶级科研氛围，开拓视野，激发科学兴趣与创新潜能。每年暑期开营，营员在高校实验室、大科学装置中沉浸式体验科研过程。</p>
+            <div class="eco-tags">
+              <span class="eco-tag">名家大师报告</span>
+              <span class="eco-tag">科研动手实践</span>
+              <span class="eco-tag">大科学装置</span>
+              <span class="eco-tag">跨学科体验</span>
+            </div>
+            <ul class="eco-features">
+              <li>名家大师面对面报告，与顶尖科学家近距离交流</li>
+              <li>走进国家重点实验室与大科学装置，亲身体验科研过程</li>
+              <li>跨学科科学探究，培养综合科学素养与创新思维</li>
+              <li>与来自全国的优秀中学生同营交流，建立学术友谊</li>
+            </ul>
+            <a href="#" class="eco-btn">了解青少年高校科学营 →</a>
           </div>
         </div>
-        <div class="project-card-body">
-          <p class="project-card-desc">组织优秀中学生赴知名高校开展科学探究体验活动，感受顶级科研氛围，开拓视野，激发科学兴趣与创新潜能。</p>
-          <div class="project-card-tags">
-            <span class="project-tag">名家大师报告</span>
-            <span class="project-tag">科研动手实践</span>
-            <span class="project-tag">朋辈交流</span>
-            <span class="project-tag">大科学装置</span>
+        <div class="eco-sidebar">
+          <div class="eco-sidebar-title">🔥 热门活动 <span class="eco-sidebar-count">3场</span></div>
+          <div class="eco-event-card">
+            <div class="evc-date">📅 2026年4月30日</div>
+            <div class="evc-title">第十二届青少年高校科学营（北京大学营区）报名开启</div>
+            <div class="evc-brief">走进北大校园，参观国家级重点实验室，聆听院士大师报告，体验前沿科学研究。</div>
+            <div class="evc-footer">
+              <span class="evc-tag t-ky">高校科学营</span>
+              <span class="evc-status open">🔥 报名中</span>
+            </div>
           </div>
-          <div class="project-news">
-            🔥 热文：华东师大分营「探索科学奥秘，点亮青春梦想」<br>
-            🏫 营区：北京大学 / 中国科学院大学 / 华中科技大学
+          <div class="eco-event-card">
+            <div class="evc-date">📅 2026年6月20日</div>
+            <div class="evc-title">中南大学 City Walk 科学探索营报名中</div>
+            <div class="evc-brief">以城市为课堂，在中南大学校园及周边科研机构开展实地科学探索，融合人文与科学。</div>
+            <div class="evc-footer">
+              <span class="evc-tag t-ky">高校科学营</span>
+              <span class="evc-status open">🔥 报名中</span>
+            </div>
           </div>
-          <a href="#" class="project-card-btn">了解高校科学营 →</a>
+          <div class="eco-event-card">
+            <div class="evc-date">📅 2026年3月14日</div>
+            <div class="evc-title">青少年高校科学营·华东师大分营活动回顾</div>
+            <div class="evc-brief">华东师范大学分营精彩瞬间回顾，营员们在教育学科实验室中探索学习科学的奥秘。</div>
+            <div class="evc-footer">
+              <span class="evc-tag t-ky">高校科学营</span>
+              <span class="evc-status review">🎬 回顾上线</span>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <!-- 高校星火馆 -->
-      <div class="project-card pc-xh">
-        <div class="project-card-top">
-          <div class="bg-shape"></div>
-          <div class="bg-shape2"></div>
-          <div class="project-card-top-content">
-            <div class="project-badge-icon">✨</div>
-            <div class="project-card-top-title">高校星火馆</div>
-            <div class="project-card-top-sub">Campus Science Museum</div>
+    <!-- ===== 青少年科学调查体验活动 ===== -->
+    <div class="eco-panel" id="eco-panel-dc">
+      <div class="eco-content eco-dc-active">
+        <div class="eco-main">
+          <div class="eco-hero eco-hero-dc">
+            <div class="eco-hero-icon">🔭</div>
+            <h3>青少年科学调查体验活动</h3>
+            <div class="eco-hero-sub">Youth Science Investigation & Experience</div>
           </div>
-          <div class="project-stats">
-            <div class="project-stat-item"><div class="sn">529</div><div class="sl">全国场馆</div></div>
-            <div class="project-stat-item"><div class="sn">50万+</div><div class="sl">年参观人次</div></div>
+          <div class="eco-body">
+            <div class="eco-stats-row">
+              <div class="eco-stat-chip"><div class="esn">10+</div><div class="esl">调查主题方向</div></div>
+              <div class="eco-stat-chip"><div class="esn">双通道</div><div class="esl">线上 + 线下</div></div>
+              <div class="eco-stat-chip"><div class="esn">年度</div><div class="esl">优秀成果展示</div></div>
+            </div>
+            <p class="eco-desc">中国科协、教育部等五部委联合主办，鼓励青少年围绕身边科学问题开展调查探究与实践体验。线上线下双通道参与，覆盖全国31个省份，每年吸引超百万青少年参与科学探究。</p>
+            <div class="eco-tags">
+              <span class="eco-tag">科学探究</span>
+              <span class="eco-tag">实践体验</span>
+              <span class="eco-tag">成果展示</span>
+              <span class="eco-tag">线上+线下</span>
+            </div>
+            <ul class="eco-features">
+              <li>围绕身边科学问题开展调查探究，选题贴近日常生活</li>
+              <li>线上提交报告与线下实地调查相结合，参与方式灵活</li>
+              <li>优秀成果全国展示交流，激发持续探索热情</li>
+              <li>五部委联合背书，证书权威，助力综合素质评价</li>
+            </ul>
+            <a href="https://www.cyscc.org/dctyhd/#/home" target="_blank" class="eco-btn">了解青少年科学调查体验活动 →</a>
           </div>
         </div>
-        <div class="project-card-body">
-          <p class="project-card-desc">建设依托高校的科普场馆体系，将前沿科研成果转化为面向中学生的科普展示，让"身边的科学"触手可及。</p>
-          <div class="project-card-tags">
-            <span class="project-tag">线下场馆</span>
-            <span class="project-tag">前沿展示</span>
-            <span class="project-tag">地图导览</span>
-            <span class="project-tag">预约参观</span>
+        <div class="eco-sidebar">
+          <div class="eco-sidebar-title">🔥 热门活动 <span class="eco-sidebar-count">3场</span></div>
+          <div class="eco-event-card">
+            <div class="evc-date">📅 2026年9月30日</div>
+            <div class="evc-title">2026年青少年科学调查体验活动正式启动</div>
+            <div class="evc-brief">年度旗舰活动启动，围绕能源、环境、健康等10+主题方向，全国31省同步开展。</div>
+            <div class="evc-footer">
+              <span class="evc-tag t-dc">调查体验</span>
+              <span class="evc-status open">🔥 报名中</span>
+            </div>
           </div>
-          <div class="project-news">
-            🚶 中南大学"科普City Walk"开放参观（9月15-30日）<br>
-            🏛️ 代表馆：华中农业大学博物馆 · 浙江海洋大学海洋生物博物馆
+          <div class="eco-event-card">
+            <div class="evc-date">📅 2026年5月15日</div>
+            <div class="evc-title">云南大学「生物多样性调查」专项活动</div>
+            <div class="evc-brief">走进云南大学生态环境研究所，围绕滇池流域生物多样性开展实地调查与数据采集。</div>
+            <div class="evc-footer">
+              <span class="evc-tag t-dc">调查体验</span>
+              <span class="evc-status open">🔥 报名中</span>
+            </div>
           </div>
-          <a href="#" class="project-card-btn">探索星火馆 →</a>
+          <div class="eco-event-card">
+            <div class="evc-date">📅 2026年4月10日</div>
+            <div class="evc-title">2025年度青少年科学调查体验活动优秀成果展示已上线</div>
+            <div class="evc-brief">精选2025年度全国优秀调查报告与实验作品，涵盖环境、能源、健康等多个方向。</div>
+            <div class="evc-footer">
+              <span class="evc-tag t-dc">调查体验</span>
+              <span class="evc-status review">✅ 已上线</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部活动日历 -->
+    <div class="eco-calendar-bar">
+      <div class="eco-cal-compact">
+        <div class="eco-cal-header">
+          <div class="ec-arrow">‹</div>
+          <span>2026年 4月</span>
+          <div class="ec-arrow">›</div>
+        </div>
+        <div class="eco-cal-weekdays">
+          <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+        </div>
+        <div class="eco-cal-days">
+          <span class="ec-day ec-empty"></span>
+          <span class="ec-day ec-empty"></span>
+          <span class="ec-day ec-event">1</span>
+          <span class="ec-day">2</span>
+          <span class="ec-day">3</span>
+          <span class="ec-day ec-event">4</span>
+          <span class="ec-day">5</span>
+          <span class="ec-day">6</span>
+          <span class="ec-day">7</span>
+          <span class="ec-day">8</span>
+          <span class="ec-day ec-event">9</span>
+          <span class="ec-day ec-today ec-event">10</span>
+          <span class="ec-day ec-event">11</span>
+          <span class="ec-day">12</span>
+          <span class="ec-day">13</span>
+          <span class="ec-day">14</span>
+          <span class="ec-day">15</span>
+          <span class="ec-day ec-event">16</span>
+          <span class="ec-day">17</span>
+          <span class="ec-day ec-event">18</span>
+          <span class="ec-day">19</span>
+          <span class="ec-day ec-event">20</span>
+          <span class="ec-day">21</span>
+          <span class="ec-day">22</span>
+          <span class="ec-day">23</span>
+          <span class="ec-day">24</span>
+          <span class="ec-day">25</span>
+          <span class="ec-day">26</span>
+          <span class="ec-day">27</span>
+          <span class="ec-day ec-event">28</span>
+          <span class="ec-day">29</span>
+          <span class="ec-day ec-event">30</span>
+        </div>
+      </div>
+      <div class="eco-cal-events-section">
+        <div class="eco-cal-events-header">
+          <div class="eco-cal-events-title">📅 近期活动</div>
+          <a href="#" class="eco-cal-events-more">查看全部活动 →</a>
+        </div>
+        <div class="eco-cal-events">
+          <div class="eco-cal-event">
+            <div class="ece-date" style="background:linear-gradient(135deg,#0a4fa8,#1a6fe8)"><div class="ece-d">18</div><div class="ece-m">04月</div></div>
+            <div class="ece-info">
+              <div class="ece-title">内蒙古青少年科技创新后备人才培养活动</div>
+              <div class="ece-meta">
+                <span class="ece-tag" style="background:#eaf2ff;color:#0a4fa8">英才计划</span>
+                <span class="ece-status" style="color:#1aaa6b">🔥 报名中</span>
+              </div>
+            </div>
+          </div>
+          <div class="eco-cal-event">
+            <div class="ece-date" style="background:linear-gradient(135deg,#0a4fa8,#00c6ff)"><div class="ece-d">30</div><div class="ece-m">04月</div></div>
+            <div class="ece-info">
+              <div class="ece-title">第十二届青少年高校科学营（北京大学营区）报名开启</div>
+              <div class="ece-meta">
+                <span class="ece-tag" style="background:#e8f7f0;color:#1aaa6b">高校科学营</span>
+                <span class="ece-status" style="color:#1aaa6b">🔥 报名中</span>
+              </div>
+            </div>
+          </div>
+          <div class="eco-cal-event">
+            <div class="ece-date" style="background:linear-gradient(135deg,#6a0dad,#9b3de8)"><div class="ece-d">30</div><div class="ece-m">09月</div></div>
+            <div class="ece-info">
+              <div class="ece-title">2026年青少年科学调查体验活动正式启动</div>
+              <div class="ece-meta">
+                <span class="ece-tag" style="background:#f3eaff;color:#9b3de8">调查体验</span>
+                <span class="ece-status" style="color:#1aaa6b">🔥 报名中</span>
+              </div>
+            </div>
+          </div>
+          <div class="eco-cal-event">
+            <div class="ece-date" style="background:linear-gradient(135deg,#0d6b45,#1aaa6b)"><div class="ece-d">14</div><div class="ece-m">03月</div></div>
+            <div class="ece-info">
+              <div class="ece-title">青少年高校科学营·华东师大分营活动回顾</div>
+              <div class="ece-meta">
+                <span class="ece-tag" style="background:#e8f7f0;color:#1aaa6b">高校科学营</span>
+                <span class="ece-status" style="color:#8899bb">🎬 回顾上线</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2102,157 +2351,6 @@
   </div>
 </section>
 
-<!-- 活动广场 -->
-<section class="section events-section">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-tag">活动广场</div>
-      <h2 class="section-title">近期<span class="em">精彩活动</span>，不错过每一个机会</h2>
-      <p class="section-desc">英才计划、科学营、星火馆三大场景活动集中展示，一站报名</p>
-    </div>
-    <div class="events-layout">
-      <div class="events-list">
-        <div class="event-card">
-          <div class="event-date"><div class="d">18</div><div class="m">04月</div></div>
-          <div class="event-content">
-            <div class="event-title">2026年内蒙古自治区青少年科技创新后备人才培养活动</div>
-            <div class="event-desc">依托英才计划内蒙古培养基地，面向全区中学生开展为期三天的科学实践体验，涵盖实验室参观、导师讲座与科创项目辅导，名额有限，欢迎报名。</div>
-            <div class="event-tags">
-              <span class="event-tag et-yc">英才计划</span>
-              <span class="event-tag et-hot">🔥 报名中</span>
-              <span style="font-size:12px;color:#8899bb">📍 内蒙古大学</span>
-            </div>
-          </div>
-          <div class="event-status es-open">报名中</div>
-        </div>
-        <div class="event-card">
-          <div class="event-date" style="background:linear-gradient(135deg,#0d6b45,#1aaa6b)"><div class="d">14</div><div class="m">03月</div></div>
-          <div class="event-content">
-            <div class="event-title">高校科学营 · 华东师范大学分营：探索科学奥秘，点亮青春梦想</div>
-            <div class="event-desc">2024高校科学营华东师大分营活动回顾上线，涵盖生物多样性理论讲座、名家讲座、科研动手实践等精彩内容，感受顶级科研氛围。</div>
-            <div class="event-tags">
-              <span class="event-tag et-ky">高校科学营</span>
-              <span style="font-size:12px;color:#8899bb">📍 华东师范大学</span>
-              <span style="font-size:12px;color:#8899bb">🎬 回顾视频已上线</span>
-            </div>
-          </div>
-          <div class="event-status" style="background:#fff3e0;color:#e65100;border:1px solid #ffcc80;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;white-space:nowrap;align-self:flex-start">回顾</div>
-        </div>
-        <div class="event-card">
-          <div class="event-date" style="background:linear-gradient(135deg,#6a0dad,#9b3de8)"><div class="d">30</div><div class="m">09月</div></div>
-          <div class="event-content">
-            <div class="event-title">中南大学星火馆"科普City Walk"：点石成金的科学之旅</div>
-            <div class="event-desc">踏上中南大学国家重金属污染防治工程中心星火馆"科普City Walk"，开启一场沉浸式科学探秘之旅，活动至9月30日。</div>
-            <div class="event-tags">
-              <span class="event-tag et-xh">高校星火馆</span>
-              <span style="font-size:12px;color:#8899bb">📍 中南大学</span>
-              <span style="font-size:12px;color:#8899bb">🗓 09.15—09.30</span>
-            </div>
-          </div>
-          <div class="event-status es-open">报名中</div>
-        </div>
-        <div class="event-card">
-          <div class="event-date" style="background:linear-gradient(135deg,#0a4fa8,#00c6ff)"><div class="d">30</div><div class="m">09月</div></div>
-          <div class="event-content">
-            <div class="event-title">云南大学百年育人实践展："课堂·操场·田野"校史馆展览</div>
-            <div class="event-desc">云南大学校史馆开展百年育人实践主题展，汇聚历史影像、科研档案与互动装置，免费对外开放，欢迎中学生团体预约参观。</div>
-            <div class="event-tags">
-              <span class="event-tag et-xh">高校星火馆</span>
-              <span style="font-size:12px;color:#8899bb">📍 云南大学校史馆</span>
-              <span style="font-size:12px;color:#8899bb">🗓 09.10—09.30</span>
-            </div>
-          </div>
-          <div class="event-status es-open">报名中</div>
-        </div>
-      </div>
-
-      <!-- 右侧 -->
-      <div class="event-sidebar">
-        <div class="sidebar-card">
-          <div class="sidebar-card-title"><div class="dot"></div>活动日历 · 2026年4月</div>
-          <div class="mini-calendar">
-            <div class="cal-header">
-              <div class="arrow">‹</div>
-              <span>2026年 4月</span>
-              <div class="arrow">›</div>
-            </div>
-            <div class="cal-days-header">
-              <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
-            </div>
-            <div class="cal-days">
-              <span class="cal-day empty"></span>
-              <span class="cal-day empty"></span>
-              <span class="cal-day has-event">1</span>
-              <span class="cal-day">2</span>
-              <span class="cal-day">3</span>
-              <span class="cal-day has-event">4</span>
-              <span class="cal-day">5</span>
-              <span class="cal-day">6</span>
-              <span class="cal-day">7</span>
-              <span class="cal-day">8</span>
-              <span class="cal-day has-event">9</span>
-              <span class="cal-day">10</span>
-              <span class="cal-day has-event">11</span>
-              <span class="cal-day">12</span>
-              <span class="cal-day">13</span>
-              <span class="cal-day">14</span>
-              <span class="cal-day">15</span>
-              <span class="cal-day has-event">16</span>
-              <span class="cal-day">17</span>
-              <span class="cal-day">18</span>
-              <span class="cal-day">19</span>
-              <span class="cal-day has-event">20</span>
-              <span class="cal-day">21</span>
-              <span class="cal-day">22</span>
-              <span class="cal-day">23</span>
-              <span class="cal-day today">24</span>
-              <span class="cal-day">25</span>
-              <span class="cal-day">26</span>
-              <span class="cal-day">27</span>
-              <span class="cal-day has-event">28</span>
-              <span class="cal-day">29</span>
-              <span class="cal-day">30</span>
-            </div>
-          </div>
-        </div>
-        <div class="sidebar-card">
-          <div class="sidebar-card-title"><div class="dot" style="background:#ff6b35"></div>即将截止</div>
-          <div class="upcoming-list">
-            <div class="upcoming-item">
-              <div class="upcoming-dot" style="background:#9b3de8"></div>
-              <div>
-                <div class="ui-title">中南大学科普City Walk参观</div>
-                <div class="ui-date">截止：2025.09.30 &nbsp; 星火馆</div>
-              </div>
-            </div>
-            <div class="upcoming-item">
-              <div class="upcoming-dot" style="background:#9b3de8"></div>
-              <div>
-                <div class="ui-title">云南大学百年育人实践展</div>
-                <div class="ui-date">截止：2025.09.30 &nbsp; 星火馆</div>
-              </div>
-            </div>
-            <div class="upcoming-item">
-              <div class="upcoming-dot" style="background:#0a4fa8"></div>
-              <div>
-                <div class="ui-title">内蒙古青少年科技创新后备人才培养</div>
-                <div class="ui-date">截止：2026.04.10 &nbsp; 英才计划</div>
-              </div>
-            </div>
-            <div class="upcoming-item">
-              <div class="upcoming-dot" style="background:#1aaa6b"></div>
-              <div>
-                <div class="ui-title">科学营·华东师大分营回顾</div>
-                <div class="ui-date">精彩内容 · 视频已上线</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- 星火馆地图入口 -->
 <section class="map-section">
   <div class="stars"></div>
@@ -2411,6 +2509,7 @@
     <div class="partners-title">— 指导单位 · 合作高校 · 内容合作伙伴 —</div>
     <div class="partners-logos">
       <div class="partner-logo">中国科学技术协会</div>
+      <div class="partner-logo">高校科协智慧服务平台</div>
       <div class="partner-logo">科普中国</div>
       <div class="partner-logo">北京大学</div>
       <div class="partner-logo">清华大学</div>
@@ -2432,7 +2531,7 @@
       <div class="footer-brand">
         <div class="fb-logo">
           <div class="fi">🔭</div>
-          <div class="fb-name">青少年科普教育平台</div>
+          <div class="fb-name">青少年科学英才平台</div>
         </div>
         <div class="fb-desc">依托中国科协，整合英才计划、高校科学营、高校星火馆三大核心品牌，打造广覆盖、精选拔、持续培养的青少年科技后备人才培育主阵地。</div>
         <div class="footer-social">
@@ -2464,7 +2563,6 @@
       <div>
         <div class="footer-col-title">活动服务</div>
         <div class="footer-links">
-          <a href="#">活动广场</a>
           <a href="#">星火馆地图</a>
           <a href="#">在线预约</a>
           <a href="#">竞赛日历</a>
@@ -2482,7 +2580,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div>© 2026 青少年科普教育平台 · 中国科协青少年科技中心</div>
+      <div>© 2026 青少年科学英才平台 · 中国科协青少年科技中心</div>
       <div class="credits">
         <a href="#">京ICP备XXXXXXXX号</a>
         <a href="#">网络安全等级保护备案</a>
@@ -2542,11 +2640,6 @@
         <div class="ask-name">活动查询</div>
         <div class="ask-desc">查看报名中的科学营和活动</div>
       </div>
-      <div class="ai-skill-card" onclick="useSkill('plan')">
-        <div class="ask-icon">🗺️</div>
-        <div class="ask-name">学习规划</div>
-        <div class="ask-desc">生成专属科学学习路径</div>
-      </div>
       <div class="ai-skill-card" onclick="useSkill('yingcai')">
         <div class="ask-icon">🏆</div>
         <div class="ask-name">英才计划</div>
@@ -2556,11 +2649,6 @@
         <div class="ask-icon">🗺️</div>
         <div class="ask-name">星火馆导览</div>
         <div class="ask-desc">查找附近场馆、预约参观</div>
-      </div>
-      <div class="ai-skill-card" onclick="useSkill('qa')">
-        <div class="ask-icon">🔬</div>
-        <div class="ask-name">科学问答</div>
-        <div class="ask-desc">解答科普疑问，深度讲解</div>
       </div>
     </div>
 
@@ -2780,7 +2868,7 @@
 }
 .ai-skills-grid {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(4,1fr);
   gap: 8px;
   margin-bottom: 4px;
 }
@@ -3107,7 +3195,7 @@
 
     <div class="ob-header">
       <div class="ob-logo">🔭</div>
-      <div class="ob-title">欢迎来到青少年科普教育平台</div>
+      <div class="ob-title">欢迎来到青少年科学英才平台</div>
       <div class="ob-subtitle">花30秒告诉我们你是谁，我们为你精准推荐最适合的科普资源</div>
     </div>
 
@@ -3282,8 +3370,8 @@
       <div class="ob-panel" id="panel-done">
         <div class="ob-done">
           <div class="done-icon">🎉</div>
-          <div class="done-title" id="doneTitle">个性化方案已准备好！</div>
-          <div class="done-desc" id="doneDesc">根据你的信息，我们已为你定制专属的科普学习路线，快去探索属于你的科学世界吧！</div>
+          <div class="done-title" id="doneTitle">设置完成！</div>
+          <div class="done-desc" id="doneDesc">快去探索属于你的科学世界吧！</div>
           <div class="ob-done-tags" id="doneTags"></div>
         </div>
       </div>
@@ -3303,6 +3391,12 @@
 
 <script>
   // 资源 Tab 切换
+  function switchEcoTab(el, panelId) {
+    document.querySelectorAll('.eco-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.eco-panel').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById(panelId).classList.add('active');
+  }
   function switchResTab(el, tabId) {
     document.querySelectorAll('.res-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.res-tab-panel').forEach(p => p.classList.remove('active'));
@@ -3420,10 +3514,8 @@
   const skillPrompts = {
     resource: '请根据我的年级和兴趣，为我推荐平台上的精品科普资源',
     activity: '平台上目前有哪些正在报名的科学活动？',
-    plan: '请为我制定一个个性化的科学学习规划',
     yingcai: '中学生英才计划的报名条件、流程和备考建议是什么？',
-    museum: '请帮我查找附近的高校星火馆，并推荐值得参观的场馆',
-    qa: '我有一个科学问题想请教你'
+    museum: '请帮我查找附近的高校星火馆，并推荐值得参观的场馆'
   };
   function useSkill(type) {
     const prompt = skillPrompts[type] || '';
@@ -3473,12 +3565,6 @@
       <div class="ai-res-card"><div class="arc-icon">🏆</div><div><div class="arc-title">英才计划（数学方向）第一阶段笔试</div><div class="arc-meta">截止：2026.04.28 · 全国考点</div></div></div>
       <div class="ai-res-card"><div class="arc-icon">⛺</div><div><div class="arc-title">第十二届高校科学营（北大营区）</div><div class="arc-meta">截止：2026.04.30 · 限额200人</div></div></div>
       <div class="ai-res-card"><div class="arc-icon">✨</div><div><div class="arc-title">交大星火馆「AI与未来」参观预约</div><div class="arc-meta">本周末场次开放 · 上海交通大学</div></div></div>`,
-    '请为我制定一个个性化的科学学习规划': `
-      好的！以下是为你定制的 <strong>3个月科学学习路径</strong> 🗺️<br><br>
-      📌 <strong>第1个月：基础夯实</strong><br>完成平台推荐的入门课程，建立学科知识框架<br><br>
-      📌 <strong>第2个月：深度探索</strong><br>选定1-2个感兴趣方向，结合视频+实验包深入学习<br><br>
-      📌 <strong>第3个月：实践参与</strong><br>报名参加线下活动或科学营，将知识转化为实践能力<br><br>
-      需要我为某个具体方向制定更详细的计划吗？`,
     '中学生英才计划的报名条件、流程和备考建议是什么？': `
       <strong>英才计划</strong> 是中国科协与教育部联合开展的重点项目 🏆<br><br>
       <strong>报名条件：</strong>高中在读，成绩优秀，有强烈科学兴趣<br><br>
@@ -3498,7 +3584,6 @@
     '帮我推荐适合高中生的科学资源',
     '中学生英才计划怎么报名？',
     '最近有哪些科学活动可以参加？',
-    '给我制定一份科学学习计划',
     '附近有哪些高校星火馆可以参观？',
     '高中物理有哪些好的学习视频？',
     '如何准备英才计划的面试？',

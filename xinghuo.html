@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>高校星火馆 — 青少年科普教育平台</title>
+<title>高校星火馆 — 青少年科学英才平台</title>
 <style>
   /* ===== 基础重置 ===== */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -76,8 +76,8 @@
   }
   .logo-text { line-height: 1.25; }
   .logo-text .main { font-size: 17px; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
-  .logo-text .sub { font-size: 11px; color: var(--text-sub); letter-spacing: 2px; }
-  .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; }
+  .logo-text .sub { font-size: 10.5px; color: var(--text-sub); letter-spacing: 0.5px; font-family: "Helvetica Neue", Arial, sans-serif; }
+  .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: flex-end; }
   .nav-links a {
     padding: 8px 14px; border-radius: 8px;
     font-size: 14.5px; font-weight: 500; color: var(--text-sub);
@@ -810,17 +810,15 @@
     <a href="index.html" class="logo">
       <div class="logo-icon">🔭</div>
       <div class="logo-text">
-        <div class="main">青少年科普教育平台</div>
-        <div class="sub">YOUTH SCIENCE EDUCATION PLATFORM</div>
+        <div class="main">青少年科学英才平台</div>
+        <div class="sub">Youth Science Talent Platform</div>
       </div>
     </a>
     <div class="nav-links">
       <a href="index.html">首页</a>
-      <a href="#">英才计划</a>
-      <a href="#">高校科学营</a>
-      <a href="#" class="active">星火馆</a>
       <a href="resource-center.html">资源中心</a>
-      <a href="#">活动广场 <span class="tag-new">NEW</span></a>
+      <a href="#" class="active">星火馆地图</a>
+      <a href="#">活动广场</a>
       <a href="#">关于平台</a>
     </div>
     <div class="nav-actions">
@@ -847,7 +845,7 @@
   <div class="mobile-drawer-header">
     <div class="mobile-drawer-logo">
       <span class="icon">🔭</span>
-      <span class="name">青少年科普教育平台</span>
+      <span class="name">青少年科学英才平台</span>
     </div>
     <div class="mobile-drawer-close" onclick="closeMobileMenu()">✕</div>
   </div>
@@ -864,11 +862,9 @@
   </div>
   <nav class="mobile-drawer-nav">
     <a href="index.html"><span class="nav-icon">🏠</span>首页</a>
-    <a href="#"><span class="nav-icon">🌟</span>英才计划</a>
-    <a href="#"><span class="nav-icon">🎓</span>高校科学营</a>
-    <a href="#" class="active"><span class="nav-icon">✨</span>星火馆</a>
     <a href="resource-center.html"><span class="nav-icon">📚</span>资源中心</a>
-    <a href="#"><span class="nav-icon">🎪</span>活动广场 <span class="tag-new">NEW</span></a>
+    <a href="#" class="active"><span class="nav-icon">🏛️</span>星火馆地图</a>
+    <a href="#"><span class="nav-icon">🎪</span>活动广场</a>
     <a href="profile.html"><span class="nav-icon">👤</span>个人中心</a>
   </nav>
   <div class="mobile-drawer-footer">
@@ -1411,7 +1407,7 @@
       <div class="footer-brand">
         <div class="fb-logo">
           <div class="fi">🔭</div>
-          <div class="fb-name">青少年科普教育平台</div>
+          <div class="fb-name">青少年科学英才平台</div>
         </div>
         <div class="fb-desc">依托中国科协，整合英才计划、高校科学营、高校星火馆三大核心品牌，打造广覆盖、精选拔、持续培养的青少年科技后备人才培育主阵地。</div>
         <div class="footer-social">
@@ -1461,7 +1457,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div>© 2026 青少年科普教育平台 · 中国科协青少年科技中心</div>
+      <div>© 2026 青少年科学英才平台 · 中国科协青少年科技中心</div>
       <div class="credits">
         <a href="#">京ICP备XXXXXXXX号</a>
         <a href="#">网络安全等级保护备案</a>
@@ -1523,11 +1519,6 @@
         <div class="ask-name">活动查询</div>
         <div class="ask-desc">查看报名中的科学营和活动</div>
       </div>
-      <div class="ai-skill-card" onclick="useSkill('plan')">
-        <div class="ask-icon">🗺️</div>
-        <div class="ask-name">学习规划</div>
-        <div class="ask-desc">生成专属科学学习路径</div>
-      </div>
       <div class="ai-skill-card" onclick="useSkill('yingcai')">
         <div class="ask-icon">🏆</div>
         <div class="ask-name">英才计划</div>
@@ -1537,11 +1528,6 @@
         <div class="ask-icon">🗺️</div>
         <div class="ask-name">星火馆导览</div>
         <div class="ask-desc">查找附近场馆、预约参观</div>
-      </div>
-      <div class="ai-skill-card" onclick="useSkill('qa')">
-        <div class="ask-icon">🔬</div>
-        <div class="ask-name">科学问答</div>
-        <div class="ask-desc">解答科普疑问，深度讲解</div>
       </div>
     </div>
 
@@ -1723,7 +1709,7 @@
 }
 .ai-skills-area.hidden { display: none; }
 .ai-skills-label, .ai-prompts-label { font-size: 12px; font-weight: 700; color: #8899bb; letter-spacing: 0.5px; padding: 12px 0 8px; }
-.ai-skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 4px; }
+.ai-skills-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 4px; }
 .ai-skill-card {
   background: #fff; border: 1.5px solid #e0e8f4; border-radius: 12px;
   padding: 12px 8px 10px; text-align: center; cursor: pointer; transition: all .2s;
@@ -1785,7 +1771,7 @@
   .ai-drawer.open { bottom: 0; }
   .ai-drawer-header { border-radius: 20px 20px 0 0; }
   .ai-input-area { border-radius: 0; padding-bottom: calc(14px + env(safe-area-inset-bottom)); }
-  .ai-skills-grid { grid-template-columns: repeat(3,1fr); }
+  .ai-skills-grid { grid-template-columns: repeat(4,1fr); }
 }
 </style>
 
@@ -1882,10 +1868,8 @@
   const skillPrompts = {
     resource: '请根据我的年级和兴趣，为我推荐平台上的精品科普资源',
     activity: '平台上目前有哪些正在报名的科学活动？',
-    plan: '请为我制定一个个性化的科学学习规划',
     yingcai: '中学生英才计划的报名条件、流程和备考建议是什么？',
-    museum: '请帮我查找附近的高校星火馆，并推荐值得参观的场馆',
-    qa: '我有一个科学问题想请教你'
+    museum: '请帮我查找附近的高校星火馆，并推荐值得参观的场馆'
   };
   function useSkill(type) {
     const prompt = skillPrompts[type] || '';
@@ -1917,7 +1901,6 @@
   const botReplies = {
     '\u8BF7\u6839\u636E\u6211\u7684\u5E74\u7EA7\u548C\u5174\u8DA3\uFF0C\u4E3A\u6211\u63A8\u8350\u5E73\u53F0\u4E0A\u7684\u7CBE\u54C1\u79D1\u666E\u8D44\u6E90': '\u597D\u7684\uFF01\u6839\u636E\u4F60\u7684\u5B66\u4E60\u753B\u50CF\uFF0C\u4E3A\u4F60\u7CBE\u9009\u4E86\u4EE5\u4E0B\u8D44\u6E90 \u{1F447}<div class="ai-res-card"><div class="arc-icon">\u{1F3AC}</div><div><div class="arc-title">CRISPR\u57FA\u56E0\u7F16\u8F91\uFF1A\u4ECE\u7406\u8BBA\u5230\u5E94\u7528</div><div class="arc-meta">\u89C6\u9891 \xB7 \u5317\u4EAC\u5927\u5B66 \xB7 12.3\u4E07\u6B21\u89C2\u770B</div></div></div><div class="ai-res-card"><div class="arc-icon">\u{1F4DA}</div><div><div class="arc-title">\u4ECE\u96F6\u5F00\u59CB\u5B66AI\uFF1A\u673A\u5668\u5B66\u4E60\u5165\u95E8\u7CFB\u5217</div><div class="arc-meta">\u8BFE\u7A0B \xB7 \u6E05\u534E\u5927\u5B66 \xB7 \u517112\u8BB2</div></div></div><div class="ai-res-card"><div class="arc-icon">\u{1F9EA}</div><div><div class="arc-title">\u5C45\u5BB6\u79D1\u5B66\u5B9E\u9A8C\uFF1A\u63A2\u7D22\u6DB2\u4F53\u8868\u9762\u5F20\u529B</div><div class="arc-meta">\u5B9E\u9A8C\u5305 \xB7 \u4E2D\u56FD\u79D1\u5B66\u9662</div></div></div>\u8FD8\u60F3\u770B\u66F4\u591A\uFF1F\u544A\u8BC9\u6211\u4F60\u6700\u611F\u5174\u8DA3\u7684\u65B9\u5411\uFF5E',
     '\u5E73\u53F0\u4E0A\u76EE\u524D\u6709\u54EA\u4E9B\u6B63\u5728\u62A5\u540D\u7684\u79D1\u5B66\u6D3B\u52A8\uFF1F': '\u76EE\u524D\u6709 <strong>3\u4E2A\u6D3B\u52A8</strong> \u6B63\u5728\u62A5\u540D\u4E2D \u{1F4C5}<div class="ai-res-card"><div class="arc-icon">\u{1F3C6}</div><div><div class="arc-title">\u82F1\u624D\u8BA1\u5212\uFF08\u6570\u5B66\u65B9\u5411\uFF09\u7B2C\u4E00\u9636\u6BB5\u7B14\u8BD5</div><div class="arc-meta">\u622A\u6B62\uFF1A2026.04.28 \xB7 \u5168\u56FD\u8003\u70B9</div></div></div><div class="ai-res-card"><div class="arc-icon">\u26FA</div><div><div class="arc-title">\u7B2C\u5341\u4E8C\u5C4A\u9AD8\u6821\u79D1\u5B66\u8425\uFF08\u5317\u5927\u8425\u533A\uFF09</div><div class="arc-meta">\u622A\u6B62\uFF1A2026.04.30 \xB7 \u9650\u989D200\u4EBA</div></div></div><div class="ai-res-card"><div class="arc-icon">\u2728</div><div><div class="arc-title">\u4EA4\u5927\u661F\u706B\u9986\u300CAI\u4E0E\u672A\u6765\u300D\u53C2\u89C2\u9884\u7EA6</div><div class="arc-meta">\u672C\u5468\u672B\u573A\u6B21\u5F00\u653E \xB7 \u4E0A\u6D77\u4EA4\u901A\u5927\u5B66</div></div></div>',
-    '\u8BF7\u4E3A\u6211\u5236\u5B9A\u4E00\u4E2A\u4E2A\u6027\u5316\u7684\u79D1\u5B66\u5B66\u4E60\u89C4\u5212': '\u597D\u7684\uFF01\u4EE5\u4E0B\u662F\u4E3A\u4F60\u5B9A\u5236\u7684 <strong>3\u4E2A\u6708\u79D1\u5B66\u5B66\u4E60\u8DEF\u5F84</strong> \u{1F5FA}\uFF1Cbr\uFF1E\uFF1Cbr\uFF1E\u{1F4CC} <strong>\u7B2C1\u4E2A\u6708\uFF1A\u57FA\u7840\u5938\u5B9E</strong>\uFF1Cbr\uFF1E\u5B8C\u6210\u5E73\u53F0\u63A8\u8350\u7684\u5165\u95E8\u8BFE\u7A0B\uFF0C\u5EFA\u7ACB\u5B66\u79D1\u77E5\u8BC6\u6846\u67B6\uFF1Cbr\uFF1E\uFF1Cbr\uFF1E\u{1F4CC} <strong>\u7B2C2\u4E2A\u6708\uFF1A\u6DF1\u5EA6\u63A2\u7D22</strong>\uFF1Cbr\uFF1E\u9009\u5B9A1-2\u4E2A\u611F\u5174\u8DA3\u65B9\u5411\uFF0C\u7ED3\u5408\u89C6\u9891+\u5B9E\u9A8C\u5305\u6DF1\u5165\u5B66\u4E60\uFF1Cbr\uFF1E\uFF1Cbr\uFF1E\u{1F4CC} <strong>\u7B2C3\u4E2A\u6708\uFF1A\u5B9E\u8DF5\u53C2\u4E0E</strong>\uFF1Cbr\uFF1E\u62A5\u540D\u53C2\u52A0\u7EBF\u4E0B\u6D3B\u52A8\u6216\u79D1\u5B66\u8425\uFF0C\u5C06\u77E5\u8BC6\u8F6C\u5316\u4E3A\u5B9E\u8DF5\u80FD\u529B\uFF1Cbr\uFF1E\uFF1Cbr\uFF1E\u9700\u8981\u6211\u4E3A\u67D0\u4E2A\u5177\u4F53\u65B9\u5411\u5236\u5B9A\u66F4\u8BE6\u7EC6\u7684\u8BA1\u5212\u5417\uFF1F',
     '\u4E2D\u5B66\u751F\u82F1\u624D\u8BA1\u5212\u7684\u62A5\u540D\u6761\u4EF6\u3001\u6D41\u7A0B\u548C\u5907\u8003\u5EFA\u8BAE\u662F\u4EC0\u4E48\uFF1F': '<strong>\u82F1\u624D\u8BA1\u5212</strong> \u662F\u4E2D\u56FD\u79D1\u534F\u4E0E\u6559\u80B2\u90E8\u8054\u5408\u5F00\u5C55\u7684\u91CD\u70B9\u9879\u76EE \u{1F3C6}\uFF1Cbr\uFF1E\uFF1Cbr\uFF1E<strong>\u62A5\u540D\u6761\u4EF6\uFF1A</strong>\u9AD8\u4E2D\u5728\u8BFB\uFF0C\u6210\u7EE9\u4F18\u79C0\uFF0C\u6709\u5F3A\u70C8\u79D1\u5B66\u5174\u8DA3\uFF1Cbr\uFF1E\uFF1Cbr\uFF1E<strong>\u62A5\u540D\u6D41\u7A0B\uFF1A</strong>\uFF1Cbr\uFF1E\u2460 \u5B66\u6821\u63A8\u8350 \u2192 \u2461 \u7F51\u4E0A\u7533\u62A5 \u2192 \u2462 \u7B14\u8BD5 \u2192 \u2463 \u9762\u8BD5 \u2192 \u2464 \u5165\u9009\uFF1Cbr\uFF1E\uFF1Cbr\uFF1E<strong>\u5907\u8003\u5EFA\u8BAE\uFF1A</strong>\uFF1Cbr\uFF1E\u2022 \u5938\u5B9E\u6570\u7406\u5316\u57FA\u7840\uFF0C\u5173\u6CE8\u524D\u6CBF\u79D1\u5B66\u52A8\u6001\uFF1Cbr\uFF1E\u2022 \u901A\u8FC7\u5E73\u53F0\u5B66\u4E60\u76F8\u5173\u9886\u57DF\u7684\u8FDB\u9636\u8BFE\u7A0B\uFF1Cbr\uFF1E\u2022 \u79EF\u7D2F\u79D1\u7814\u5B9E\u8DF5\u7ECF\u5386\uFF08\u7ADE\u8D5B\u3001\u5B9E\u9A8C\u7B49\uFF09\uFF1Cbr\uFF1E\uFF1Cbr\uFF1E<span style="color:#0a4fa8;cursor:pointer">\u2192 \u70B9\u51FB\u67E5\u770B\u82F1\u624D\u8BA1\u5212\u5B8C\u6574\u6307\u5357</span>',
     '\u8BF7\u5E2E\u6211\u67E5\u627E\u9644\u8FD1\u7684\u9AD8\u6821\u661F\u706B\u9986\uFF0C\u5E76\u63A8\u8350\u503C\u5F97\u53C2\u89C2\u7684\u573A\u9986': '\u4E3A\u4F60\u63A8\u8350 <strong>3\u6240</strong> \u70ED\u95E8\u9AD8\u6821\u661F\u706B\u9986 \u{1F5FA}<div class="ai-res-card"><div class="arc-icon">\u2728</div><div><div class="arc-title">\u4E0A\u6D77\u4EA4\u901A\u5927\u5B66\u661F\u706B\u9986</div><div class="arc-meta">\u4E3B\u9898\uFF1AAI\u4E0E\u672A\u6765 \xB7 \u672C\u5468\u5F00\u653E \xB7 \u53EF\u9884\u7EA6</div></div></div><div class="ai-res-card"><div class="arc-icon">\u2728</div><div><div class="arc-title">\u6E05\u534E\u5927\u5B66\u79D1\u6280\u535A\u7269\u9986</div><div class="arc-meta">\u4E3B\u9898\uFF1A\u524D\u6CBF\u79D1\u6280\u5C55 \xB7 \u5468\u672B\u5F00\u653E</div></div></div><div class="ai-res-card"><div class="arc-icon">\u2728</div><div><div class="arc-title">\u5317\u4EAC\u5927\u5B66\u81EA\u7136\u79D1\u5B66\u9986</div><div class="arc-meta">\u4E3B\u9898\uFF1A\u751F\u547D\u79D1\u5B66 \xB7 \u9700\u63D0\u524D\u9884\u7EA6</div></div></div>\u60F3\u67E5\u770B\u5168\u56FD\u6240\u6709\u661F\u706B\u9986\uFF1F<span style="color:#0a4fa8;cursor:pointer">\u2192 \u6253\u5F00\u661F\u706B\u9986\u5730\u56FE</span>'
   };
@@ -1926,7 +1909,6 @@
     '\u5E2E\u6211\u63A8\u8350\u9002\u5408\u9AD8\u4E2D\u751F\u7684\u79D1\u5B66\u8D44\u6E90',
     '\u4E2D\u5B66\u751F\u82F1\u624D\u8BA1\u5212\u600E\u4E48\u62A5\u540D\uFF1F',
     '\u6700\u8FD1\u6709\u54EA\u4E9B\u79D1\u5B66\u6D3B\u52A8\u53EF\u4EE5\u53C2\u52A0\uFF1F',
-    '\u7ED9\u6211\u5236\u5B9A\u4E00\u4EFD\u79D1\u5B66\u5B66\u4E60\u8BA1\u5212',
     '\u9644\u8FD1\u6709\u54EA\u4E9B\u9AD8\u6821\u661F\u706B\u9986\u53EF\u4EE5\u53C2\u89C2\uFF1F',
     '\u9AD8\u4E2D\u7269\u7406\u6709\u54EA\u4E9B\u597D\u7684\u5B66\u4E60\u89C6\u9891\uFF1F',
     '\u5982\u4F55\u51C6\u5907\u82F1\u624D\u8BA1\u5212\u7684\u9762\u8BD5\uFF1F',
