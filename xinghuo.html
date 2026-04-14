@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高校星火馆 — 英才培育云学堂</title>
+<style>
+  /* ===== 基础重置 ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif; background: #f5f7fb; color: #1a2340; overflow-x: hidden; }
+  a { text-decoration: none; color: inherit; }
+  img { display: block; max-width: 100%; }
+
+  /* ===== CSS 变量 ===== */
+  :root {
+    --primary: #0a4fa8;
+    --primary-light: #1a6fe8;
+    --accent: #00c6ff;
+    --accent2: #7b2ffe;
+    --xh-color: #9b3de8;
+    --deep: #060e24;
+    --card-bg: #ffffff;
+    --text-main: #1a2340;
+    --text-sub: #5a6a8a;
+    --border: #e0e8f4;
+    --radius: 12px;
+    --shadow: 0 4px 20px rgba(10,79,168,0.10);
+    --shadow-hover: 0 8px 32px rgba(10,79,168,0.18);
+  }
+
+  /* ===== 顶部通知栏 ===== */
+  .topbar {
+    background: var(--primary);
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    text-align: center;
+    padding: 6px 0;
+    letter-spacing: 0.3px;
+    width: 100%;
+  }
+  .topbar a { color: #7de2ff; margin: 0 4px; }
+  .topbar a:hover { text-decoration: underline; }
+
+  /* ===== 主导航 ===== */
+  .navbar {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    box-shadow: 0 2px 12px rgba(10,79,168,0.07);
+  }
+  .navbar-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 32px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 40px;
+    flex-shrink: 0;
+  }
+  .logo-icon {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, #0a4fa8 0%, #00c6ff 100%);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+  .logo-text { line-height: 1.25; }
+  .logo-text .main { font-size: 17px; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
+  .logo-text .sub { font-size: 10.5px; color: var(--text-sub); letter-spacing: 0.5px; font-family: "Helvetica Neue", Arial, sans-serif; }
+  .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: flex-end; }
+  .nav-links a {
+    padding: 8px 14px; border-radius: 8px;
+    font-size: 14.5px; font-weight: 500; color: var(--text-sub);
+    transition: all .2s; white-space: nowrap;
+  }
+  .nav-links a:hover, .nav-links a.active { background: #eaf2ff; color: var(--primary); }
+  .nav-links a.active { font-weight: 600; }
+  .tag-new {
+    display: inline-block; font-size: 10px; background: #ff4d4f; color: #fff;
+    border-radius: 4px; padding: 1px 4px; margin-left: 4px; vertical-align: middle; line-height: 1.5;
+  }
+  .nav-actions { display: flex; align-items: center; gap: 12px; margin-left: 20px; flex-shrink: 0; }
+  .search-box {
+    display: flex; align-items: center;
+    background: #f0f4fb; border-radius: 20px; padding: 6px 14px;
+    gap: 8px; width: 200px; border: 1.5px solid transparent; transition: all .2s;
+  }
+  .search-box:focus-within { border-color: var(--accent); background: #fff; width: 240px; }
+  .search-box input { border: none; background: transparent; font-size: 13.5px; color: var(--text-main); outline: none; width: 100%; }
+  .search-box .icon { color: #8899bb; font-size: 15px; flex-shrink: 0; }
+  .btn-reg {
+    padding: 7px 18px;
+    background: linear-gradient(90deg, #0a4fa8, #1a6fe8);
+    border-radius: 20px; font-size: 13.5px; color: #fff; font-weight: 600;
+    transition: all .2s; cursor: pointer; border: none;
+    box-shadow: 0 2px 8px rgba(10,79,168,0.25); white-space: nowrap; flex-shrink: 0;
+  }
+  .nav-user {
+    display: flex; align-items: center; gap: 8px;
+    padding: 5px 12px 5px 6px;
+    border-radius: 24px; border: 1.5px solid var(--border);
+    cursor: pointer; transition: all .2s; text-decoration: none;
+  }
+  .nav-user:hover { border-color: var(--primary); background: #f0f5ff; }
+  .nav-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: linear-gradient(135deg,#0a4fa8,#00c6ff);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .nav-user-name { font-size: 14px; font-weight: 600; color: var(--text-main); }
+  .nav-user-badge {
+    font-size: 10px; background: linear-gradient(90deg,#0a4fa8,#1a6fe8);
+    color: #fff; border-radius: 8px; padding: 1px 6px; font-weight: 600;
+  }
+  .btn-reg:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(10,79,168,0.35); }
+
+  /* ===== 汉堡菜单基础样式（默认隐藏，媒体查询中激活） ===== */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    transition: background .2s;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .nav-hamburger:hover { background: #f0f4fb; }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text-main);
+    border-radius: 2px;
+    transition: all .3s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* 移动端遮罩层 */
+  .mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(6,14,36,0.5);
+    z-index: 200;
+  }
+  .mobile-nav-overlay.open { display: block; }
+
+  /* 移动端抽屉菜单（全屏宽，从右侧滑入） */
+  .mobile-nav-drawer {
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    width: 100vw;
+    height: 100dvh;
+    background: #fff;
+    z-index: 201;
+    display: flex;
+    flex-direction: column;
+    transition: right .3s cubic-bezier(.4,0,.2,1);
+    overflow-y: auto;
+  }
+  .mobile-nav-drawer.open { right: 0; }
+  .mobile-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: calc(env(safe-area-inset-top, 0px) + 18px) 20px 14px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(135deg,#f0f5ff,#fff);
+    flex-shrink: 0;
+  }
+  .mobile-drawer-logo { display: flex; align-items: center; gap: 8px; }
+  .mobile-drawer-logo .icon { font-size: 22px; }
+  .mobile-drawer-logo .name { font-size: 14px; font-weight: 700; color: var(--primary); }
+  .mobile-drawer-close {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--text-sub);
+    transition: background .2s;
+  }
+  .mobile-drawer-close:hover { background: #f0f4fb; color: var(--primary); }
+  .mobile-drawer-search {
+    margin: 14px 16px 6px;
+    display: flex;
+    align-items: center;
+    background: #f0f4fb;
+    border-radius: 20px;
+    padding: 9px 14px;
+    gap: 8px;
+    border: 1.5px solid transparent;
+  }
+  .mobile-drawer-search:focus-within { border-color: var(--accent); background: #fff; }
+  .mobile-drawer-search input { border: none; background: transparent; font-size: 14px; color: var(--text-main); outline: none; flex: 1; }
+  .mobile-drawer-search .icon { color: #8899bb; font-size: 14px; }
+  .mobile-drawer-nav { padding: 8px 0; flex: 1; }
+  .mobile-drawer-nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 20px;
+    font-size: 15px;
+    color: var(--text-main);
+    font-weight: 500;
+    transition: all .15s;
+    border-left: 3px solid transparent;
+  }
+  .mobile-drawer-nav a:hover,
+  .mobile-drawer-nav a.active { background: #f0f5ff; color: var(--primary); border-left-color: var(--primary); }
+  .mobile-drawer-nav a .nav-icon { font-size: 17px; width: 22px; text-align: center; }
+  .mobile-drawer-nav a .tag-new {
+    font-size: 9px;
+    background: #ff4d4f;
+    color: #fff;
+    padding: 1px 5px;
+    border-radius: 8px;
+    margin-left: 4px;
+  }
+  .mobile-drawer-footer {
+    padding: 16px 16px calc(16px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .mobile-drawer-login {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    background: linear-gradient(90deg,#0a4fa8,#1a6fe8);
+    border-radius: 24px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 16px rgba(10,79,168,0.25);
+  }
+  .mobile-drawer-user {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 20px 10px; border-bottom: 1px solid var(--border);
+  }
+  .mdu-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg,#0a4fa8,#00c6ff);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .mdu-info .name { font-size: 15px; font-weight: 700; color: var(--text-main); }
+  .mdu-info .desc { font-size: 12px; color: var(--text-sub); margin-top: 2px; }
+
+  /* ===== 金刚区（功能型，参考资源中心规范） ===== */
+  .hero {
+    background: linear-gradient(160deg, #f3efff 0%, #ede8ff 40%, #e8f0fe 100%);
+    position: relative; overflow: hidden;
+    padding: 36px 32px 0;
+  }
+  /* 背景装饰圆（呼应紫色品牌色） */
+  .hero::before {
+    content: ''; position: absolute; right: -100px; top: -100px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(155,61,232,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ''; position: absolute; left: -60px; bottom: 10px;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(10,79,168,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1300px; margin: 0 auto;
+    position: relative; z-index: 1;
+  }
+  /* 页面标题行 */
+  .hero-title-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .hero-title-left { display: flex; align-items: center; gap: 14px; }
+  .hero-title {
+    font-size: 22px; font-weight: 800; color: var(--text-main);
+    letter-spacing: 0.5px; display: flex; align-items: baseline; gap: 10px;
+  }
+  .hero-title .sub-label {
+    font-size: 13px; font-weight: 400; color: var(--text-sub);
+  }
+  .hero-title-right { display: flex; gap: 8px; }
+  .xh-header-stat {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 12.5px; color: var(--text-sub);
+    background: rgba(155,61,232,0.07); border: 1px solid rgba(155,61,232,0.18);
+    border-radius: 20px; padding: 4px 12px;
+  }
+  .xh-header-stat b { color: var(--xh-color); }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+  /* 搜索区 */
+  .xh-search-area {
+    display: flex; flex-direction: column; align-items: center;
+    padding-bottom: 28px;
+  }
+  .xh-search-bar {
+    display: flex; align-items: center;
+    background: #fff; border: 2px solid #d8c8f8;
+    border-radius: 50px; padding: 6px 8px 6px 18px;
+    width: 100%; max-width: 680px;
+    box-shadow: 0 2px 12px rgba(155,61,232,0.08);
+    transition: all .22s;
+  }
+  .xh-search-bar:focus-within {
+    border-color: var(--xh-color);
+    box-shadow: 0 0 0 3px rgba(155,61,232,0.10), 0 4px 20px rgba(155,61,232,0.12);
+  }
+  .xh-search-ai-tag {
+    display: flex; align-items: center; gap: 4px;
+    background: linear-gradient(90deg, #ede8ff, #eaf2ff);
+    border: 1px solid rgba(155,61,232,0.25); border-radius: 20px;
+    padding: 3px 10px; font-size: 12px; font-weight: 600;
+    color: var(--xh-color); white-space: nowrap; flex-shrink: 0; margin-right: 10px;
+  }
+  .xh-search-ai-tag .ai-dot { width: 6px; height: 6px; background: var(--xh-color); border-radius: 50%; animation: pulse 1.6s ease-in-out infinite; }
+  .xh-search-input {
+    flex: 1; background: transparent; border: none; outline: none;
+    font-size: 15px; color: var(--text-main); min-width: 0;
+  }
+  .xh-search-input::placeholder { color: #bba8e0; }
+  .xh-search-btn {
+    padding: 9px 24px; background: linear-gradient(90deg, var(--xh-color), #b060f0);
+    border: none; border-radius: 40px; font-size: 14px; font-weight: 600; color: #fff;
+    cursor: pointer; transition: all .2s; white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(155,61,232,0.28);
+  }
+  .xh-search-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(155,61,232,0.4); }
+  .xh-search-hints { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; justify-content: center; }
+  .xh-search-hint {
+    font-size: 12.5px; color: var(--text-sub); cursor: pointer;
+    padding: 4px 12px; border: 1px solid #ddd0f8; border-radius: 20px;
+    background: #fff; transition: all .2s;
+  }
+  .xh-search-hint:hover { color: var(--xh-color); border-color: var(--xh-color); background: #f3efff; }
+  /* 主题领域快捷入口 */
+  .xh-cat-nav {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px;
+    width: 100%; max-width: 960px; margin: 20px auto 0;
+  }
+  .xh-cat-item {
+    background: #fff; border: 1.5px solid #ddd0f8; border-radius: 14px;
+    padding: 14px 10px; text-align: center; cursor: pointer;
+    transition: all .22s; position: relative; overflow: hidden;
+  }
+  .xh-cat-item:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(155,61,232,0.14); border-color: var(--xh-color); }
+  .xh-cat-item.active { border-color: var(--xh-color); background: #f3efff; }
+  .xh-cat-icon { font-size: 24px; margin-bottom: 6px; line-height: 1; }
+  .xh-cat-name { font-size: 12.5px; font-weight: 700; color: var(--text-main); margin-bottom: 2px; }
+  .xh-cat-count { font-size: 11px; color: var(--text-sub); }
+  /* 各分类顶部色条 */
+  .xhc-0 { border-top: 3px solid #9b3de8; }
+  .xhc-1 { border-top: 3px solid #0099aa; }
+  .xhc-2 { border-top: 3px solid #e85d3d; }
+  .xhc-3 { border-top: 3px solid #1aaa6b; }
+  .xhc-4 { border-top: 3px solid #0a4fa8; }
+  .xhc-5 { border-top: 3px solid #e8a020; }
+
+  /* ===== 通用 Section ===== */
+  .section-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; }
+  .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 28px; }
+  .section-header-left {}
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(155,61,232,0.10); color: var(--xh-color);
+    border: 1px solid rgba(155,61,232,0.25);
+    border-radius: 20px; padding: 4px 14px; font-size: 12.5px; font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .section-tag.blue { background: rgba(10,79,168,0.08); color: var(--primary); border-color: rgba(10,79,168,0.2); }
+  .section-title { font-size: 28px; font-weight: 800; color: var(--text-main); line-height: 1.3; }
+  .section-title .em { color: var(--xh-color); }
+  .section-title .em-blue { color: var(--primary); }
+  .section-desc { font-size: 14.5px; color: var(--text-sub); margin-top: 8px; line-height: 1.6; }
+  .view-all {
+    font-size: 14px; color: var(--primary); font-weight: 500;
+    display: inline-flex; align-items: center; gap: 4px; transition: gap .2s;
+    white-space: nowrap;
+  }
+  .view-all:hover { gap: 8px; }
+
+  /* ===== 筛选控制栏 ===== */
+  .filter-section { background: #fff; border-bottom: 1px solid var(--border); padding: 20px 0; }
+  .filter-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .filter-group { display: flex; align-items: center; gap: 8px; }
+  .filter-label { font-size: 13px; color: var(--text-sub); font-weight: 500; flex-shrink: 0; }
+  .filter-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .filter-tag {
+    padding: 5px 14px; border-radius: 20px; font-size: 13px;
+    border: 1.5px solid var(--border); color: var(--text-sub);
+    cursor: pointer; transition: all .2s; background: #fff;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .filter-tag:hover { border-color: var(--xh-color); color: var(--xh-color); }
+  .filter-tag.active { border-color: var(--xh-color); background: rgba(155,61,232,0.08); color: var(--xh-color); font-weight: 600; }
+  .filter-divider { width: 1px; height: 28px; background: var(--border); flex-shrink: 0; }
+  .filter-search {
+    display: flex; align-items: center; gap: 8px;
+    background: #f5f7fb; border: 1.5px solid var(--border);
+    border-radius: 20px; padding: 6px 14px; min-width: 220px;
+    transition: all .2s; margin-left: auto;
+  }
+  .filter-search:focus-within { border-color: var(--xh-color); background: #fff; }
+  .filter-search input { border: none; background: transparent; font-size: 13.5px; outline: none; width: 100%; }
+
+  /* ===== 地图区域 ===== */
+  .map-section { padding: 48px 0 40px; background: #f5f7fb; }
+  .map-layout { display: grid; grid-template-columns: 1fr 360px; gap: 24px; align-items: start; }
+
+  /* 地图可视化主体 */
+  .map-main {
+    background: linear-gradient(135deg, #060e24 0%, #0a2260 50%, #1a0a44 100%);
+    border-radius: 20px; position: relative; overflow: hidden;
+    height: 520px; border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 8px 40px rgba(10,79,168,0.20);
+  }
+  .map-main .stars { opacity: 0.4; }
+  .map-main-inner { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .map-china { font-size: 320px; opacity: 0.07; user-select: none; line-height: 1; }
+  .map-pins-layer { position: absolute; inset: 0; }
+  .map-pin {
+    position: absolute; width: 12px; height: 12px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 0 3px rgba(0,198,255,0.30);
+    animation: mapPing 2.2s infinite; cursor: pointer; transition: transform .2s;
+  }
+  .map-pin:hover { transform: scale(1.6); }
+  .map-pin.xh { background: #c06dff; box-shadow: 0 0 0 3px rgba(192,109,255,0.30); animation-delay:.4s; }
+  .map-pin.xh2 { background: #c06dff; box-shadow: 0 0 0 3px rgba(192,109,255,0.30); animation-delay:.9s; }
+  .map-pin.teal { background: #1aaa6b; box-shadow: 0 0 0 3px rgba(26,170,107,0.30); animation-delay:.7s; }
+  .map-pin.teal2 { background: #1aaa6b; box-shadow: 0 0 0 3px rgba(26,170,107,0.30); animation-delay:1.2s; }
+  .map-pin.orange { background: #ff6b35; box-shadow: 0 0 0 3px rgba(255,107,53,0.30); animation-delay:1.5s; }
+  .map-pin.p2 { animation-delay:.5s; }
+  .map-pin.p3 { animation-delay:1s; }
+  .map-pin.p4 { animation-delay:1.8s; }
+  @keyframes mapPing { 0%{box-shadow:0 0 0 0 rgba(0,198,255,.5)} 100%{box-shadow:0 0 0 16px rgba(0,198,255,0)} }
+  .map-pin.xh { animation-name: mapPingXh; }
+  .map-pin.xh2 { animation-name: mapPingXh; }
+  @keyframes mapPingXh { 0%{box-shadow:0 0 0 0 rgba(192,109,255,.5)} 100%{box-shadow:0 0 0 16px rgba(192,109,255,0)} }
+  .map-pin.teal { animation-name: mapPingTeal; }
+  .map-pin.teal2 { animation-name: mapPingTeal; }
+  @keyframes mapPingTeal { 0%{box-shadow:0 0 0 0 rgba(26,170,107,.5)} 100%{box-shadow:0 0 0 16px rgba(26,170,107,0)} }
+
+  /* 地图上的悬浮提示卡 */
+  .map-tooltip {
+    position: absolute; background: rgba(255,255,255,0.12); backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.20); border-radius: 12px;
+    padding: 10px 14px; pointer-events: none; z-index: 10;
+  }
+  .mt-name { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+  .mt-meta { font-size: 11.5px; color: rgba(255,255,255,0.65); }
+
+  /* 地图底部统计 */
+  .map-overlay-stats {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(0deg, rgba(6,14,36,0.92) 0%, transparent 100%);
+    padding: 24px 20px 16px;
+    display: flex; gap: 12px;
+  }
+  .mos-chip {
+    flex: 1; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px; padding: 10px; text-align: center; color: #fff;
+  }
+  .mos-chip .cn { font-size: 20px; font-weight: 800; color: #c06dff; }
+  .mos-chip .cl { font-size: 11px; color: rgba(255,255,255,0.50); margin-top: 2px; }
+
+  /* 地图图例 */
+  .map-legend {
+    position: absolute; top: 16px; left: 16px;
+    background: rgba(255,255,255,0.08); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 10px 14px;
+  }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 11.5px; color: rgba(255,255,255,0.75); margin-bottom: 5px; }
+  .legend-item:last-child { margin-bottom: 0; }
+  .legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+  /* 地图右侧：场馆列表侧栏 */
+  .map-sidebar { display: flex; flex-direction: column; gap: 16px; }
+  .map-sidebar-header {
+    background: #fff; border-radius: 16px; padding: 18px 20px;
+    box-shadow: var(--shadow); border: 1px solid var(--border);
+  }
+  .msb-title { font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
+  .msb-sub { font-size: 13px; color: var(--text-sub); }
+  .msb-search {
+    display: flex; align-items: center; gap: 8px;
+    background: #f5f7fb; border: 1.5px solid var(--border);
+    border-radius: 10px; padding: 8px 12px; margin-top: 12px; transition: all .2s;
+  }
+  .msb-search:focus-within { border-color: var(--xh-color); background: #fff; }
+  .msb-search input { border: none; background: transparent; font-size: 13.5px; outline: none; width: 100%; }
+
+  /* 场馆列表项 */
+  .venue-list { background: #fff; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow); }
+  .venue-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px; border-bottom: 1px solid var(--border);
+    cursor: pointer; transition: background .2s;
+  }
+  .venue-item:last-child { border-bottom: none; }
+  .venue-item:hover { background: #f8f5ff; }
+  .venue-item.active { background: rgba(155,61,232,0.06); border-left: 3px solid var(--xh-color); }
+  .vi-icon { width: 38px; height: 38px; border-radius: 10px; background: rgba(155,61,232,0.10); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .vi-info { flex: 1; min-width: 0; }
+  .vi-name { font-size: 13.5px; font-weight: 600; color: var(--text-main); margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .vi-meta { font-size: 12px; color: var(--text-sub); display: flex; align-items: center; gap: 6px; }
+  .vi-status { font-size: 11px; padding: 2px 8px; border-radius: 10px; font-weight: 600; flex-shrink: 0; }
+  .vi-status.open { background: #e6f9f0; color: #1aaa6b; }
+  .vi-status.booked { background: #fff3e6; color: #ff6b35; }
+  .vi-status.closed { background: #f0f4fb; color: var(--text-sub); }
+
+  .venue-list-footer {
+    padding: 12px 16px; border-top: 1px solid var(--border);
+    text-align: center; font-size: 13px; color: var(--primary); font-weight: 500; cursor: pointer;
+  }
+  .venue-list-footer:hover { color: var(--primary-light); }
+
+  /* ===== 精选场馆卡片 ===== */
+  .venues-section { padding: 56px 0; background: #fff; }
+  .venues-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .venue-card {
+    background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border);
+    overflow: hidden; transition: all .25s; cursor: pointer;
+  }
+  .venue-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: rgba(155,61,232,0.25); }
+  .vc-cover {
+    height: 160px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #2a0a60, #6b1fa8);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .vc-cover-emoji { font-size: 72px; opacity: 0.35; }
+  .vc-cover-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(6,14,36,0.6) 0%, transparent 60%); }
+  .vc-tags { position: absolute; top: 12px; left: 12px; display: flex; gap: 6px; }
+  .vc-tag {
+    font-size: 11px; padding: 3px 8px; border-radius: 8px; font-weight: 600;
+    backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.25);
+  }
+  .vc-tag.theme { background: rgba(155,61,232,0.6); color: #fff; }
+  .vc-tag.open-badge { background: rgba(26,170,107,0.7); color: #fff; }
+  .vc-tag.booked-badge { background: rgba(255,107,53,0.7); color: #fff; }
+  .vc-name-overlay { position: absolute; bottom: 10px; left: 12px; right: 12px; font-size: 13.5px; font-weight: 700; color: #fff; }
+  .vc-body { padding: 16px; }
+  .vc-school { font-size: 15px; font-weight: 700; color: var(--text-main); margin-bottom: 6px; }
+  .vc-desc { font-size: 13px; color: var(--text-sub); line-height: 1.55; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .vc-meta-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .vc-meta-item { font-size: 12px; color: var(--text-sub); display: flex; align-items: center; gap: 4px; }
+  .vc-actions { padding: 12px 16px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
+  .vc-btn {
+    flex: 1; padding: 8px 0; text-align: center; border-radius: 8px;
+    font-size: 13px; font-weight: 600; cursor: pointer; transition: all .2s; border: none;
+  }
+  .vc-btn-primary { background: linear-gradient(90deg, #9b3de8, #c06dff); color: #fff; }
+  .vc-btn-primary:hover { opacity: 0.88; }
+  .vc-btn-secondary { background: #f0f4fb; color: var(--primary); }
+  .vc-btn-secondary:hover { background: #e0ebff; }
+
+  /* ===== 近期活动 ===== */
+  .events-section { padding: 56px 0; background: #f5f7fb; }
+  .events-list { display: flex; flex-direction: column; gap: 14px; }
+  .event-card {
+    background: #fff; border-radius: 14px; border: 1px solid var(--border);
+    padding: 20px 24px; display: flex; align-items: center; gap: 20px;
+    transition: all .2s; cursor: pointer;
+  }
+  .event-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); border-color: rgba(155,61,232,0.2); }
+  .event-date {
+    width: 58px; height: 58px; border-radius: 14px;
+    background: linear-gradient(135deg, var(--xh-color), #c06dff);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    flex-shrink: 0; color: #fff;
+  }
+  .event-date .d { font-size: 20px; font-weight: 800; line-height: 1; }
+  .event-date .m { font-size: 11px; opacity: 0.8; }
+  .event-info { flex: 1; min-width: 0; }
+  .event-title { font-size: 15.5px; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
+  .event-desc { font-size: 13px; color: var(--text-sub); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .event-footer { display: flex; align-items: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+  .event-tag { font-size: 11.5px; padding: 3px 10px; border-radius: 10px; font-weight: 500; }
+  .et-xh { background: rgba(155,61,232,0.10); color: var(--xh-color); }
+  .event-loc { font-size: 12px; color: var(--text-sub); }
+  .event-right { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+  .event-status { font-size: 12.5px; font-weight: 700; padding: 5px 14px; border-radius: 20px; }
+  .es-open { background: #e6f9f0; color: #1aaa6b; }
+  .es-upcoming { background: #eaf2ff; color: var(--primary); }
+  .es-end { background: #f5f7fb; color: var(--text-sub); }
+  .event-apply-btn {
+    font-size: 13px; font-weight: 600; padding: 7px 18px; border-radius: 20px;
+    background: linear-gradient(90deg, #9b3de8, #c06dff); color: #fff; border: none; cursor: pointer;
+    transition: opacity .2s;
+  }
+  .event-apply-btn:hover { opacity: 0.85; }
+
+  /* ===== 关于星火馆 ===== */
+  .about-section {
+    padding: 56px 0 64px;
+    background: linear-gradient(135deg, #060e24 0%, #1a0a44 50%, #2a0a60 100%);
+    position: relative; overflow: hidden;
+  }
+  .about-section .stars { opacity: 0.35; }
+  /* 上半：左简介 / 右特色列表 */
+  .about-top {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start;
+    position: relative; z-index: 1;
+  }
+  .about-content .section-tag { background: rgba(155,61,232,0.20); color: #d4a0ff; border-color: rgba(155,61,232,0.35); }
+  .about-content .section-title { color: #fff; margin-bottom: 12px; }
+  .about-content .section-desc { color: rgba(255,255,255,0.65); max-width: 460px; }
+  /* 右侧横向特色列表 */
+  .about-features { display: flex; flex-direction: column; gap: 10px; padding-top: 6px; }
+  .about-feat {
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 12px; padding: 13px 18px; transition: background .2s;
+  }
+  .about-feat:hover { background: rgba(255,255,255,0.09); }
+  .af-icon { font-size: 22px; flex-shrink: 0; }
+  .af-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+  .af-desc { font-size: 12.5px; color: rgba(255,255,255,0.52); line-height: 1.4; }
+
+  /* ===== Footer ===== */
+  footer { background: var(--deep); color: rgba(255,255,255,0.60); padding: 52px 0 28px; }
+  .footer-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+  .footer-brand .fb-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .footer-brand .fb-logo .fi { width: 36px; height: 36px; background: linear-gradient(135deg,#0a4fa8,#00c6ff); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .footer-brand .fb-name { font-size: 15px; font-weight: 700; color: #fff; }
+  .footer-brand .fb-desc { font-size: 13px; line-height: 1.7; margin-bottom: 16px; }
+  .footer-social { display: flex; gap: 10px; }
+  .social-btn { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; font-size: 16px; cursor: pointer; transition: all .2s; color: rgba(255,255,255,.7); }
+  .social-btn:hover { background: var(--primary); border-color: var(--primary); color: #fff; }
+  .footer-col-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+  .footer-links { display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,.55); transition: color .2s; }
+  .footer-links a:hover { color: #fff; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 22px; display: flex; align-items: center; justify-content: space-between; font-size: 12.5px; }
+  .footer-bottom .credits { display: flex; gap: 20px; }
+  .footer-bottom a { color: rgba(255,255,255,.45); transition: color .2s; }
+  .footer-bottom a:hover { color: rgba(255,255,255,.8); }
+
+  /* ===== 浮动返回顶部 ===== */
+  .fab-back {
+    position: fixed; bottom: 88px; right: 32px; width: 42px; height: 42px;
+    background: #fff; border: 1.5px solid var(--border); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 18px;
+    cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.12); z-index: 200;
+    color: var(--text-sub); transition: all .2s;
+  }
+  .fab-back:hover { border-color: var(--primary); color: var(--primary); }
+
+  /* ===== AI 科学助手悬浮按钮 ===== */
+  .fab-ai {
+    position: fixed;
+    right: 32px;
+    bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(90deg,#0a4fa8,#7b2ffe);
+    border-radius: 28px;
+    padding: 10px 18px 10px 12px;
+    color: #fff;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(10,79,168,0.40);
+    transition: all .2s;
+    z-index: 200;
+  }
+  .fab-ai:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(10,79,168,0.50); }
+  .fab-ai .ai-dot { width: 8px; height: 8px; background: #00c6ff; border-radius: 50%; animation: pulse 2s infinite; }
+
+  /* ===== 响应式 ===== */
+  @media (max-width: 1024px) {
+    .hero-inner { padding: 28px 20px 24px; }
+    .hero-title-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .hero-title { font-size: 22px; }
+    .section-inner { padding: 0 20px; }
+    .filter-inner { padding: 0 20px; }
+    .map-layout { grid-template-columns: 1fr; }
+    .map-main { height: 380px; }
+    .map-sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .venue-list { grid-column: 1 / -1; }
+    .venues-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-top { grid-template-columns: 1fr; gap: 32px; }
+    .footer-top { grid-template-columns: 2fr 1fr 1fr; gap: 28px; }
+    .footer-top > div:nth-child(4), .footer-top > div:nth-child(5) { grid-column: span 1; }
+    .footer-inner { padding: 0 20px; }
+    .nav-links, .nav-actions { display: none !important; }
+    .nav-hamburger { display: flex; }
+    .hero-title-right { display: none; }
+  }
+
+  @media (max-width: 768px) {
+    /* 顶部通知栏 */
+    .topbar { font-size: 11.5px; padding: 5px 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* 导航 */
+    .navbar-inner { padding: 0 16px; }
+    .logo-text .sub { display: none; }
+    .logo-text .main { font-size: 15px; }
+
+    /* 金刚区 */
+    .hero { padding: 24px 16px 0; }
+    .hero-inner { padding: 0; }
+    .hero-title-row { flex-direction: column; align-items: flex-start; gap: 6px; margin-bottom: 16px; }
+    .hero-title { font-size: 20px; }
+
+    .hero-title-right { display: none; }
+    .xh-search-area { padding-bottom: 20px; }
+    .xh-search-bar { max-width: 100%; }
+    .xh-search-ai-tag { display: none; }
+    .xh-search-input { font-size: 14px; }
+    .xh-search-btn { padding: 9px 20px; font-size: 13px; }
+    .xh-search-hints { gap: 6px; }
+    .xh-search-hint { font-size: 11.5px; padding: 4px 10px; }
+    .xh-cat-nav { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .xh-cat-item { padding: 10px 6px; }
+    .xh-cat-icon { font-size: 20px; }
+    .xh-cat-name { font-size: 11.5px; }
+    .xh-cat-count { font-size: 10px; }
+
+    /* 筛选栏 */
+    .filter-inner { padding: 0 16px; gap: 10px; flex-wrap: wrap; }
+    .filter-group { width: 100%; }
+    .filter-divider { display: none; }
+    .filter-tags { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; -webkit-overflow-scrolling: touch; }
+
+    /* Section 公共 */
+    .section-inner { padding: 0 16px; }
+    .section-title { font-size: 22px; }
+    .section-desc { font-size: 13.5px; }
+    .section-header { margin-bottom: 20px; }
+
+    /* 地图区 */
+    .map-layout { grid-template-columns: 1fr; }
+    .map-main { height: 300px; }
+    .map-sidebar { grid-template-columns: 1fr; }
+    .map-legend { padding: 8px 10px; }
+    .legend-item { font-size: 10.5px; }
+
+    /* 场馆卡片 */
+    .venues-grid { grid-template-columns: 1fr; }
+
+    /* 活动 */
+    .event-card { flex-direction: column; gap: 12px; }
+    .event-right { width: 100%; flex-direction: row; justify-content: space-between; align-items: center; }
+
+    /* 关于 */
+    .about-top { grid-template-columns: 1fr; gap: 24px; }
+
+    /* Footer */
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .footer-brand { grid-column: 1 / -1; }
+    .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+    .footer-bottom .credits { gap: 12px; }
+    .footer-inner { padding: 0 16px; }
+
+    /* 浮动按钮 */
+    .fab-back { right: 16px; bottom: 76px; }
+    .fab-ai { right: 16px; bottom: 20px; padding: 9px 14px 9px 10px; font-size: 12.5px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title { font-size: 18px; }
+    .hero-title .sub-label { display: none; }
+    .xh-header-stat { font-size: 11.5px; padding: 3px 10px; }
+    .xh-search-bar { padding: 4px 4px 4px 14px; }
+    .xh-search-input { font-size: 13px; }
+    .xh-search-btn { padding: 8px 14px; font-size: 12.5px; }
+    .xh-cat-nav { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .section-title { font-size: 20px; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-brand { grid-column: 1; }
+    .map-main { height: 240px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 顶部通知栏 -->
+<div class="topbar">
+  ✨ 高校星火馆全国科普月：中南大学"科普City Walk"活动开放报名
+  <a href="#">了解更多 →</a>
+  &nbsp;|&nbsp; 2026年全国高校星火馆新晋场馆名单公示
+  <a href="#">查看详情</a>
+</div>
+
+<!-- 主导航 -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">🔭</div>
+      <div class="logo-text">
+        <div class="main">英才培育云学堂</div>
+        <div class="sub">Youth Science Talent Platform</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="resource-center.html">资源中心</a>
+      <a href="#" class="active">高校科普营地</a>
+      <a href="#">活动广场</a>
+      <a href="#">关于平台</a>
+    </div>
+    <div class="nav-actions">
+      <div class="search-box">
+        <span class="icon">🔍</span>
+        <input type="text" placeholder="搜索场馆、活动...">
+      </div>
+      <a href="profile.html" class="nav-user">
+        <div class="nav-avatar">👨‍💻</div>
+        <span class="nav-user-name">傲哥</span>
+
+      </a>
+    </div>
+    <div class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- 移动端导航遮罩 -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="closeMobileMenu()"></div>
+<!-- 移动端抽屉 -->
+<div class="mobile-nav-drawer" id="mobileNavDrawer">
+  <div class="mobile-drawer-header">
+    <div class="mobile-drawer-logo">
+      <span class="icon">🔭</span>
+      <span class="name">英才培育云学堂</span>
+    </div>
+    <div class="mobile-drawer-close" onclick="closeMobileMenu()">✕</div>
+  </div>
+  <div class="mobile-drawer-search">
+    <span class="icon">🔍</span>
+    <input type="text" placeholder="搜索场馆、活动...">
+  </div>
+  <div class="mobile-drawer-user">
+    <div class="mdu-avatar">👨‍💻</div>
+    <div class="mdu-info">
+      <div class="name">傲哥</div>
+      <div class="desc">高二 · 物化生 · 积分 1,240 pts</div>
+    </div>
+  </div>
+  <nav class="mobile-drawer-nav">
+    <a href="index.html"><span class="nav-icon">🏠</span>首页</a>
+    <a href="resource-center.html"><span class="nav-icon">📚</span>资源中心</a>
+    <a href="#" class="active"><span class="nav-icon">🏛️</span>高校科普营地</a>
+    <a href="#"><span class="nav-icon">🎪</span>活动广场</a>
+    <a href="profile.html"><span class="nav-icon">👤</span>个人中心</a>
+  </nav>
+  <div class="mobile-drawer-footer">
+    <a href="#" class="mobile-drawer-login">退出登录</a>
+  </div>
+</div>
+
+<!-- ===== 金刚区（功能型，参考资源中心规范） ===== -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <!-- 页面标题行 + 统计 -->
+    <div class="hero-title-row">
+      <div class="hero-title-left">
+        <h1 class="hero-title">🔭 高校星火馆
+          <span class="sub-label">全国 180+ 所高校科学馆</span>
+        </h1>
+
+      </div>
+      <div class="hero-title-right">
+        <div class="xh-header-stat">🏛️ <b>180+</b> 线下场馆</div>
+        <div class="xh-header-stat">🌏 <b>31</b> 省市</div>
+        <div class="xh-header-stat">🔬 <b>12</b> 科学领域</div>
+        <div class="xh-header-stat">👥 <b>50万+</b> 年参观</div>
+      </div>
+    </div>
+
+    <!-- 场馆搜索框 + 建议词 + 主题领域快捷入口 -->
+    <div class="xh-search-area">
+      <div class="xh-search-bar">
+        <div class="xh-search-ai-tag"><div class="ai-dot"></div>AI 找场馆</div>
+        <input class="xh-search-input" type="text" placeholder="输入学校、城市或科学方向，智能匹配最近的场馆...">
+        <button class="xh-search-btn">搜索场馆</button>
+      </div>
+      <div class="xh-search-hints">
+        <span class="xh-search-hint">北京 · 物理天文</span>
+        <span class="xh-search-hint">上海 · 生命科学</span>
+        <span class="xh-search-hint">可线上预约</span>
+        <span class="xh-search-hint">周末开放</span>
+        <span class="xh-search-hint">工程材料</span>
+        <span class="xh-search-hint">人工智能</span>
+      </div>
+
+      <!-- 6大主题领域入口 -->
+      <div class="xh-cat-nav">
+        <div class="xh-cat-item xhc-0 active" onclick="selectXhCat(this)">
+          <div class="xh-cat-icon">⚛️</div>
+          <div class="xh-cat-name">物理·天文</div>
+          <div class="xh-cat-count">38 所场馆</div>
+        </div>
+        <div class="xh-cat-item xhc-1" onclick="selectXhCat(this)">
+          <div class="xh-cat-icon">🧬</div>
+          <div class="xh-cat-name">生命·医学</div>
+          <div class="xh-cat-count">31 所场馆</div>
+        </div>
+        <div class="xh-cat-item xhc-2" onclick="selectXhCat(this)">
+          <div class="xh-cat-icon">🚀</div>
+          <div class="xh-cat-name">航空航天</div>
+          <div class="xh-cat-count">24 所场馆</div>
+        </div>
+        <div class="xh-cat-item xhc-3" onclick="selectXhCat(this)">
+          <div class="xh-cat-icon">🌊</div>
+          <div class="xh-cat-name">海洋·地球</div>
+          <div class="xh-cat-count">18 所场馆</div>
+        </div>
+        <div class="xh-cat-item xhc-4" onclick="selectXhCat(this)">
+          <div class="xh-cat-icon">⚙️</div>
+          <div class="xh-cat-name">工程·材料</div>
+          <div class="xh-cat-count">42 所场馆</div>
+        </div>
+        <div class="xh-cat-item xhc-5" onclick="selectXhCat(this)">
+          <div class="xh-cat-icon">🤖</div>
+          <div class="xh-cat-name">人工智能</div>
+          <div class="xh-cat-count">27 所场馆</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== 筛选控制栏 ===== -->
+<div class="filter-section">
+  <div class="filter-inner">
+    <div class="filter-group">
+      <span class="filter-label">地区</span>
+      <div class="filter-tags" id="regionTags">
+        <div class="filter-tag active" onclick="setFilter('region',this)">全部</div>
+        <div class="filter-tag" onclick="setFilter('region',this)">华北</div>
+        <div class="filter-tag" onclick="setFilter('region',this)">华东</div>
+        <div class="filter-tag" onclick="setFilter('region',this)">华南</div>
+        <div class="filter-tag" onclick="setFilter('region',this)">西部</div>
+        <div class="filter-tag" onclick="setFilter('region',this)">东北</div>
+      </div>
+    </div>
+    <div class="filter-divider"></div>
+    <div class="filter-group">
+      <span class="filter-label">主题</span>
+      <div class="filter-tags" id="themeTags">
+        <div class="filter-tag active" onclick="setFilter('theme',this)">全部</div>
+        <div class="filter-tag" onclick="setFilter('theme',this)">物理·天文</div>
+        <div class="filter-tag" onclick="setFilter('theme',this)">生命科学</div>
+        <div class="filter-tag" onclick="setFilter('theme',this)">航空航天</div>
+        <div class="filter-tag" onclick="setFilter('theme',this)">海洋科学</div>
+        <div class="filter-tag" onclick="setFilter('theme',this)">化学材料</div>
+        <div class="filter-tag" onclick="setFilter('theme',this)">人工智能</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 高校科普营地 ===== -->
+<section class="map-section" id="map-section">
+  <div class="section-inner">
+    <div class="section-header" style="margin-bottom:20px;">
+      <div class="section-header-left">
+        <div class="section-tag">🗺️ 互动地图</div>
+        <h2 class="section-title">发现<span class="em">身边的科学</span>殿堂</h2>
+        <p class="section-desc">点击地图上的标记，查看场馆详情和预约信息；也可以通过右侧列表快速定位</p>
+      </div>
+    </div>
+    <div class="map-layout">
+      <!-- 地图主体 -->
+      <div class="map-main">
+        <div class="stars"></div>
+        <div class="map-main-inner">
+          <div class="map-china">🗺</div>
+        </div>
+        <!-- 地图图例 -->
+        <div class="map-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#00c6ff"></div>物理·天文</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#c06dff"></div>生命·医学</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#1aaa6b"></div>海洋·地球</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ff6b35"></div>工程·材料</div>
+        </div>
+        <!-- 地图标记点 -->
+        <div class="map-pins-layer">
+          <!-- 北京区域 -->
+          <div class="map-pin" style="left:52%;top:22%" title="北京大学科学文化中心"></div>
+          <div class="map-pin xh" style="left:54%;top:24%" title="清华大学科技博物馆"></div>
+          <!-- 上海区域 -->
+          <div class="map-pin teal" style="left:67%;top:46%" title="复旦大学自然博物馆"></div>
+          <div class="map-pin" style="left:69%;top:48%" title="同济大学建筑博物馆"></div>
+          <!-- 武汉区域 -->
+          <div class="map-pin xh2" style="left:58%;top:52%" title="华中科技大学工业文明博物馆"></div>
+          <!-- 广州区域 -->
+          <div class="map-pin orange" style="left:60%;top:66%" title="中山大学海洋科学馆"></div>
+          <!-- 成都区域 -->
+          <div class="map-pin teal2" style="left:44%;top:56%" title="四川大学博物馆"></div>
+          <!-- 西安区域 -->
+          <div class="map-pin" style="left:48%;top:42%" title="西安交大工程力学博物馆"></div>
+          <!-- 哈尔滨区域 -->
+          <div class="map-pin xh" style="left:68%;top:16%" title="哈尔滨工业大学航天馆"></div>
+          <!-- 福建区域 -->
+          <div class="map-pin" style="left:68%;top:58%" title="福建师范大学物物化生普基地"></div>
+          <!-- 浙江区域 -->
+          <div class="map-pin teal" style="left:70%;top:50%" title="浙江海洋大学海洋生物博物馆"></div>
+          <!-- 湖南区域 -->
+          <div class="map-pin orange" style="left:55%;top:58%" title="中南大学地质博物馆"></div>
+          <!-- 云南区域 -->
+          <div class="map-pin xh2" style="left:47%;top:65%" title="云南大学校史馆"></div>
+          <!-- 内蒙古 -->
+          <div class="map-pin" style="left:50%;top:16%" title="内蒙古大学自然博物馆"></div>
+        </div>
+        <!-- 悬浮提示示例 -->
+        <div class="map-tooltip" style="left:56%;top:30%">
+          <div class="mt-name">华中科技大学工业文明博物馆</div>
+          <div class="mt-meta">📍 湖北武汉 · 工程·材料领域</div>
+        </div>
+        <!-- 底部统计 -->
+        <div class="map-overlay-stats">
+          <div class="mos-chip"><div class="cn">180+</div><div class="cl">全国场馆</div></div>
+          <div class="mos-chip"><div class="cn" style="color:#00c6ff">31</div><div class="cl">省市覆盖</div></div>
+          <div class="mos-chip"><div class="cn" style="color:#1aaa6b">85%</div><div class="cl">支持预约</div></div>
+          <div class="mos-chip"><div class="cn" style="color:#ff9940">12</div><div class="cl">科学领域</div></div>
+        </div>
+      </div>
+
+      <!-- 右侧场馆列表 -->
+      <div class="map-sidebar">
+        <div class="map-sidebar-header">
+          <div class="msb-title">🏛️ 场馆列表</div>
+          <div class="msb-sub">共 180+ 所场馆，点击定位至地图</div>
+          <div class="msb-search">
+            <span>🔍</span>
+            <input type="text" placeholder="搜索场馆名称...">
+          </div>
+        </div>
+        <div class="venue-list">
+          <div class="venue-item active">
+            <div class="vi-icon">🔬</div>
+            <div class="vi-info">
+              <div class="vi-name">华中科技大学工业文明博物馆</div>
+              <div class="vi-meta"><span>📍 湖北·武汉</span><span>工程·材料</span></div>
+            </div>
+            <div class="vi-status open">开放中</div>
+          </div>
+          <div class="venue-item">
+            <div class="vi-icon">🌊</div>
+            <div class="vi-info">
+              <div class="vi-name">浙江海洋大学海洋生物博物馆</div>
+              <div class="vi-meta"><span>📍 浙江·舟山</span><span>海洋科学</span></div>
+            </div>
+            <div class="vi-status open">开放中</div>
+          </div>
+          <div class="venue-item">
+            <div class="vi-icon">🚀</div>
+            <div class="vi-info">
+              <div class="vi-name">哈尔滨工业大学航天馆</div>
+              <div class="vi-meta"><span>📍 黑龙江·哈尔滨</span><span>航空航天</span></div>
+            </div>
+            <div class="vi-status open">开放中</div>
+          </div>
+          <div class="venue-item">
+            <div class="vi-icon">⚗️</div>
+            <div class="vi-info">
+              <div class="vi-name">福建师范大学物物化生普基地</div>
+              <div class="vi-meta"><span>📍 福建·福州</span><span>物理·天文</span></div>
+            </div>
+            <div class="vi-status booked">预约中</div>
+          </div>
+          <div class="venue-item">
+            <div class="vi-icon">🧬</div>
+            <div class="vi-info">
+              <div class="vi-name">复旦大学自然博物馆</div>
+              <div class="vi-meta"><span>📍 上海</span><span>生命科学</span></div>
+            </div>
+            <div class="vi-status open">开放中</div>
+          </div>
+          <div class="venue-item">
+            <div class="vi-icon">🏺</div>
+            <div class="vi-info">
+              <div class="vi-name">四川大学博物馆</div>
+              <div class="vi-meta"><span>📍 四川·成都</span><span>历史科学</span></div>
+            </div>
+            <div class="vi-status closed">暂停开放</div>
+          </div>
+          <div class="venue-list-footer" onclick="window.location.href='#venues-section'">
+            查看全部场馆 →
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 精选场馆卡片 ===== -->
+<section class="venues-section" id="venues-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-header-left">
+        <div class="section-tag">⭐ 精选推荐</div>
+        <h2 class="section-title">不可错过的<span class="em">科学殿堂</span></h2>
+        <p class="section-desc">编辑团队精心筛选，适合中学生参观的高质量场馆</p>
+      </div>
+      <a href="#" class="view-all">查看全部 →</a>
+    </div>
+    <div class="venues-grid">
+
+      <!-- 卡片1 -->
+      <div class="venue-card">
+        <div class="vc-cover" style="background:linear-gradient(135deg,#0a2260,#1a6fe8)">
+          <div class="vc-cover-emoji">🚀</div>
+          <div class="vc-cover-overlay"></div>
+          <div class="vc-tags">
+            <span class="vc-tag theme">航空航天</span>
+            <span class="vc-tag open-badge">开放中</span>
+          </div>
+          <div class="vc-name-overlay">哈尔滨工业大学航天馆</div>
+        </div>
+        <div class="vc-body">
+          <div class="vc-school">哈尔滨工业大学</div>
+          <div class="vc-desc">展示卫星、火箭发动机等航天实物，含互动模拟发射台，是全国高校中规模最大的航天科普场馆之一。</div>
+          <div class="vc-meta-row">
+            <span class="vc-meta-item">📍 黑龙江·哈尔滨</span>
+            <span class="vc-meta-item">👁 年访客 8.2万</span>
+          </div>
+        </div>
+        <div class="vc-actions">
+          <button class="vc-btn vc-btn-primary">📅 在线预约</button>
+          <button class="vc-btn vc-btn-secondary">详情介绍</button>
+        </div>
+      </div>
+
+      <!-- 卡片2 -->
+      <div class="venue-card">
+        <div class="vc-cover" style="background:linear-gradient(135deg,#003a2e,#1aaa6b)">
+          <div class="vc-cover-emoji">🌊</div>
+          <div class="vc-cover-overlay"></div>
+          <div class="vc-tags">
+            <span class="vc-tag theme">海洋科学</span>
+            <span class="vc-tag open-badge">开放中</span>
+          </div>
+          <div class="vc-name-overlay">浙江海洋大学海洋生物博物馆</div>
+        </div>
+        <div class="vc-body">
+          <div class="vc-school">浙江海洋大学</div>
+          <div class="vc-desc">馆藏海洋生物标本 3 万余件，设有深海生物、珊瑚礁生态、极地科考等主题展厅，是华东地区重要的海洋科普基地。</div>
+          <div class="vc-meta-row">
+            <span class="vc-meta-item">📍 浙江·舟山</span>
+            <span class="vc-meta-item">👁 年访客 12.4万</span>
+          </div>
+        </div>
+        <div class="vc-actions">
+          <button class="vc-btn vc-btn-primary">📅 在线预约</button>
+          <button class="vc-btn vc-btn-secondary">详情介绍</button>
+        </div>
+      </div>
+
+      <!-- 卡片3 -->
+      <div class="venue-card">
+        <div class="vc-cover" style="background:linear-gradient(135deg,#2a0a60,#9b3de8)">
+          <div class="vc-cover-emoji">⚗️</div>
+          <div class="vc-cover-overlay"></div>
+          <div class="vc-tags">
+            <span class="vc-tag theme">物理·天文</span>
+            <span class="vc-tag booked-badge">预约中</span>
+          </div>
+          <div class="vc-name-overlay">福建师范大学物物化生普基地</div>
+        </div>
+        <div class="vc-body">
+          <div class="vc-school">福建师范大学</div>
+          <div class="vc-desc">设有纳米薄膜、量子现象等前沿物理实验体验区，由教授团队定期开展科普讲座，学生可亲手操作实验设备。</div>
+          <div class="vc-meta-row">
+            <span class="vc-meta-item">📍 福建·福州</span>
+            <span class="vc-meta-item">👁 年访客 6.8万</span>
+          </div>
+        </div>
+        <div class="vc-actions">
+          <button class="vc-btn vc-btn-primary">📅 在线预约</button>
+          <button class="vc-btn vc-btn-secondary">详情介绍</button>
+        </div>
+      </div>
+
+      <!-- 卡片4 -->
+      <div class="venue-card">
+        <div class="vc-cover" style="background:linear-gradient(135deg,#1a3a0a,#52a832)">
+          <div class="vc-cover-emoji">🧬</div>
+          <div class="vc-cover-overlay"></div>
+          <div class="vc-tags">
+            <span class="vc-tag theme">生命科学</span>
+            <span class="vc-tag open-badge">开放中</span>
+          </div>
+          <div class="vc-name-overlay">复旦大学自然博物馆</div>
+        </div>
+        <div class="vc-body">
+          <div class="vc-school">复旦大学</div>
+          <div class="vc-desc">馆藏动植物、古生物、矿物标本逾 10 万件，设有 DNA 解码、生物进化等互动体验项目，适合高中生深度学习。</div>
+          <div class="vc-meta-row">
+            <span class="vc-meta-item">📍 上海</span>
+            <span class="vc-meta-item">👁 年访客 18.6万</span>
+          </div>
+        </div>
+        <div class="vc-actions">
+          <button class="vc-btn vc-btn-primary">📅 在线预约</button>
+          <button class="vc-btn vc-btn-secondary">详情介绍</button>
+        </div>
+      </div>
+
+      <!-- 卡片5 -->
+      <div class="venue-card">
+        <div class="vc-cover" style="background:linear-gradient(135deg,#1a0a00,#c85c00)">
+          <div class="vc-cover-emoji">⚙️</div>
+          <div class="vc-cover-overlay"></div>
+          <div class="vc-tags">
+            <span class="vc-tag theme">工程·材料</span>
+            <span class="vc-tag open-badge">开放中</span>
+          </div>
+          <div class="vc-name-overlay">华中科技大学工业文明博物馆</div>
+        </div>
+        <div class="vc-body">
+          <div class="vc-school">华中科技大学</div>
+          <div class="vc-desc">展示中国工业发展历程，收藏蒸汽机、数控机床等珍贵工业遗产，设有 AR 工厂体验区，深受学生欢迎。</div>
+          <div class="vc-meta-row">
+            <span class="vc-meta-item">📍 湖北·武汉</span>
+            <span class="vc-meta-item">👁 年访客 22.1万</span>
+          </div>
+        </div>
+        <div class="vc-actions">
+          <button class="vc-btn vc-btn-primary">📅 在线预约</button>
+          <button class="vc-btn vc-btn-secondary">详情介绍</button>
+        </div>
+      </div>
+
+      <!-- 卡片6 -->
+      <div class="venue-card">
+        <div class="vc-cover" style="background:linear-gradient(135deg,#002a3a,#0099aa)">
+          <div class="vc-cover-emoji">🤖</div>
+          <div class="vc-cover-overlay"></div>
+          <div class="vc-tags">
+            <span class="vc-tag theme">人工智能</span>
+            <span class="vc-tag open-badge">开放中</span>
+          </div>
+          <div class="vc-name-overlay">西安交通大学人工智能体验中心</div>
+        </div>
+        <div class="vc-body">
+          <div class="vc-school">西安交通大学</div>
+          <div class="vc-desc">全国首批高校 AI 科普体验馆，设有自动驾驶模拟、人脸识别、机械臂操控等互动体验，是了解人工智能的最佳窗口。</div>
+          <div class="vc-meta-row">
+            <span class="vc-meta-item">📍 陕西·西安</span>
+            <span class="vc-meta-item">👁 年访客 9.5万</span>
+          </div>
+        </div>
+        <div class="vc-actions">
+          <button class="vc-btn vc-btn-primary">📅 在线预约</button>
+          <button class="vc-btn vc-btn-secondary">详情介绍</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== 近期活动 ===== -->
+<section class="events-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-header-left">
+        <div class="section-tag blue">📅 活动动态</div>
+        <h2 class="section-title">星火馆<span class="em-blue">近期活动</span></h2>
+        <p class="section-desc">中南大学 City Walk · 云南大学百年展 · 甘肃高校科普月</p>
+      </div>
+      <a href="#" class="view-all">查看全部活动 →</a>
+    </div>
+    <div class="events-list">
+
+      <div class="event-card">
+        <div class="event-date" style="background:linear-gradient(135deg,#9b3de8,#c06dff)">
+          <div class="d">30</div><div class="m">09月</div>
+        </div>
+        <div class="event-info">
+          <div class="event-title">中南大学"科普City Walk"科学文化参观活动</div>
+          <div class="event-desc">由中南大学多所学院联合举办，围绕校园科学文化地标展开步行游览，涵盖地质博物馆、新材料实验室、医学影像中心等 8 处科学场所，专属讲解全程陪同。</div>
+          <div class="event-footer">
+            <span class="event-tag et-xh">✨ 高校星火馆</span>
+            <span class="event-loc">📍 湖南·长沙 · 中南大学</span>
+            <span class="event-loc">🗓 09.15—09.30</span>
+          </div>
+        </div>
+        <div class="event-right">
+          <div class="event-status es-open">报名中</div>
+          <button class="event-apply-btn">立即报名</button>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date" style="background:linear-gradient(135deg,#6b1fa8,#9b3de8)">
+          <div class="d">30</div><div class="m">09月</div>
+        </div>
+        <div class="event-info">
+          <div class="event-title">云南大学百年育人实践展："课堂·操场·田野"校史馆展览</div>
+          <div class="event-desc">云南大学校史馆开展百年育人实践主题展，汇聚历史影像、科研档案与互动装置，免费对外开放，中学生团体可提前预约专属讲解员。</div>
+          <div class="event-footer">
+            <span class="event-tag et-xh">✨ 高校星火馆</span>
+            <span class="event-loc">📍 云南·昆明 · 云南大学校史馆</span>
+            <span class="event-loc">🗓 09.10—09.30</span>
+          </div>
+        </div>
+        <div class="event-right">
+          <div class="event-status es-open">报名中</div>
+          <button class="event-apply-btn">立即报名</button>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date" style="background:linear-gradient(135deg,#0a4fa8,#1a6fe8)">
+          <div class="d">15</div><div class="m">10月</div>
+        </div>
+        <div class="event-info">
+          <div class="event-title">甘肃省高校星火馆联合科普月：科学实验进社区活动</div>
+          <div class="event-desc">甘肃省多所高校星火馆联合举办，将精心设计的科学实验包送入社区和中学，由在读研究生担任志愿科学讲师，覆盖兰州、天水、酒泉等地 30 余所学校。</div>
+          <div class="event-footer">
+            <span class="event-tag et-xh">✨ 高校星火馆</span>
+            <span class="event-loc">📍 甘肃·兰州</span>
+            <span class="event-loc">🗓 10.01—10.15</span>
+          </div>
+        </div>
+        <div class="event-right">
+          <div class="event-status es-upcoming">即将开始</div>
+          <button class="event-apply-btn">预约提醒</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== 关于星火馆 ===== -->
+<section class="about-section">
+  <div class="stars"></div>
+  <div class="section-inner">
+
+    <!-- 上半：左简介 / 右特色列表 -->
+    <div class="about-top">
+      <div class="about-content">
+        <div class="section-tag">🌟 关于星火馆</div>
+        <h2 class="section-title">让科学<span class="em">星火</span>燎原</h2>
+        <p class="section-desc">高校星火馆是中国科协主导推进的高校科普品牌项目，依托顶尖高校的科研实力和科普资源，面向中学生开放科研场所、实验室和博物馆，打通科学教育的"最后一公里"。</p>
+      </div>
+      <!-- 右侧：4条横向特色 -->
+      <div class="about-features">
+        <div class="about-feat">
+          <div class="af-icon">🔬</div>
+          <div class="af-texts">
+            <div class="af-title">真实科研环境</div>
+            <div class="af-desc">进入高校实验室，接触第一线科研设备与成果</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="af-icon">🧑‍🔬</div>
+          <div class="af-texts">
+            <div class="af-title">教授科学讲座</div>
+            <div class="af-desc">院士、教授亲授，让前沿科学知识不再遥不可及</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="af-icon">🎓</div>
+          <div class="af-texts">
+            <div class="af-title">与英才计划联动</div>
+            <div class="af-desc">优秀学员可获推荐，提前感受大学科研氛围</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="af-icon">📱</div>
+          <div class="af-texts">
+            <div class="af-title">线上线下融合</div>
+            <div class="af-desc">虚拟导览 + 线下参观，让科学体验无边界</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fb-logo">
+          <div class="fi">🔭</div>
+          <div class="fb-name">英才培育云学堂</div>
+        </div>
+        <div class="fb-desc">依托中国科协，整合英才计划、高校科学营、高校星火馆三大核心品牌，打造广覆盖、精选拔、持续培养的青少年科技后备人才培育主阵地。</div>
+        <div class="footer-social">
+          <div class="social-btn" title="微信公众号">💬</div>
+          <div class="social-btn" title="微博">🐦</div>
+          <div class="social-btn" title="B站">📺</div>
+          <div class="social-btn" title="抖音">🎵</div>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">核心项目</div>
+        <div class="footer-links">
+          <a href="#">中学生英才计划</a>
+          <a href="#">高校科学营</a>
+          <a href="#">高校星火馆</a>
+          <a href="#">科普中国合作</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">资源中心</div>
+        <div class="footer-links">
+          <a href="#">科普视频</a>
+          <a href="#">在线课程</a>
+          <a href="#">科普图文</a>
+          <a href="#">互动实验包</a>
+          <a href="#">科普图书馆</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">活动服务</div>
+        <div class="footer-links">
+          <a href="#">活动广场</a>
+          <a href="xinghuo.html">高校科普营地</a>
+          <a href="#">在线预约</a>
+          <a href="#">竞赛日历</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">关于我们</div>
+        <div class="footer-links">
+          <a href="#">平台介绍</a>
+          <a href="#">联系我们</a>
+          <a href="#">隐私政策</a>
+          <a href="#">使用协议</a>
+          <a href="#">内容合作</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 英才培育云学堂 · 中国科协青少年科技中心</div>
+      <div class="credits">
+        <a href="#">京ICP备XXXXXXXX号</a>
+        <a href="#">网络安全等级保护备案</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- 浮动返回顶部 -->
+<div class="fab-back" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="返回顶部">↑</div>
+
+<!-- AI 科学助手悬浮按钮 -->
+<div class="fab-ai" onclick="openAIDrawer()">
+  <div class="ai-dot"></div>
+  AI 科学助手
+</div>
+
+<!-- AI科学助手抽屉遮罩 -->
+<div class="ai-mask" id="aiMask" onclick="closeAIDrawer()"></div>
+
+<!-- AI科学助手抽屉 -->
+<div class="ai-drawer" id="aiDrawer">
+  <!-- 抽屉头部 -->
+  <div class="ai-drawer-header">
+    <div class="ai-drawer-title">
+      <div class="ai-avatar">🤖</div>
+      <div>
+        <div class="ai-name">AI 科学助手</div>
+        <div class="ai-status"><span class="ai-online-dot"></span>在线 · 随时为你解答</div>
+      </div>
+    </div>
+    <div class="ai-close" onclick="closeAIDrawer()">✕</div>
+  </div>
+
+  <!-- 对话区域 -->
+  <div class="ai-chat-area" id="aiChatArea">
+    <!-- 欢迎消息 -->
+    <div class="ai-msg ai-msg-bot">
+      <div class="ai-msg-avatar">🤖</div>
+      <div class="ai-msg-bubble">
+        你好！我是你的 <strong>AI 科学助手</strong>，专为青少年科普学习设计。<br><br>
+        我可以帮你找资源、查活动、规划学习路径，或者解答你的科学问题。<br>
+        <span style="color:#8899bb;font-size:12px">👇 选择下方 Skills 快速开始，或直接输入问题</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skills 快捷功能区 -->
+  <div class="ai-skills-area" id="aiSkillsArea">
+    <div class="ai-skills-label">✨ 快捷 Skills</div>
+    <div class="ai-skills-grid">
+      <div class="ai-skill-card" onclick="useSkill('resource')">
+        <div class="ask-icon">📚</div>
+        <div class="ask-name">资源推荐</div>
+        <div class="ask-desc">按学科/年级/兴趣找精品内容</div>
+      </div>
+      <div class="ai-skill-card" onclick="useSkill('activity')">
+        <div class="ask-icon">🗓️</div>
+        <div class="ask-name">活动查询</div>
+        <div class="ask-desc">查看报名中的科学营和活动</div>
+      </div>
+      <div class="ai-skill-card" onclick="useSkill('yingcai')">
+        <div class="ask-icon">🏆</div>
+        <div class="ask-name">英才计划</div>
+        <div class="ask-desc">报名条件、流程与备考指导</div>
+      </div>
+      <div class="ai-skill-card" onclick="useSkill('museum')">
+        <div class="ask-icon">🗺️</div>
+        <div class="ask-name">星火馆导览</div>
+        <div class="ask-desc">查找附近场馆、预约参观</div>
+      </div>
+    </div>
+
+    <!-- 提示词快捷提问 -->
+    <div class="ai-prompts-label">💡 试试这样问</div>
+    <div class="ai-prompts">
+      <div class="ai-prompt-chip" onclick="sendPrompt(this)">高一物化生生适合哪些科学活动？</div>
+      <div class="ai-prompt-chip" onclick="sendPrompt(this)">英才计划怎么报名？有哪些要求？</div>
+      <div class="ai-prompt-chip" onclick="sendPrompt(this)">帮我找人工智能方向的视频课程</div>
+      <div class="ai-prompt-chip" onclick="sendPrompt(this)">北京有哪些高校星火馆可以参观？</div>
+      <div class="ai-prompt-chip" onclick="sendPrompt(this)">我想参加高校科学营，现在还能报名吗？</div>
+      <div class="ai-prompt-chip" onclick="sendPrompt(this)">给我推荐一个适合初三的学习计划</div>
+    </div>
+  </div>
+
+  <!-- 输入区域 -->
+  <div class="ai-input-area">
+    <div class="ai-input-box">
+      <textarea
+        id="aiInput"
+        class="ai-textarea"
+        placeholder="输入你的问题，比如：帮我找高中物理实验资源..."
+        rows="1"
+        oninput="autoResize(this)"
+        onkeydown="handleEnter(event)"
+      ></textarea>
+      <button class="ai-send-btn" id="aiSendBtn" onclick="sendMessage()" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
+    </div>
+    <div class="ai-input-hint">按 Enter 发送 · Shift+Enter 换行 · 仅供原型演示</div>
+  </div>
+</div>
+
+<style>
+/* ===== AI 科学助手抽屉 ===== */
+.ai-mask {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(6,14,36,0.45);
+  backdrop-filter: blur(3px);
+  z-index: 500;
+}
+.ai-mask.open { display: block; animation: maskIn .25s ease; }
+@keyframes maskIn { from{opacity:0} to{opacity:1} }
+
+.ai-drawer {
+  position: fixed;
+  right: -440px;
+  top: 0; bottom: 0;
+  width: 420px;
+  background: #fff;
+  z-index: 501;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 0 40px rgba(10,79,168,0.15);
+  transition: right .35s cubic-bezier(.4,0,.2,1);
+  border-radius: 20px 0 0 20px;
+}
+.ai-drawer.open { right: 0; }
+
+/* 头部 */
+.ai-drawer-header {
+  padding: 20px 22px 16px;
+  border-bottom: 1px solid #e8eef8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  background: linear-gradient(135deg,#f0f6ff,#f8f0ff);
+  border-radius: 20px 0 0 0;
+}
+.ai-drawer-title { display: flex; align-items: center; gap: 12px; }
+.ai-avatar {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg,#0a4fa8,#7b2ffe);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.ai-name { font-size: 16px; font-weight: 800; color: #1a2340; }
+.ai-status { font-size: 12px; color: #8899bb; display: flex; align-items: center; gap: 5px; margin-top: 2px; }
+.ai-online-dot { width: 7px; height: 7px; background: #52c41a; border-radius: 50%; animation: pulse 2s infinite; }
+.ai-close {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.06);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 14px; color: #5a6a8a;
+  transition: all .2s;
+}
+.ai-close:hover { background: #ffeded; color: #ff4d4f; }
+
+/* 对话区 */
+.ai-chat-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+}
+.ai-msg { display: flex; gap: 10px; align-items: flex-start; }
+.ai-msg-bot .ai-msg-avatar {
+  width: 32px; height: 32px; flex-shrink: 0;
+  background: linear-gradient(135deg,#0a4fa8,#7b2ffe);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.ai-msg-bubble {
+  background: #f0f4fb;
+  border-radius: 4px 14px 14px 14px;
+  padding: 11px 14px;
+  font-size: 13.5px;
+  color: #1a2340;
+  line-height: 1.65;
+  max-width: 320px;
+}
+.ai-msg-user { flex-direction: row-reverse; }
+.ai-msg-user .ai-msg-bubble {
+  background: linear-gradient(135deg,#0a4fa8,#1a6fe8);
+  color: #fff;
+  border-radius: 14px 4px 14px 14px;
+}
+
+/* 模拟输入中动画 */
+.ai-typing .ai-msg-bubble { display: flex; align-items: center; gap: 4px; padding: 14px; }
+.typing-dot { width: 7px; height: 7px; background: #8899bb; border-radius: 50%; animation: typingBounce 1.2s infinite; }
+.typing-dot:nth-child(2) { animation-delay: .2s; }
+.typing-dot:nth-child(3) { animation-delay: .4s; }
+@keyframes typingBounce { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-6px)} }
+
+/* 资源推荐卡片（AI回复中） */
+.ai-res-card {
+  background: #fff;
+  border: 1.5px solid #e0e8f4;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-top: 8px;
+  display: flex; gap: 10px; align-items: flex-start;
+  cursor: pointer; transition: all .2s;
+}
+.ai-res-card:hover { border-color: #0a4fa8; background: #f5f9ff; }
+.ai-res-card .arc-icon { font-size: 22px; flex-shrink: 0; }
+.ai-res-card .arc-title { font-size: 13px; font-weight: 600; color: #1a2340; margin-bottom: 3px; }
+.ai-res-card .arc-meta { font-size: 11.5px; color: #8899bb; }
+
+/* 兜底推荐 */
+.ai-fallback-suggest {
+  margin: 12px 0 10px;
+  background: linear-gradient(135deg, #f0f5ff 0%, #e8f4ff 100%);
+  border: 1.5px solid #c8dbf5;
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.ai-fallback-label { font-size: 12px; font-weight: 700; color: #0a4fa8; margin-bottom: 9px; letter-spacing: .3px; }
+.ai-fallback-chips { display: flex; flex-direction: column; gap: 7px; }
+.ai-fallback-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #fff; border: 1.5px solid #c5d8f0; border-radius: 20px;
+  padding: 6px 14px; font-size: 12.5px; color: #1a3a6e;
+  cursor: pointer; transition: all .18s; width: fit-content;
+}
+.ai-fallback-chip::before { content: '↗'; font-size: 11px; color: #4d82c8; flex-shrink: 0; }
+.ai-fallback-chip:hover { background: #0a4fa8; color: #fff; border-color: #0a4fa8; transform: translateX(3px); }
+.ai-fallback-chip:hover::before { color: #7eb8ff; }
+
+/* Skills区 */
+.ai-skills-area {
+  padding: 0 18px 8px;
+  border-top: 1px solid #e8eef8;
+  background: #fafbff;
+  flex-shrink: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.ai-skills-area.hidden { display: none; }
+.ai-skills-label, .ai-prompts-label { font-size: 12px; font-weight: 700; color: #8899bb; letter-spacing: 0.5px; padding: 12px 0 8px; }
+.ai-skills-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 4px; }
+.ai-skill-card {
+  background: #fff; border: 1.5px solid #e0e8f4; border-radius: 12px;
+  padding: 12px 8px 10px; text-align: center; cursor: pointer; transition: all .2s;
+}
+.ai-skill-card:hover { border-color: #0a4fa8; background: #eaf2ff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(10,79,168,.10); }
+.ask-icon { font-size: 22px; margin-bottom: 5px; }
+.ask-name { font-size: 12.5px; font-weight: 700; color: #1a2340; margin-bottom: 3px; }
+.ask-desc { font-size: 11px; color: #8899bb; line-height: 1.4; }
+
+/* 提示词 */
+.ai-prompts { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 12px; }
+.ai-prompt-chip {
+  padding: 6px 12px; background: #fff; border: 1.5px solid #e0e8f4; border-radius: 16px;
+  font-size: 12.5px; color: #3a5a9a; cursor: pointer; transition: all .2s; line-height: 1.4;
+}
+.ai-prompt-chip:hover { border-color: #0a4fa8; background: #eaf2ff; color: #0a4fa8; }
+
+/* 输入区 */
+.ai-input-area {
+  padding: 12px 16px 14px;
+  border-top: 1px solid #e8eef8;
+  flex-shrink: 0;
+  background: #fff;
+  border-radius: 0 0 0 20px;
+}
+.ai-input-box {
+  display: flex; gap: 10px; align-items: flex-end;
+  background: #f0f4fb; border-radius: 14px; padding: 10px 10px 10px 14px;
+  border: 1.5px solid transparent; transition: border-color .2s;
+}
+.ai-input-box:focus-within { border-color: #0a4fa8; background: #fff; }
+.ai-textarea {
+  flex: 1; border: none; background: transparent; font-size: 13.5px; color: #1a2340;
+  resize: none; outline: none; font-family: inherit; line-height: 1.5; max-height: 100px; overflow-y: auto;
+}
+.ai-textarea::placeholder { color: #aab8cc; }
+.ai-send-btn {
+  width: 36px; height: 36px; border-radius: 10px; border: none;
+  background: linear-gradient(135deg,#0a4fa8,#1a6fe8); color: #fff;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: all .2s; box-shadow: 0 2px 8px rgba(10,79,168,.25);
+}
+.ai-send-btn:hover:not(:disabled) { transform: scale(1.07); box-shadow: 0 4px 14px rgba(10,79,168,.35); }
+.ai-send-btn:disabled { opacity: .4; cursor: not-allowed; transform: none; box-shadow: none; }
+.ai-input-hint { font-size: 11.5px; color: #c0cce0; text-align: center; margin-top: 7px; }
+
+/* AI抽屉移动端适配 */
+@media (max-width: 768px) {
+  .ai-drawer {
+    width: 100%;
+    right: 0;
+    bottom: -95dvh;
+    top: auto;
+    height: 90dvh;
+    border-radius: 20px 20px 0 0;
+    transition: bottom .35s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 -8px 40px rgba(10,79,168,0.18);
+  }
+  .ai-drawer.open { bottom: 0; }
+  .ai-drawer-header { border-radius: 20px 20px 0 0; }
+  .ai-input-area { border-radius: 0; padding-bottom: calc(14px + env(safe-area-inset-bottom)); }
+  .ai-skills-grid { grid-template-columns: repeat(4,1fr); }
+}
+</style>
+
+<script>
+  // 移动端导航
+  function toggleMobileMenu() {
+    const overlay = document.getElementById('mobileNavOverlay');
+    const drawer = document.getElementById('mobileNavDrawer');
+    overlay.style.display = 'block';
+    setTimeout(() => { overlay.classList.add('open'); drawer.classList.add('open'); }, 10);
+  }
+  function closeMobileMenu() {
+    const overlay = document.getElementById('mobileNavOverlay');
+    const drawer = document.getElementById('mobileNavDrawer');
+    overlay.classList.remove('open');
+    drawer.classList.remove('open');
+    setTimeout(() => { overlay.style.display = 'none'; }, 300);
+  }
+
+  // 金刚区主题领域卡片选中
+  function selectXhCat(el) {
+    document.querySelectorAll('.xh-cat-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // 筛选 Tab 切换
+  function setFilter(group, el) {
+    const parent = el.parentElement;
+    parent.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // 场馆列表点击激活
+  document.querySelectorAll('.venue-item').forEach(item => {
+    item.addEventListener('click', function() {
+      document.querySelectorAll('.venue-item').forEach(v => v.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // 浮动按钮显隐
+  window.addEventListener('scroll', () => {
+    const fab = document.querySelector('.fab-back');
+    if (fab) fab.style.opacity = window.scrollY > 300 ? '1' : '0';
+  });
+  document.querySelector('.fab-back').style.opacity = '0';
+  document.querySelector('.fab-back').style.transition = 'opacity .3s';
+
+  // ===== AI 科学助手 =====
+  function openAIDrawer() {
+    document.getElementById('aiDrawer').classList.add('open');
+    document.getElementById('aiMask').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeAIDrawer() {
+    document.getElementById('aiDrawer').classList.remove('open');
+    document.getElementById('aiMask').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function autoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+    document.getElementById('aiSendBtn').disabled = el.value.trim() === '';
+  }
+
+  function handleEnter(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      if (!document.getElementById('aiSendBtn').disabled) sendMessage();
+    }
+  }
+
+  function sendMessage() {
+    const input = document.getElementById('aiInput');
+    const text = input.value.trim();
+    if (!text) return;
+    appendUserMsg(text);
+    input.value = '';
+    input.style.height = 'auto';
+    document.getElementById('aiSendBtn').disabled = true;
+    document.getElementById('aiSkillsArea').classList.add('hidden');
+    showTyping();
+    setTimeout(() => { removeTyping(); appendBotReply(text); }, 1200);
+  }
+
+  function sendPrompt(el) {
+    const text = el.textContent.trim();
+    document.getElementById('aiInput').value = text;
+    document.getElementById('aiSendBtn').disabled = false;
+    sendMessage();
+  }
+
+  const skillPrompts = {
+    resource: '请根据我的年级和兴趣，为我推荐平台上的精品科普资源',
+    activity: '平台上目前有哪些正在报名的科学活动？',
+    yingcai: '中学生英才计划的报名条件、流程和备考建议是什么？',
+    museum: '请帮我查找附近的高校星火馆，并推荐值得参观的场馆'
+  };
+  function useSkill(type) {
+    const prompt = skillPrompts[type] || '';
+    document.getElementById('aiInput').value = prompt;
+    document.getElementById('aiSendBtn').disabled = false;
+    sendMessage();
+  }
+
+  function appendUserMsg(text) {
+    const area = document.getElementById('aiChatArea');
+    const div = document.createElement('div');
+    div.className = 'ai-msg ai-msg-user';
+    div.innerHTML = '<div class="ai-msg-bubble">' + escHtml(text) + '</div>';
+    area.appendChild(div);
+    scrollChat();
+  }
+
+  let typingEl = null;
+  function showTyping() {
+    const area = document.getElementById('aiChatArea');
+    typingEl = document.createElement('div');
+    typingEl.className = 'ai-msg ai-msg-bot ai-typing';
+    typingEl.innerHTML = '<div class="ai-msg-avatar">\u{1F916}</div><div class="ai-msg-bubble"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+    area.appendChild(typingEl);
+    scrollChat();
+  }
+  function removeTyping() { if (typingEl) { typingEl.remove(); typingEl = null; } }
+
+  const botReplies = {
+    '\u8BF7\u6839\u636E\u6211\u7684\u5E74\u7EA7\u548C\u5174\u8DA3\uFF0C\u4E3A\u6211\u63A8\u8350\u5E73\u53F0\u4E0A\u7684\u7CBE\u54C1\u79D1\u666E\u8D44\u6E90': '\u597D\u7684\uFF01\u6839\u636E\u4F60\u7684\u5B66\u4E60\u753B\u50CF\uFF0C\u4E3A\u4F60\u7CBE\u9009\u4E86\u4EE5\u4E0B\u8D44\u6E90 \u{1F447}<div class="ai-res-card"><div class="arc-icon">\u{1F3AC}</div><div><div class="arc-title">CRISPR\u57FA\u56E0\u7F16\u8F91\uFF1A\u4ECE\u7406\u8BBA\u5230\u5E94\u7528</div><div class="arc-meta">\u89C6\u9891 \xB7 \u5317\u4EAC\u5927\u5B66 \xB7 12.3\u4E07\u6B21\u89C2\u770B</div></div></div><div class="ai-res-card"><div class="arc-icon">\u{1F4DA}</div><div><div class="arc-title">\u4ECE\u96F6\u5F00\u59CB\u5B66AI\uFF1A\u673A\u5668\u5B66\u4E60\u5165\u95E8\u7CFB\u5217</div><div class="arc-meta">\u8BFE\u7A0B \xB7 \u6E05\u534E\u5927\u5B66 \xB7 \u517112\u8BB2</div></div></div><div class="ai-res-card"><div class="arc-icon">\u{1F9EA}</div><div><div class="arc-title">\u5C45\u5BB6\u79D1\u5B66\u5B9E\u9A8C\uFF1A\u63A2\u7D22\u6DB2\u4F53\u8868\u9762\u5F20\u529B</div><div class="arc-meta">\u5B9E\u9A8C\u5305 \xB7 \u4E2D\u56FD\u79D1\u5B66\u9662</div></div></div>\u8FD8\u60F3\u770B\u66F4\u591A\uFF1F\u544A\u8BC9\u6211\u4F60\u6700\u611F\u5174\u8DA3\u7684\u65B9\u5411\uFF5E',
+    '\u5E73\u53F0\u4E0A\u76EE\u524D\u6709\u54EA\u4E9B\u6B63\u5728\u62A5\u540D\u7684\u79D1\u5B66\u6D3B\u52A8\uFF1F': '\u76EE\u524D\u6709 <strong>3\u4E2A\u6D3B\u52A8</strong> \u6B63\u5728\u62A5\u540D\u4E2D \u{1F4C5}<div class="ai-res-card"><div class="arc-icon">\u{1F3C6}</div><div><div class="arc-title">\u82F1\u624D\u8BA1\u5212\uFF08\u6570\u5B66\u65B9\u5411\uFF09\u7B2C\u4E00\u9636\u6BB5\u7B14\u8BD5</div><div class="arc-meta">\u622A\u6B62\uFF1A2026.04.28 \xB7 \u5168\u56FD\u8003\u70B9</div></div></div><div class="ai-res-card"><div class="arc-icon">\u26FA</div><div><div class="arc-title">\u7B2C\u5341\u4E8C\u5C4A\u9AD8\u6821\u79D1\u5B66\u8425\uFF08\u5317\u5927\u8425\u533A\uFF09</div><div class="arc-meta">\u622A\u6B62\uFF1A2026.04.30 \xB7 \u9650\u989D200\u4EBA</div></div></div><div class="ai-res-card"><div class="arc-icon">\u2728</div><div><div class="arc-title">\u4EA4\u5927\u661F\u706B\u9986\u300CAI\u4E0E\u672A\u6765\u300D\u53C2\u89C2\u9884\u7EA6</div><div class="arc-meta">\u672C\u5468\u672B\u573A\u6B21\u5F00\u653E \xB7 \u4E0A\u6D77\u4EA4\u901A\u5927\u5B66</div></div></div>',
+    '\u4E2D\u5B66\u751F\u82F1\u624D\u8BA1\u5212\u7684\u62A5\u540D\u6761\u4EF6\u3001\u6D41\u7A0B\u548C\u5907\u8003\u5EFA\u8BAE\u662F\u4EC0\u4E48\uFF1F': '<strong>\u82F1\u624D\u8BA1\u5212</strong> \u662F\u4E2D\u56FD\u79D1\u534F\u4E0E\u6559\u80B2\u90E8\u8054\u5408\u5F00\u5C55\u7684\u91CD\u70B9\u9879\u76EE \u{1F3C6}\uFF1Cbr\uFF1E\uFF1Cbr\uFF1E<strong>\u62A5\u540D\u6761\u4EF6\uFF1A</strong>\u9AD8\u4E2D\u5728\u8BFB\uFF0C\u6210\u7EE9\u4F18\u79C0\uFF0C\u6709\u5F3A\u70C8\u79D1\u5B66\u5174\u8DA3\uFF1Cbr\uFF1E\uFF1Cbr\uFF1E<strong>\u62A5\u540D\u6D41\u7A0B\uFF1A</strong>\uFF1Cbr\uFF1E\u2460 \u5B66\u6821\u63A8\u8350 \u2192 \u2461 \u7F51\u4E0A\u7533\u62A5 \u2192 \u2462 \u7B14\u8BD5 \u2192 \u2463 \u9762\u8BD5 \u2192 \u2464 \u5165\u9009\uFF1Cbr\uFF1E\uFF1Cbr\uFF1E<strong>\u5907\u8003\u5EFA\u8BAE\uFF1A</strong>\uFF1Cbr\uFF1E\u2022 \u5938\u5B9E\u6570\u7406\u5316\u57FA\u7840\uFF0C\u5173\u6CE8\u524D\u6CBF\u79D1\u5B66\u52A8\u6001\uFF1Cbr\uFF1E\u2022 \u901A\u8FC7\u5E73\u53F0\u5B66\u4E60\u76F8\u5173\u9886\u57DF\u7684\u8FDB\u9636\u8BFE\u7A0B\uFF1Cbr\uFF1E\u2022 \u79EF\u7D2F\u79D1\u7814\u5B9E\u8DF5\u7ECF\u5386\uFF08\u7ADE\u8D5B\u3001\u5B9E\u9A8C\u7B49\uFF09\uFF1Cbr\uFF1E\uFF1Cbr\uFF1E<span style="color:#0a4fa8;cursor:pointer">\u2192 \u70B9\u51FB\u67E5\u770B\u82F1\u624D\u8BA1\u5212\u5B8C\u6574\u6307\u5357</span>',
+    '\u8BF7\u5E2E\u6211\u67E5\u627E\u9644\u8FD1\u7684\u9AD8\u6821\u661F\u706B\u9986\uFF0C\u5E76\u63A8\u8350\u503C\u5F97\u53C2\u89C2\u7684\u573A\u9986': '\u4E3A\u4F60\u63A8\u8350 <strong>3\u6240</strong> \u70ED\u95E8\u9AD8\u6821\u661F\u706B\u9986 \u{1F5FA}<div class="ai-res-card"><div class="arc-icon">\u2728</div><div><div class="arc-title">\u4E0A\u6D77\u4EA4\u901A\u5927\u5B66\u661F\u706B\u9986</div><div class="arc-meta">\u4E3B\u9898\uFF1AAI\u4E0E\u672A\u6765 \xB7 \u672C\u5468\u5F00\u653E \xB7 \u53EF\u9884\u7EA6</div></div></div><div class="ai-res-card"><div class="arc-icon">\u2728</div><div><div class="arc-title">\u6E05\u534E\u5927\u5B66\u79D1\u6280\u535A\u7269\u9986</div><div class="arc-meta">\u4E3B\u9898\uFF1A\u524D\u6CBF\u79D1\u6280\u5C55 \xB7 \u5468\u672B\u5F00\u653E</div></div></div><div class="ai-res-card"><div class="arc-icon">\u2728</div><div><div class="arc-title">\u5317\u4EAC\u5927\u5B66\u81EA\u7136\u79D1\u5B66\u9986</div><div class="arc-meta">\u4E3B\u9898\uFF1A\u751F\u547D\u79D1\u5B66 \xB7 \u9700\u63D0\u524D\u9884\u7EA6</div></div></div>\u60F3\u67E5\u770B\u5168\u56FD\u6240\u6709\u661F\u706B\u9986\uFF1F<span style="color:#0a4fa8;cursor:pointer">\u2192 \u6253\u5F00\u661F\u706B\u9986\u5730\u56FE</span>'
+  };
+
+  const fallbackSuggestions = [
+    '\u5E2E\u6211\u63A8\u8350\u9002\u5408\u9AD8\u4E2D\u751F\u7684\u79D1\u5B66\u8D44\u6E90',
+    '\u4E2D\u5B66\u751F\u82F1\u624D\u8BA1\u5212\u600E\u4E48\u62A5\u540D\uFF1F',
+    '\u6700\u8FD1\u6709\u54EA\u4E9B\u79D1\u5B66\u6D3B\u52A8\u53EF\u4EE5\u53C2\u52A0\uFF1F',
+    '\u9644\u8FD1\u6709\u54EA\u4E9B\u9AD8\u6821\u661F\u706B\u9986\u53EF\u4EE5\u53C2\u89C2\uFF1F',
+    '\u9AD8\u4E2D\u7269\u7406\u6709\u54EA\u4E9B\u597D\u7684\u5B66\u4E60\u89C6\u9891\uFF1F',
+    '\u5982\u4F55\u51C6\u5907\u82F1\u624D\u8BA1\u5212\u7684\u9762\u8BD5\uFF1F',
+    '\u79D1\u5B66\u8425\u548C\u82F1\u624D\u8BA1\u5212\u6709\u4EC0\u4E48\u533A\u522B\uFF1F',
+    '\u5E73\u53F0\u4E0A\u6709\u54EA\u4E9B\u751F\u7269\u65B9\u5411\u7684\u8BFE\u7A0B\uFF1F',
+    '\u6709\u9002\u5408\u521D\u4E2D\u751F\u7684\u79D1\u666E\u5B9E\u9A8C\u63A8\u8350\u5417\uFF1F',
+  ];
+
+  function getFallbackSuggestions(exclude) {
+    const pool = fallbackSuggestions.filter(s => s !== exclude);
+    const shuffled = pool.sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, 3);
+  }
+
+  function appendBotReply(userText) {
+    const area = document.getElementById('aiChatArea');
+    const div = document.createElement('div');
+    div.className = 'ai-msg ai-msg-bot';
+    let reply = botReplies[userText];
+    if (!reply) {
+      const suggestions = getFallbackSuggestions(userText);
+      const chips = suggestions.map(s =>
+        '<div class="ai-fallback-chip" onclick="sendFallbackChip(this)">' + escHtml(s) + '</div>'
+      ).join('');
+      reply = '\u6536\u5230\u4F60\u7684\u95EE\u9898\uFF1A\u300C' + escHtml(userText) + '\u300D\uFF1Cbr\uFF1E\uFF1Cbr\uFF1E\u6211\u6B63\u5728\u4E3A\u4F60\u641C\u7D22\u5E73\u53F0\u8D44\u6E90\u548C\u76F8\u5173\u4FE1\u606F\u2026\u2026\uFF1Cbr\uFF1E\uFF1Cbr\uFF1E<div class="ai-fallback-suggest"><div class="ai-fallback-label">\u{1F4A1} \u8BD5\u8BD5\u8FD9\u6837\u95EE</div><div class="ai-fallback-chips">' + chips + '</div></div><span style="color:#8899bb;font-size:12px">\uFF08\u8FD9\u662F\u539F\u578B\u6F14\u793A\uFF0C\u5B9E\u9645\u529F\u80FD\u5C06\u63A5\u5165\u771F\u5B9EAI\u6A21\u578B\uFF09</span>';
+    }
+    div.innerHTML = '<div class="ai-msg-avatar">\u{1F916}</div><div class="ai-msg-bubble">' + reply + '</div>';
+    area.appendChild(div);
+    scrollChat();
+  }
+
+  function sendFallbackChip(el) {
+    const text = el.textContent.trim();
+    document.getElementById('aiInput').value = text;
+    document.getElementById('aiSendBtn').disabled = false;
+    sendMessage();
+  }
+
+  function scrollChat() {
+    const area = document.getElementById('aiChatArea');
+    area.scrollTop = area.scrollHeight;
+  }
+  function escHtml(t) {
+    return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+</script>
+</body>
+</html>

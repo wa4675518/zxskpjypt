@@ -1,0 +1,8 @@
+# 忽略非页面文件
+*
+!.gitignore
+!index.html
+!profile.html
+!resource-center.html
+!xinghuo.html
+.DS_Store
