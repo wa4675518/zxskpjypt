@@ -395,6 +395,7 @@
   .subj-tab.s-chem.active  { background: #d46b08; color: #fff; border-color: #d46b08; }
   .subj-tab.s-bio.active   { background: #389e0d; color: #fff; border-color: #389e0d; }
   .subj-tab.s-cs.active    { background: #722ed1; color: #fff; border-color: #722ed1; }
+  .subj-tab.s-sub.active  { background: #0a4fa8; color: #fff; border-color: #0a4fa8; }
 
   /* ===== 资源卡片网格 ===== */
   .res-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
@@ -765,7 +766,7 @@
       <div class="rc-page-header-right">
         <div class="rc-header-stat">📹 <b>2,800+</b> 导师视频</div>
         <div class="rc-header-stat">🏛️ <b>529+</b> 星火馆</div>
-        <div class="rc-header-stat">🔬 <b>5</b> 核心学科</div>
+
       </div>
     </div>
 
@@ -792,9 +793,9 @@
           <div class="rc-cat-name">前沿科技</div>
           <div class="rc-cat-count">3,200+ 件</div>
         </div>
-        <div class="rc-cat-item rcc-1" onclick="selectCat(this,'科技志愿风采')">
+        <div class="rc-cat-item rcc-1" onclick="selectCat(this,'知识拓展')">
           <div class="rc-cat-icon">📖</div>
-          <div class="rc-cat-name">科技志愿风采</div>
+          <div class="rc-cat-name">知识拓展</div>
           <div class="rc-cat-count">2,800+ 件</div>
         </div>
         <div class="rc-cat-item rcc-2" onclick="selectCat(this,'科学方法')">
@@ -802,14 +803,14 @@
           <div class="rc-cat-name">科学方法</div>
           <div class="rc-cat-count">2,100+ 件</div>
         </div>
-        <div class="rc-cat-item rcc-3" onclick="selectCat(this,'中国科技创新活动')">
-          <div class="rc-cat-icon">🌍</div>
-          <div class="rc-cat-name">中国科技创新活动</div>
+        <div class="rc-cat-item rcc-3" onclick="selectCat(this,'身边的科学小实验')">
+          <div class="rc-cat-icon">⚗️</div>
+          <div class="rc-cat-name">身边的科学小实验</div>
           <div class="rc-cat-count">1,600+ 件</div>
         </div>
-        <div class="rc-cat-item rcc-4" onclick="selectCat(this,'中国科学家故事')">
+        <div class="rc-cat-item rcc-4" onclick="selectCat(this,'科学家故事')">
           <div class="rc-cat-icon">🧑‍🔬</div>
-          <div class="rc-cat-name">中国科学家故事</div>
+          <div class="rc-cat-name">科学家故事</div>
           <div class="rc-cat-count">2,300+ 件</div>
         </div>
       </div>
@@ -967,7 +968,7 @@
         <div class="res-card-body">
           <div class="res-subj-row">
             <span class="res-subj ht-bio">生物</span>
-            <span class="res-cat-tag">中国科学家故事</span>
+            <span class="res-cat-tag">科学家故事</span>
           </div>
           <div class="res-title">屠呦呦与青蒿素：一株小草如何改变世界</div>
           <div class="res-meta">
@@ -1012,7 +1013,7 @@
         <div class="hot-body">
           <span class="hot-subject-tag ht-bio">生物</span>
           <div class="hot-title">屠呦呦与青蒿素：一株小草如何改变世界</div>
-          <div class="hot-meta"><span class="fire">🔥 18.5万次</span><span>中国科学家故事</span></div>
+          <div class="hot-meta"><span class="fire">🔥 18.5万次</span><span>科学家故事</span></div>
         </div>
       </div>
       <div class="hot-card">
@@ -1063,18 +1064,23 @@
     <div class="cat-filter">
       <div class="cat-tab active" onclick="setCatTab(this)"><span class="emoji">🗂</span>全部分类</div>
       <div class="cat-tab" onclick="setCatTab(this)"><span class="emoji">🔬</span>前沿科技</div>
-      <div class="cat-tab" onclick="setCatTab(this)"><span class="emoji">🙋</span>科技志愿风采</div>
+      <div class="cat-tab" onclick="setCatTab(this)"><span class="emoji">📖</span>知识拓展</div>
       <div class="cat-tab" onclick="setCatTab(this)"><span class="emoji">🧪</span>科学方法</div>
-      <div class="cat-tab" onclick="setCatTab(this)"><span class="emoji">🧩</span>中国科技创新活动</div>
-      <div class="cat-tab" onclick="setCatTab(this)"><span class="emoji">🇨🇳</span>中国科学家故事</div>
+      <div class="cat-tab" onclick="setCatTab(this)"><span class="emoji">⚗️</span>身边的科学小实验</div>
+      <div class="cat-tab" onclick="setCatTab(this)"><span class="emoji">🧑‍🔬</span>科学家故事</div>
     </div>
-    <div class="subj-filter">
-      <div class="subj-tab s-all active" onclick="setSubjTab(this)">全部学科</div>
-      <div class="subj-tab s-math" onclick="setSubjTab(this)">📐 数学</div>
-      <div class="subj-tab s-phy" onclick="setSubjTab(this)">⚛ 物理</div>
-      <div class="subj-tab s-chem" onclick="setSubjTab(this)">⚗ 化学</div>
-      <div class="subj-tab s-bio" onclick="setSubjTab(this)">🧬 生物</div>
-      <div class="subj-tab s-cs" onclick="setSubjTab(this)">💻 计算机</div>
+    <div class="subj-filter" id="subcat-qyankj" style="display:none">
+      <div class="subj-tab s-all active" onclick="setSubjTab(this)">全部</div>
+      <div class="subj-tab s-sub" onclick="setSubjTab(this)">数理化基础科学</div>
+      <div class="subj-tab s-sub" onclick="setSubjTab(this)">生命健康</div>
+      <div class="subj-tab s-sub" onclick="setSubjTab(this)">地球科学</div>
+      <div class="subj-tab s-sub" onclick="setSubjTab(this)">生态环境</div>
+      <div class="subj-tab s-sub" onclick="setSubjTab(this)">制造科技</div>
+      <div class="subj-tab s-sub" onclick="setSubjTab(this)">信息科技</div>
+      <div class="subj-tab s-sub" onclick="setSubjTab(this)">先进材料</div>
+      <div class="subj-tab s-sub" onclick="setSubjTab(this)">资源能源</div>
+      <div class="subj-tab s-sub" onclick="setSubjTab(this)">农业科技</div>
+      <div class="subj-tab s-sub" onclick="setSubjTab(this)">空天科技</div>
     </div>
 
     <!-- 主体两栏：资源网格 + 侧边栏 -->
@@ -1172,7 +1178,7 @@
               <div class="play-btn">▶</div>
             </div>
             <div class="res-card-body">
-              <div class="res-subj-row"><span class="res-subj ht-chem">化学</span><span class="res-cat-tag">中国科学家故事</span></div>
+              <div class="res-subj-row"><span class="res-subj ht-chem">化学</span><span class="res-cat-tag">科学家故事</span></div>
               <div class="res-title">导师说·化学：朱敏教授谈"为什么做科研"</div>
               <div class="res-meta"><span class="views">👁 6.8万</span><span class="src">英才计划</span><span class="res-fav">🤍</span></div>
             </div>
@@ -1218,7 +1224,7 @@
               <div class="res-type-badge tb-article">📄 图文</div>
             </div>
             <div class="res-card-body">
-              <div class="res-subj-row"><span class="res-subj ht-chem">化学</span><span class="res-cat-tag">中国科学家故事</span></div>
+              <div class="res-subj-row"><span class="res-subj ht-chem">化学</span><span class="res-cat-tag">科学家故事</span></div>
               <div class="res-title">屠呦呦与青蒿素：一段跨越千年的中医现代化故事</div>
               <div class="res-meta"><span class="views">👁 4.7万</span><span class="src">科普中国</span><span class="res-fav">🤍</span></div>
             </div>
@@ -1775,9 +1781,17 @@
   function setCatTab(el) {
     document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
     el.classList.add('active');
+    // 前沿科技显示二级分类，其他隐藏
+    const subcatBar = document.getElementById('subcat-qyankj');
+    if (subcatBar) {
+      subcatBar.style.display = el.textContent.trim().includes('前沿科技') ? 'flex' : 'none';
+      // 重置二级分类选中
+      subcatBar.querySelectorAll('.subj-tab').forEach(t => t.classList.remove('active'));
+      if (subcatBar.style.display === 'flex') subcatBar.querySelector('.subj-tab').classList.add('active');
+    }
   }
   function setSubjTab(el) {
-    document.querySelectorAll('.subj-tab').forEach(t => t.classList.remove('active'));
+    el.closest('.subj-filter').querySelectorAll('.subj-tab').forEach(t => t.classList.remove('active'));
     el.classList.add('active');
   }
   function setSource(el) {
